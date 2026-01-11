@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brutal UI</title>
+  <link rel="stylesheet" href="../static/css/app.css" />
+</head>
+<body>
+  <!-- Barra de navegación -->
+  <header class="nav">
+    <div class="nav__brand">Trading Venezuela</div>
+    <nav class="nav__links">
+      <a href="/">Inicio</a>
+      <a href="/index2">grafica</a>
+      <a href="/index3">volumen</a>
+      <a href="/index4">Datos</a>
+    </nav>
+  </header>
+
+  <!-- Hero / Intro -->
+  <section id="inicio" class="hero">
+    <div class="hero__content">
+      <h1>Trading Venezuela</h1>
+      <p>Analsis de la bolsa de valores de caracas</p>
+     
+    </div>
+  </section>
+
+  <!-- Sección de contenido -->
+  <main class="container">
+    <section id="features" class="grid">
+      <article class="card">
+        <h2>precios y volumen</h2>
+        <p>movimiento diario de la bolsa</p>
+        <button style="all: unset; cursor: pointer;" id="volumen">Actualizar </button>
+      </article>
+      <article class="card">
+        <h2>grafica</h2>
+        <p>actualizar data historica</p>
+          <button style="all: unset; cursor: pointer;" id="data">Actualizar </button>
+      </article>
+      <article class="card">
+        <h2>Convertir</h2>
+        <p>Convertir las acciones a usd</p>
+        <button style="all: unset; cursor: pointer;" id="Convertir">Actualizar </button>
+      </article>
+    </section>
+<section id="docs" class="panel">
+  <h2>tabla de acciones</h2>
+  <div class="panel__content">
+    <div class="panel__controls">
+      <button data-filter="24">Últimas 24h</button>
+      <button data-filter="48">Últimas 48h</button>
+      <button data-filter="7">Últimos 7 días</button>
+      <button data-filter="15">Últimos 15 días</button>
+      <button data-filter="all">Todo</button>
+    </div>
+    <table id="accionesTable">
+      <thead>
+        <tr>
+          <th>Acción</th>
+          <th>Precio</th>
+          <th>Variación Abs</th>
+          <th>Variación Rel</th>
+          <th>Monto Efectivo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí JS insertará dinámicamente las filas de cada CSV -->
+      </tbody>
+      <tfoot>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td id="totalMonto">0</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</section>
+
+
+
+
+    <section id="contacto" class="cta">
+      <h2>¿Listo para construir?</h2>
+      <p>Empieza con una base brutal: directa, honesta y funcional.</p>
+      <div class="cta__actions">
+        <a class="btn btn--primary" href="#">Crear proyecto</a>
+        <a class="btn btn--ghost" href="#">Plantillas</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <h3>BRUTAL APP</h3>
+        <p>Minimalismo sin concesiones. Decisiones visibles, sin magia oculta.</p>
+      </div>
+      <div>
+        <h4>Enlaces</h4>
+        <ul class="footer__links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#docs">Docs</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul class="footer__links">
+          <li><a href="#">Privacidad</a></li>
+          <li><a href="#">Términos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>© 2025 Brutal App</span>
+      <span>Hecho para construir, no para decorar</span>
+    </div>
+  </footer>
+
+  <script src="../static/js/preciosycap.js"></script>
+  <script src="../static/js/data.js"></script>
+  <script src="../static/js/app/tabla.js"></script>
+</body>
+</html>

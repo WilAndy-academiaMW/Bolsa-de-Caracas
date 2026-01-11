@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Brutal Trading</title>
+  <!-- Librerías necesarias -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../static/css/app.css">
+
+
+  <style>
+    body { background:#0f0f11; color:#eaeaea; font-family:ui-monospace, monospace; margin:0; }
+    header { background:#141416; border-bottom:4px solid #2a2a2e; padding:12px; }
+    .nav__links a { color:#eaeaea; margin-right:12px; text-decoration:none; }
+    .main-grid { display:grid; grid-template-columns:200px 1fr 200px; gap:16px; padding:16px; }
+    .panel { border:4px solid #2a2a2e; background:#121214; padding:12px; box-shadow:8px 8px 0 rgba(0,0,0,0.6); }
+    #chart-container { height:600px; border:4px solid #2a2a2e; background:#141416; }
+    button { display:block; margin:6px 0; padding:6px; background:#16161a; color:#eaeaea; border:2px solid #2a2a2e; cursor:pointer; }
+    button:hover { border-color:#6ee7ff; }
+    #mensaje { margin-top:12px; color:#6ee7ff; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__brand">BRUTAL APP</div>
+    <nav class="nav__links">
+      <a href="/">Inicio</a>
+      <a href="/index2">grafica</a>
+      <a href="/index3">volumen</a>
+      <a href="#contacto">Datos</a>
+    </nav>
+  </header>
+
+  <main class="main-grid">
+    <!-- Panel izquierdo -->
+    <aside class="panel">
+  <h2>Herramientas</h2>
+  <ul>
+   
+     <li>
+      <button id="btnzonadecompra">Zona de demanda</button>
+    </li>
+     <li>
+      <button id="btnzonadeventa">Zona de oferta</button>
+    </li>
+    <li>
+      <button id="btnzonadefvg">FVG</button>
+    </li>
+    <li>
+      <button id="fibonnacci">fibonnacci</button>
+    </li>
+     <li>
+      <button id="canal">canal</button>
+    </li> 
+     <li>
+        <button id="lineastendencia">lineas</button>
+    </li>
+     
+  </ul>
+</aside>
+
+
+    <!-- Gráfico central -->
+    <section>
+      <div style="margin-top:12px;display: flex;gap: 20px;">
+   
+    <li>
+      <button id="btnRSI">RSI</button>
+    </li>
+    <li>
+        <button id="btnmacd">MACD</button>
+    </li>
+     <li>
+     
+        <button id="btn-regla">REGLA</button>
+    </li>
+    <li>
+        <button id="btnbb">BB</button>
+    </li>
+    </li>
+    <li>
+        <button id="btn-fibo">fibonacci</button>
+    </li>
+    
+  </div>
+      <div id="chart-container"></div>
+      <div id="mensaje"></div>
+      <div id="fear_geed"></div>
+      <div style="margin-top:12px;display: flex;">
+        <button id="1m">1 mes</button>
+        <button id="3m">3 meses</button>
+        <button id="6m">6 meses</button>
+        <button id="1a">1 año</button>
+        <button id="2a">2 años</button>
+         <button id="3a">3 años</button>
+      </div>
+    </section>
+
+    <!-- Panel derecho -->
+    <aside class="panel">
+      <h2>Activos</h2>
+      <button data-symbol="Banco del Caribe_usd" data-label="Bancaribe">Caribe</button>
+      <button data-symbol="provincial_usd" data-label="provincial">provincial</button>
+      <button data-symbol="bnc_usd" data-label="BNC">BNC</button>
+      <button data-symbol="cantv_usd" data-label="cantv">cantv</button>
+      <button data-symbol="ceramica_usd" data-label="ceramica carabobo">ceramica carabobo</button>
+       <button data-symbol="corimon_usd" data-label="corimon">corimon</button>
+       <button data-symbol="bolsa_usd" data-label="IBC">IBC</button>
+       <button data-symbol="mercantil_usd" data-label="Mercantil">Mercantil</button>
+       <button data-symbol="Manufacturas de Papel CA_usd" data-label="Manufactura de papel">Manufactura de papel</button>
+       <button data-symbol="efe_usd" data-label="EFE">efe</button>
+      <button data-symbol="envases_usd" data-label="envases Venezolanos">envase</button>
+      <button data-symbol="ron_usd" data-label="Ron sanra teresa (A)">ron</button>
+      <button data-symbol="ron2_usd" data-label="Ron sanra teresa (B)">ron2</button>
+      <button data-symbol="bdv_usd" data-label="Banco de Venezuela (B)">Venezuela</button>
+      <button data-symbol="Siderurgica Venezolana_usd" data-label="sinvensa">sinvensa</button>
+      <button data-symbol="Invacab_usd" data-label="Invacad">Invacad</button>
+      <button data-symbol="Proagro_usd" data-label="Proagro">Proagro</button>
+      <button data-symbol="Protinal_usd" data-label="Protinal">Protinal</button>
+      <button data-symbol="Grupo quimico_usd" data-label="grupo quimico">Grupos Quimico</button>
+      <button data-symbol="Telares de Palo Grande_usd" data-label="Telares">telares </button>
+      <button data-symbol="cemento_usd" data-label="fabrica de cemento">Fabrica de cemento </button>
+      <button data-symbol="Montesco_usd" data-label="Montesco">Montesco </button>
+
+    </aside>
+  </main>
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <h3>BRUTAL APP</h3>
+        <p>Minimalismo sin concesiones. Decisiones visibles, sin magia oculta.</p>
+      </div>
+      <div>
+        <h4>Enlaces</h4>
+        <ul class="footer__links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#docs">Docs</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul class="footer__links">
+          <li><a href="#">Privacidad</a></li>
+          <li><a href="#">Términos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>© 2025 Brutal App</span>
+      <span>Hecho para construir, no para decorar</span>
+    </div>
+  </footer>
+  <script src="../static/js/app2/app2.js"></script>
+  <script src="../static/js/indicadores/indicador.js"></script>
+  <script src="../static/js/app2/lineas.js"></script>
+  <script src="../static/js/regla.js"></script>
+  <script src="../static/js/fibonnaci.js"></script>
+</body>
+</html>

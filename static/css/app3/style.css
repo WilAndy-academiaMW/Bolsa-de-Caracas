@@ -1,0 +1,213 @@
+
+    .botones {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px; /* separación entre botones */
+      text-decoration: none;
+    }
+    .botones a {
+      display: inline-flex;       /* icono + texto alineados */
+      align-items: center;
+      text-decoration: none;      /* quita subrayado */
+      color: white;               /* texto blanco */
+      font-weight: bold;          /* letra gruesa */
+      font-family: cursive;       /* letra curveada */
+      gap: 10px;                  /* separación entre imagen y texto */
+    }
+    .botones span {
+      color: white;
+      font-size: 1.5em;
+    }
+    .botones img {
+      width: 50px;
+      height: 50px;
+    }
+    #precio, #capitalizacion {
+      font-size: 20px;
+      font-weight: bold;
+      color: red;
+    }
+    /* feargreed.css */
+.feargreed-box {
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 20px;
+    height: 300px;
+}
+
+.feargreed-box h3 {
+    margin-top: 0;
+    color: #444;
+}
+
+.feargreed-box p {
+    margin: 4px 0;
+    font-size: 24px;
+}
+
+.feargreed-box span {
+    font-weight: bold;
+}
+
+/* Eliminamos el contenedor pesado, solo dejamos el espacio */
+.order-book {
+    display: flex;
+    gap: 40px; /* Más espacio entre columnas para claridad */
+    margin: 30px 0;
+    background: transparent;
+    text-align: center;
+}
+
+.order-column2 {
+    flex: 1;
+    border: 2px solid #000; /* Mantengo el borde negro por el estilo brutalista */
+    background: transparent;  /* <--- AQUÍ: Antes decía #fff, ahora es transparente */
+    padding: 10px;
+}
+/* Contenedor principal sin fondo */
+.order-book {
+    display: flex;
+    gap: 30px; 
+    margin: 20px 0;
+    background: transparent;
+}
+
+/* Columnas sin fondo ni bordes */
+.order-column2 {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+/* Títulos con la fuente cursive de tus botones */
+.order-column2 h3 {
+    font-family: cursive;
+    color: white;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Encabezados discretos */
+.order-table th {
+    color: #ffffff;
+    font-size: 0.8em;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* Datos limpios y sin efectos de hover */
+.order-table td {
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Colores puros para los datos */
+#tabla-compras td {
+    color: #2ecc71; /* Verde */
+}
+
+#tabla-ventas td {
+    color: #e74c3c; /* Rojo */
+}
+
+/* Alineaciones Espejo */
+.align-left { text-align: left; }
+.align-right { text-align: right; }
+
+/* La línea del total (Único separador visual) */
+.total-row-compra {
+    border-top: 2px solid #2ecc71;
+}
+
+.total-row-venta {
+    border-top: 2px solid #e74c3c;
+}
+
+/* Totales resaltados */
+#total-qty-compra, #total-qty-venta {
+    padding-top: 10px;
+    font-size: 1.4em;
+}
+
+/* Elimina cualquier fondo al pasar el mouse en las tablas del libro */
+#tabla-compras tr:hover, 
+#tabla-ventas tr:hover {
+    background-color: transparent !important;
+}
+
+/* Por seguridad, eliminamos fondo en todas las celdas del libro */
+.order-table td, 
+.order-table tr {
+    background: transparent !important;
+}
+
+/* Si los botones tienen un estilo global que afecta a las tablas, esto lo anula */
+.order-column, .order-book section {
+    background-color: transparent !important;
+}
+
+thead{
+        background-color: transparent !important;
+}
+
+.sentiment-container {
+    margin: 20px 0;
+    width: 100%;
+    font-family: 'Courier New', monospace;
+}
+
+.sentiment-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.label-buy { color: #2ecc71; }
+.label-sell { color: #e74c3c; }
+
+/* La barra de fondo */
+.sentiment-bar-bg {
+    height: 10px;
+    background: linear-gradient(to right, #2ecc71, #e74c3c);
+    border-radius: 5px;
+    position: relative;
+    border: 1px solid #444;
+}
+
+/* El punto o indicador que se mueve */
+.sentiment-dot {
+    width: 18px;
+    height: 18px;
+    background: white;
+    border: 3px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%; /* Por defecto al centro */
+    transform: translate(-50%, -50%);
+    transition: left 0.5s ease; /* Movimiento fluido */
+}
+     /* Estilos específicos para el Libro de Órdenes */
+        .order-book { display: flex; gap: 10px; margin-top: 20px; font-family: monospace; }
+        .order-column { flex: 1; border: 2px solid #000; background: #fff; padding: 10px; }
+        .order-column h3 { text-align: center; margin-bottom: 10px; text-transform: uppercase; border-bottom: 2px solid #000; }
+        .order-table { width: 100%; border-collapse: collapse; }
+        .order-table th, .order-table td { padding: 5px; text-align: right; border-bottom: 1px solid #eee; }
+        .order-table th { font-size: 0.8rem; color: #666; }
+        .buy-row { color: #2ecc71; font-weight: bold; } /* Verde para Compras */
+        .sell-row { color: #e74c3c; font-weight: bold; } /* Rojo para Ventas */
+        .order-table tr:hover { background-color: #f0f0f0; }

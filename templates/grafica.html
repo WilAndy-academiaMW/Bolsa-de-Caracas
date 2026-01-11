@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Brutal Trading</title>
+  <!-- Librerías necesarias -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+  <link rel="stylesheet" href="../static/css/app.css">
+
+  <style>
+    body { background:#0f0f11; color:#eaeaea; font-family:ui-monospace, monospace; margin:0; }
+    header { background:#141416; border-bottom:4px solid #2a2a2e; padding:12px; }
+    .nav__links a { color:#eaeaea; margin-right:12px; text-decoration:none; }
+    .main-grid { display:grid; grid-template-columns:200px 1fr 200px; gap:16px; padding:16px; }
+    .panel { border:4px solid #2a2a2e; background:#121214; padding:12px; box-shadow:8px 8px 0 rgba(0,0,0,0.6); }
+    #chart-container { height:600px; border:4px solid #2a2a2e; background:#141416; }
+    button { display:block; margin:6px 0; padding:6px; background:#16161a; color:#eaeaea; border:2px solid #2a2a2e; cursor:pointer; }
+    button:hover { border-color:#6ee7ff; }
+    #mensaje { margin-top:12px; color:#6ee7ff; }
+
+    #volumen-panels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.panel-volumen {
+  flex: 1;
+  min-width: 200px;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  color: #fff;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  transition: transform 0.2s ease;
+}
+
+.panel-volumen:hover {
+  transform: scale(1.05);
+}
+
+.panel-volumen h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.positivo-bloque {
+  background: linear-gradient(135deg, #1e8e3e, #34c759);
+  border: 2px solid #0f0;
+}
+
+.negativo-bloque {
+  background: linear-gradient(135deg, #8e1e1e, #ff3b30);
+  border: 2px solid #f00;
+}
+
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__brand">BRUTAL APP</div>
+    <nav class="nav__links">
+      <a href="/">Inicio</a>
+      <a href="/index2">Gráfica</a>
+      <a href="/index3">Volumen</a>
+      <a href="#contacto">Datos</a>
+    </nav>
+  </header>
+
+  <main class="main-grid">
+    <!-- Panel izquierdo -->
+    <aside class="panel">
+      <h2>Herramientas</h2>
+      <ul>
+        <li><button id="btnzonadecompra">Zona de demanda</button></li>
+        <li><button id="btnzonadeventa">Zona de oferta</button></li>
+        <li><button id="btnzonadefvg">FVG</button></li>
+        <li><button id="fibonnacci">Fibonnacci</button></li>
+        <li><button id="canal">Canal</button></li>
+        <li><button id="lineastendencia">Líneas</button></li>
+        <li><button id="dibujar_lineas">Dibujar líneas</button></li>
+        <li><button id="ondas">Ondas de Elliot</button></li>
+      </ul>
+    </aside>
+
+    <!-- Gráfico central -->
+    <section>
+      <div style="margin-top:12px; display:flex; gap:20px;">
+        <li><button id="zonas">Dibujar zonas</button></li>
+        <li><button id="dibujarfibo">Dibujar fibonnacci</button></li>
+        <li><button id="btnRSI">RSI</button></li>
+        <li><button id="btnmacd">MACD</button></li>
+        <li><button id="btn-regla">Regla</button></li>
+        <li><button id="btnbb">BB</button></li>
+        <li><button id="btn-fibo">Fibonacci</button></li>
+        <li><button id="dibujar_ondas">Dibujar ondas</button></li>
+        <li><button id="volumen">Volumen</button></li>
+        <li><button id="VolumeProfile">Volume Profile</button></li>
+        <li><button id="toggleCharts">Cambiar gráfico</button></li>
+      </div>
+
+      <div style="display:flex; gap:20px;"> 
+        <div id="chart-candles" style="flex:3; height:600px; border:4px solid #2a2a2e; background:#141416;">
+        </div> 
+        <div id="chart-profile" style="flex:1; height:600px; border:4px solid #2a2a2e; background:#141416; display:none;">
+        </div>
+      </div>
+
+      <div id="mensaje"></div>
+      <div style="margin-top:12px; display:flex; gap:10px;">
+        <button id="1m">1 mes</button>
+        <button id="3m">3 meses</button>
+        <button id="6m">6 meses</button>
+        <button id="1a">1 año</button>
+        <button id="2a">2 años</button>
+        <button id="3a">3 años</button>
+      </div>
+      <div id="fear_geed"></div>
+      <div id="volumen-panels" style="display:flex; justify-content:space-between; margin-top:20px;"></div> 
+    </section>
+
+    <!-- Panel derecho -->
+    <aside class="panel">
+      <h2>Activos</h2>
+      <button data-symbol="banco caribe_usd" data-label="Bancaribe">Caribe</button>
+      <button data-symbol="provincial_usd" data-label="Provincial">Provincial</button>
+      <button data-symbol="bnc_usd" data-label="BNC">BNC</button>
+      <button data-symbol="proagro_usd" data-label="Proagro">Proagro</button>
+      <button data-symbol="ceramica carabobo_usd" data-label="Ceramica Carabobo">Ceramica Carabobo</button>
+      <button data-symbol="mercantil_usd" data-label="Mercantil">Mercantil</button>
+      <button data-symbol="bolsa de caracas_usd" data-label="IBC">bolsa de caracas</button>
+      <button data-symbol="Domingues y sia_usd" data-label="Dominguez & sia">Dominguez y sia</button>
+      <button data-symbol="mampa_usd" data-label="Manufactura de papel">Manpa</button>
+      <button data-symbol="corimon_usd" data-label="Corimon">Corimon</button>
+      <button data-symbol="telares_usd" data-label="Telares palos grandes">Telares palos grandes</button>
+      <button data-symbol="efe_usd" data-label="Helados EFE">efe</button>
+      <button data-symbol="envases_usd" data-label="envases">envases venezolano</button>
+   
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <h3>BRUTAL APP</h3>
+        <p>Minimalismo sin concesiones. Decisiones visibles, sin magia oculta.</p>
+      </div>
+      <div>
+        <h4>Enlaces</h4>
+        <ul class="footer__links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#docs">Docs</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul class="footer__links">
+          <li><a href="#">Privacidad</a></li>
+          <li><a href="#">Términos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>© 2025 Brutal App</span>
+      <span>Hecho para construir, no para decorar</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+
+ <!--   <script src="../static/js/indicadores/indicador.js"></script>
+  <script src="../static/js/zonas/dibujarZonas.js"></script>
+  <script src="../static/js/tendencias/lineas de tendencias.js"></script>
+  <script src="../static/js/tendencias/dibujar tenencias.js"></script>
+  <script src="../static/js/zonas/zonas.js"></script>
+  <script src="../static/js/zonas/zonas2.js"></script>
+  <script src="../static/js/zonas/fvg.js"></script>
+  <script src="../static/js/fibonacci/fibonacci.js"></script>
+  <script src="../static/js/fibonacci/dibujarfibo.js"></script>
+  <script src="../static/js/fibonacci/canal.js"></script>
+  <script src="../static/js/ondas/ondasdeelliott.js"></script>
+  <script src="../static/js/ondas/dibujarondas.js"></script>
+<script src="../static/js/fear_greed.js"></script>
+  <script src="../static/js/regla.js"></script>
+  
+  <script src="../static/js/indicadores/volumen2.js"></script>
+--> 
+
+
+  <script src="../static/js/indicadores/volumen.js"></script>
+  <script src="../static/js/indicadores/volumen-panels.js"></script>
+  <script src="../static/js/fibonnaci.js"></script>
+  <script src="../static/js/grafica.js"></script>
+      <script src="../static/js/indicadores/indicador.js"></script>
+  <!--<script src="../static/js/indicandor/sentimientos.js"></script>
+  <script src="../static/js/indicadores/volumenprofil.js"></script>
+  
+  -->
+</body>
+</html>
