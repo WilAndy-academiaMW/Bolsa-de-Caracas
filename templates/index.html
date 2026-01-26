@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Brutal UI</title>
   <link rel="stylesheet" href="../static/css/app.css" />
+    <link rel="stylesheet" href="../static/css/index/radar.css" />
 </head>
 <body>
   <!-- Barra de navegación -->
@@ -84,15 +85,35 @@
 
 
 
+<div id="market-heatmap" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; justify-content: center;">
+    </div>
+<div style="display: flex; flex-direction: column; gap: 20px;">
+    <div id="market-heatmap" style="display: flex; flex-wrap: wrap; gap: 10px; background: #111; padding: 15px; border-radius: 8px;"></div>
+    
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
+        
+        <div class="radar-box">
+            <h4 class="radar-title">⚡ MOMENTUM SEMANAL(5)</h4>
+            <div id="radar-scalping" class="radar-list"></div>
+        </div>
 
-    <section id="contacto" class="cta">
-      <h2>¿Listo para construir?</h2>
-      <p>Empieza con una base brutal: directa, honesta y funcional.</p>
-      <div class="cta__actions">
-        <a class="btn btn--primary" href="#">Crear proyecto</a>
-        <a class="btn btn--ghost" href="#">Plantillas</a>
-      </div>
-    </section>
+        <div class="radar-box">
+            <h4 class="radar-title">📅 CICLO MENSUAL (15D)</h4>
+            <div id="radar-day" class="radar-list"></div>
+        </div>
+
+        <div class="radar-box">
+            <h4 class="radar-title">🌊 TENDENCIA TRIMESTRAL (30)</h4>
+            <div id="radar-swing" class="radar-list"></div>
+        </div>
+
+        <div class="radar-box">
+            <h4 class="radar-title">🏦 CARTERA INSTITUCIONAL (60)</h4>
+            <div id="radar-institucional" class="radar-list"></div>
+        </div>
+    </div>
+</div>
+
   </main>
 
   <!-- Footer -->
@@ -124,8 +145,7 @@
       <span>Hecho para construir, no para decorar</span>
     </div>
   </footer>
-
-  <script src="../static/js/preciosycap.js"></script>
+  <script src="../static/js/smart.js"></script>
   <script src="../static/js/data.js"></script>
   <script src="../static/js/app/tabla.js"></script>
 </body>

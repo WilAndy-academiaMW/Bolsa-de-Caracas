@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, jsonify
 
 from services.preciocap import actualizar
 from services.prices import update_all_csv
+from services.smart import obtener_movimientos_multi_radar
 
 # from services import Fear   # eliminado porque no se usa
 
@@ -168,7 +169,17 @@ def feargreed(symbol):
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+#---------------radar
 
+@app.route('/api/radares-smart')
+def api_radares():
+    """Esta es la ruta que tu JavaScript está llamando cada 30 segundos"""
+    try:
+        data = obtener_movimientos_multi_radar()
+        return jsonify(data)
+    except Exception as e:
+        print(f"Error en la API: {e}")
+        return jsonify({"error": "No se pudieron obtener los datos"}), 500
 # -------------------- MAIN --------------------
 if __name__ == "__main__":
     app.run(debug=True)

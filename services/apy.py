@@ -8,7 +8,7 @@ os.makedirs("acciones", exist_ok=True)
 url = "https://www.bolsadecaracas.com/ticker-create/?code=5509cc6b2cc75dfbf0b0c09990d95f87&format=json"
 
 try:
-    resp = requests.get(url, timeout=30)
+    resp = requests.get(url, timeout=50)
     resp.raise_for_status()
     data = resp.json()
 except Exception as e:

@@ -5,7 +5,7 @@
   <title>Brutal Trading</title>
   <!-- Librerías necesarias -->
   <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="../static/css/app.css">
+<link rel="stylesheet" href="../static/css/app2.css">
 
 
   <style>
@@ -32,73 +32,42 @@
   </header>
 
   <main class="main-grid">
-    <!-- Panel izquierdo -->
-    <aside class="panel">
-  <h2>Herramientas</h2>
-  <ul>
-   
-     <li>
-      <button id="btnzonadecompra">Zona de demanda</button>
-    </li>
-     <li>
-      <button id="btnzonadeventa">Zona de oferta</button>
-    </li>
-    <li>
-      <button id="btnzonadefvg">FVG</button>
-    </li>
-    <li>
-      <button id="fibonnacci">fibonnacci</button>
-    </li>
-     <li>
-      <button id="canal">canal</button>
-    </li> 
-     <li>
-        <button id="lineastendencia">lineas</button>
-    </li>
+  
+    <section> 
+      <div class="barra">
      
-  </ul>
-</aside>
-
-
-    <!-- Gráfico central -->
-    <section>
-      <div style="margin-top:12px;display: flex;gap: 20px;">
-   
-    <li>
+     <div style="margin-top:12px;display: flex;"> 
       <button id="btnRSI">RSI</button>
-    </li>
-    <li>
+    
         <button id="btnmacd">MACD</button>
-    </li>
-     <li>
+    
      
         <button id="btn-regla">REGLA</button>
-    </li>
-    <li>
+   
         <button id="btnbb">BB</button>
-    </li>
-    </li>
-    <li>
+   
         <button id="btn-fibo">fibonacci</button>
-    </li>
-    
-  </div>
-      <div id="chart-container"></div>
-      <div id="mensaje"></div>
-      <div id="fear_geed"></div>
-      <div style="margin-top:12px;display: flex;">
+    </div>
+       <div style="margin-top:12px;display: flex;">
         <button id="1m">1 mes</button>
         <button id="3m">3 meses</button>
         <button id="6m">6 meses</button>
         <button id="1a">1 año</button>
         <button id="2a">2 años</button>
          <button id="3a">3 años</button>
+       </div>
       </div>
-    </section>
 
-    <!-- Panel derecho -->
-    <aside class="panel">
-      <h2>Activos</h2>
+
+      <div id="chart-container"></div>
+      <div id="mensaje"></div>
+      <div id="fear_geed"></div>
+       
+   
+
+    <!-- Panel derecho-->
+     <aside class="panel">
+     
       <button data-symbol="Banco del Caribe_usd" data-label="Bancaribe">Caribe</button>
       <button data-symbol="provincial_usd" data-label="provincial">provincial</button>
       <button data-symbol="bnc_usd" data-label="BNC">BNC</button>
@@ -122,36 +91,9 @@
       <button data-symbol="cemento_usd" data-label="fabrica de cemento">Fabrica de cemento </button>
       <button data-symbol="Montesco_usd" data-label="Montesco">Montesco </button>
 
-    </aside>
+    </aside>  </section>
   </main>
-  <footer class="footer">
-    <div class="footer__grid">
-      <div>
-        <h3>BRUTAL APP</h3>
-        <p>Minimalismo sin concesiones. Decisiones visibles, sin magia oculta.</p>
-      </div>
-      <div>
-        <h4>Enlaces</h4>
-        <ul class="footer__links">
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#docs">Docs</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <ul class="footer__links">
-          <li><a href="#">Privacidad</a></li>
-          <li><a href="#">Términos</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__bar">
-      <span>© 2025 Brutal App</span>
-      <span>Hecho para construir, no para decorar</span>
-    </div>
-  </footer>
+  
   <script src="../static/js/app2/app2.js"></script>
   <script src="../static/js/indicadores/indicador.js"></script>
   <script src="../static/js/app2/lineas.js"></script>

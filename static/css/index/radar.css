@@ -1,0 +1,44 @@
+
+#heatmap-container {
+    background: #14161a;
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 300px;
+    color: white;
+}
+
+.radar-box { background: #000; padding: 12px; border-radius: 8px; border: 1px solid #333; min-height: 200px; }
+    .radar-title { color: #ffd700; margin-top: 0; font-size: 11px; text-align: center; border-bottom: 1px solid #222; padding-bottom: 8px; text-transform: uppercase; }
+    .radar-list { margin-top: 10px; }
+    :root {
+    --radar-glow: #30d958;
+    --radar-bg: #1a1d23;
+}
+
+.radar-container {
+    background: var(--radar-bg);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #333;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.radar-glass {
+    position: relative;
+    height: 120px;
+    overflow: hidden;
+}
+
+@keyframes titilar-dorado {
+    0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.4); border-color: #ffd700; }
+    50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); border-color: #fff; }
+    100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.4); border-color: #ffd700; }
+}
+
+.alerta-explosiva {
+    animation: titilar-dorado 1.5s infinite ease-in-out;
+    border: 1px solid #ffd700 !important;
+    z-index: 10;
+}
