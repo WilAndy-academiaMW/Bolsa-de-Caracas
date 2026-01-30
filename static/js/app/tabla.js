@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const acciones = ['ABC.A', 'BNC', 'BPV','BCVV','BVL','CCP.B',
+    const acciones = ['ABC.A', 'BNC', 'BPV','BVCC','BVL','CCP.B',
       'CCR','CGQ','CRM.A','DOM','EFE','ENV','FNC','GMC.B','GZL','ICP.B'
       ,'IVC.A','IVC.B','MPA','MTC.B','MVZ.A','MVZ.B','PCP.B','PIV.B','PTN','RST.B'
       ,'RST','SVS','TDV.D','TPG'

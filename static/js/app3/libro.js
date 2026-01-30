@@ -1,13 +1,11 @@
 /**
  * BRUTAL APP - Order Book & Sentiment Engine
- * Archivo: libro.js
+ * Archivo: libro.js (Versión con Totales de Volumen Sumados)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Carga inicial por defecto
     cargarLibroOrdenes("ABC.A");
 
-    // Configurar clics en botones de acciones
     const botones = document.querySelectorAll('.botones');
     botones.forEach(boton => {
         boton.addEventListener('click', () => {
@@ -17,96 +15,94 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function cargarLibroOrdenes(simbolo) {
-    // Ruta hacia la carpeta de tus CSV
     const ruta = `static/empresa/${simbolo}.csv`;
     
-    console.log(`[OrderBook] Cargando: ${ruta}`);
-
     try {
         const respuesta = await fetch(ruta);
         if (!respuesta.ok) throw new Error("Archivo no encontrado");
 
         const texto = await respuesta.text();
-        
-        // Limpiar filas vacías y quitar cabecera
-        const filas = texto.trim().split('\n')
-                           .filter(l => l.trim() !== '')
-                           .slice(1);
-
-        // Tomar las últimas 7 filas
-        const ultimas7 = filas.slice(-7);
+        const filas = texto.trim().split('\n').filter(l => l.trim() !== '').slice(1);
+        const ultimas7 = filas.slice(-15);
 
         const tCompra = document.getElementById('tabla-compras');
         const tVenta = document.getElementById('tabla-ventas');
+        
+        // IDs de los totales en el FOOTER
         const totalQtyC = document.getElementById('total-qty-compra');
         const totalQtyV = document.getElementById('total-qty-venta');
+        const totalVolC = document.getElementById('total-vol-compra'); 
+        const totalVolV = document.getElementById('total-vol-venta');
 
-        // Limpieza de tablas
         tCompra.innerHTML = '';
         tVenta.innerHTML = '';
         
-        let acumuladoC = 0;
-        let acumuladoV = 0;
+        let acumuladoQtyC = 0, acumuladoVolC = 0;
+        let acumuladoQtyV = 0, acumuladoVolV = 0;
+
+        // Limpiador de números profesional
+        const parseNum = (v) => {
+            if (!v || v.trim() === "" || v === '""') return 0;
+            let n = v.replace(/"/g, '').replace(/\./g, '').replace(',', '.');
+            return parseFloat(n) || 0;
+        };
 
         ultimas7.forEach(fila => {
-            // Separación respetando comillas
             const col = fila.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
             
-            // Función para limpiar números: "1.234,56" -> 1234.56
-            const parseNum = (v) => {
-                if (!v || v.trim() === "" || v === '""') return 0;
-                let n = v.replace(/"/g, '').replace(/\./g, '').replace(',', '.');
-                return parseFloat(n) || 0;
-            };
-
-            // Mapeo de columnas
+            // MAPEO
+            const qtyC   = parseNum(col[2]);  // Cantidad Compra
+            const qtyV   = parseNum(col[5]);  // Cantidad Venta
+            const precio = col[6] ? col[6].replace(/"/g, '').trim() : "-"; 
+            const volCSV = parseNum(col[10]); // Volumen (Columna 10) como número para sumar
             const fechaRaw = col[15] ? col[15].replace(/"/g, '').trim() : "";
-            const qtyC = parseNum(col[2]);
-            const prcC = col[3] ? col[3].replace(/"/g, '').trim() : "-";
-            const prcV = col[4] ? col[4].replace(/"/g, '').trim() : "-";
-            const qtyV = parseNum(col[5]);
 
-            // Formatear Fecha YYYY-MM-DD -> DD/MM
             let fechaF = "---";
             if (fechaRaw) {
                 const partes = fechaRaw.split('-');
                 if (partes.length === 3) fechaF = `${partes[2]}/${partes[1]}`;
             }
 
-            // Inyectar Compra (Fecha | Cantidad | Precio)
-            if (qtyC > 0 || prcC !== "-") {
+            // Inyectar Compra
+            if (qtyC > 0 || precio !== "-") {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td class="col-fecha align-left">${fechaF}</td>
-                    <td class="align-left">${qtyC.toLocaleString('es-VE')}</td>
-                    <td class="align-right">${prcC}</td>
+                    <td class="align-left"><strong>${qtyC.toLocaleString('es-VE')}</strong></td>
+                    <td class="align-right">${volCSV.toLocaleString('es-VE')}</td>
+                    <td class="align-right">${precio}</td>
                 `;
                 tCompra.appendChild(tr);
-                acumuladoC += qtyC;
+                acumuladoQtyC += qtyC;
+                acumuladoVolC += volCSV; // Sumamos el volumen aquí
             }
 
-            // Inyectar Venta (Precio | Cantidad | Fecha)
-            if (qtyV > 0 || prcV !== "-") {
+            // Inyectar Venta
+            if (qtyV > 0 || precio !== "-") {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td class="align-left">${prcV}</td>
-                    <td class="align-right">${qtyV.toLocaleString('es-VE')}</td>
+                    <td class="align-left">${precio}</td>
+                    <td class="align-right">${volCSV.toLocaleString('es-VE')}</td>
+                    <td class="align-right"><strong>${qtyV.toLocaleString('es-VE')}</strong></td>
                     <td class="col-fecha align-right">${fechaF}</td>
                 `;
                 tVenta.appendChild(tr);
-                acumuladoV += qtyV;
+                acumuladoQtyV += qtyV;
+                acumuladoVolV += volCSV; // Sumamos el volumen aquí
             }
         });
 
-        // Actualizar Totales numéricos
-        totalQtyC.innerText = acumuladoC.toLocaleString('es-VE');
-        totalQtyV.innerText = acumuladoV.toLocaleString('es-VE');
+        // Pintar los totales sumados en el footer
+        if(totalQtyC) totalQtyC.innerText = acumuladoQtyC.toLocaleString('es-VE');
+        if(totalVolC) totalVolC.innerText = acumuladoVolC.toLocaleString('es-VE');
+        
+        if(totalQtyV) totalQtyV.innerText = acumuladoQtyV.toLocaleString('es-VE');
+        if(totalVolV) totalVolV.innerText = acumuladoVolV.toLocaleString('es-VE');
 
-        // --- ACTUALIZAR BARRA DE DOMINIO ---
-        actualizarSentimiento(acumuladoC, acumuladoV);
+        actualizarSentimiento(acumuladoQtyC, acumuladoQtyV);
 
     } catch (error) {
-        console.error("[Error]:", error.message);
+        console.error("[Error en libro.js]:", error.message);
     }
 }
 
@@ -118,19 +114,8 @@ function actualizarSentimiento(compra, venta) {
 
     if (total > 0) {
         const porcC = (compra / total) * 100;
-        const porcV = (venta / total) * 100;
-
-        pBuy.innerText = porcC.toFixed(1) + "%";
-        pSell.innerText = porcV.toFixed(1) + "%";
-        
-        // El punto se mueve basado en el porcentaje de compra
-        // 100% Compra = punto a la izquierda (verde)
-        // 0% Compra = punto a la derecha (rojo)
-        // Usamos porcC para la posición 'left'
-        dot.style.left = porcC + "%";
-    } else {
-        pBuy.innerText = "50%";
-        pSell.innerText = "50%";
-        dot.style.left = "50%";
+        if(pBuy) pBuy.innerText = porcC.toFixed(1) + "%";
+        if(pSell) pSell.innerText = (100 - porcC).toFixed(1) + "%";
+        if(dot) dot.style.left = porcC + "%";
     }
 }

@@ -70,7 +70,14 @@
         <section class="panel">
             <canvas id="grafica_linea"></canvas>
             <canvas id="volumen_bs"></canvas>
-            <canvas id="rsi" style="width:50%; height: 100px;"></canvas>
+            <article class="card">
+    <h2>Análisis de Momentum (RSI)</h2>
+    <div id="rsi-display" style="padding: 20px; text-align: center;">
+        <span id="rsi-valor" style="font-size: 2rem; font-weight: bold; color: #bbff00;">--</span>
+        <p id="rsi-estado" style="letter-spacing: 1px; margin-top: 10px; font-weight: bold;"></p>
+        <p id="rsi-alerta" style="color: #ffcc00; font-size: 0.9rem; margin-top: 5px;"></p>
+    </div>
+</article>
             <div id="resumen_volumen" class="resumen"></div>
             <div class="time-controls">
                 <button id="15d">15d</button><button id="1m">1m</button><button id="2m">2m</button>
@@ -88,7 +95,7 @@
             <p><strong>Volumen:</strong> <span id="volumen">-</span></p>
             <p><strong>Volatilidad:</strong> <span id="volatilidad">-</span></p>
         </div>
-         <section class="order-book">
+       <section class="order-book">
     <div class="order-column">
         <h3 class="align-right">Compra</h3>
         <table class="order-table">
@@ -96,7 +103,7 @@
                 <tr>
                     <th class="align-left">Fecha</th>
                     <th class="align-left">Cant.</th>
-                    <th class="align-right">Precio</th>
+                    <th class="align-right">Volumen</th> <th class="align-right">Precio</th>
                 </tr>
             </thead>
             <tbody id="tabla-compras"></tbody>
@@ -104,7 +111,7 @@
                 <tr class="total-row-compra">
                     <td></td>
                     <td id="total-qty-compra" class="align-left">0</td>
-                    <td></td>
+                    <td id="total-vol-compra" class="align-right">0</td> <td></td>
                 </tr>
             </tfoot>
         </table>
@@ -116,7 +123,7 @@
             <thead>
                 <tr>
                     <th class="align-left">Precio</th>
-                    <th class="align-right">Cant.</th>
+                    <th class="align-right">Volumen</th> <th class="align-right">Cant.</th>
                     <th class="align-right">Fecha</th>
                 </tr>
             </thead>
@@ -124,13 +131,14 @@
             <tfoot>
                 <tr class="total-row-venta">
                     <td></td>
-                    <td id="total-qty-venta" class="align-right">0</td>
+                    <td id="total-vol-venta" class="align-right">0</td> <td id="total-qty-venta" class="align-right">0</td>
                     <td></td>
                 </tr>
             </tfoot>
         </table>
     </div>
 </section>
+
 <div class="sentiment-container">
     <div class="sentiment-labels">
         <span class="label-buy">COMPRA <span id="perc-buy">50%</span></span>
@@ -156,5 +164,7 @@
     <script src="../static/js/app3/app3.js"></script>
     <script src="../static/js/app3/miedo.js"></script>
     <script src="../static/js/app3/libro.js"></script>
+    <script src="../static/js/app3/rsi.js"></script>
+      
 </body>
 </html>

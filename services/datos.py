@@ -88,3 +88,7 @@ def actualizar_datos():
         resultados[ticker] = descargar_y_filtrar_datos(ticker, FECHA_INICIO, FECHA_FIN, ruta_completa)
 
     return resultados
+
+if __name__ == "__main__":
+    resultado = actualizar_datos()
+    print(resultado)

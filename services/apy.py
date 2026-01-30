@@ -3,60 +3,54 @@ import pandas as pd
 import os
 from datetime import datetime
 
-os.makedirs("acciones", exist_ok=True)
+# --- CONFIGURACIÓN DE RUTA CORREGIDA ---
+# 1. Obtiene la carpeta 'services'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-url = "https://www.bolsadecaracas.com/ticker-create/?code=5509cc6b2cc75dfbf0b0c09990d95f87&format=json"
+# 2. Sube un nivel para llegar a 'IBC' y luego entra en 'static/acciones'
+RUTA_DESTINO = os.path.abspath(os.path.join(BASE_DIR, "..", "static", "acciones"))
 
-try:
-    resp = requests.get(url, timeout=50)
-    resp.raise_for_status()
-    data = resp.json()
-except Exception as e:
-    print("No se pudo obtener datos válidos:", e)
-    data = {"items": []}
-
-acciones = data.get("items", [])
-
-columnas = ["fecha","accion","precio","variacion_abs","monto_efectivo","hora"]
-
-if not acciones:
-    print("La API no devolvió datos, se mantiene el archivo sin cambios.")
+# Verificación de seguridad
+if not os.path.exists(RUTA_DESTINO):
+    print(f"Error: No se encontró la carpeta en: {RUTA_DESTINO}")
+    print("Asegúrate de que 'static' esté al mismo nivel que la carpeta 'services'.")
 else:
+    url = "https://www.bolsadecaracas.com/ticker-create/?code=5509cc6b2cc75dfbf0b0c09990d95f87&format=json"
+
+    try:
+        resp = requests.get(url, timeout=60)
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception as e:
+        print(f"Error al obtener datos: {e}")
+        data = {"items": []}
+
+    acciones = data.get("items", [])
+    columnas = ["fecha", "accion", "precio", "variacion_abs", "monto_efectivo", "hora"]
+    fecha_actual = datetime.now().strftime("%Y-%m-%d")
+
     for accion in acciones:
-        nombre = accion.get("COD_SIMB", accion.get("CODE", "accion")).strip().replace(" ", "_")
-        fila = {**accion, **accion.get("DATA", {})}
-        df = pd.DataFrame([fila])
+        nombre = accion.get("COD_SIMB", "accion").strip().replace(" ", "_")
+        fila_full = {**accion, **accion.get("DATA", {})}
+        
+        df_nueva = pd.DataFrame([{
+            "fecha": fecha_actual,
+            "accion": fila_full.get("COD_SIMB"),
+            "precio": fila_full.get("PRECIO"),
+            "variacion_abs": fila_full.get("VAR_ABS"),
+            "monto_efectivo": fila_full.get("MONTO_EFECTIVO"),
+            "hora": fila_full.get("HORA")
+        }])
+        
+        df_nueva = df_nueva.reindex(columns=columnas)
+        ruta_archivo = os.path.join(RUTA_DESTINO, f"{nombre}.csv")
 
-        df_final = df[["COD_SIMB","PRECIO","VAR_ABS","MONTO_EFECTIVO","HORA"]].copy()
-        df_final.rename(columns={
-            "COD_SIMB": "accion",
-            "PRECIO": "precio",
-            "VAR_ABS": "variacion_abs",
-            "MONTO_EFECTIVO": "monto_efectivo",
-            "HORA": "hora"
-        }, inplace=True)
-
-        fecha_actual = datetime.now().strftime("%Y-%m-%d")
-        df_final["fecha"] = fecha_actual
-
-        # Reordenar columnas y rellenar faltantes
-        df_final = df_final.reindex(columns=columnas)
-
-        ruta = os.path.join("acciones", f"{nombre}.csv")
-
-        if os.path.exists(ruta):
-            df_existente = pd.read_csv(ruta, dtype=str, on_bad_lines="skip")
-            if "fecha" not in df_existente.columns:
-                df_existente = pd.DataFrame(columns=columnas)
-
-            # Borrar fila de hoy si existe
+        if os.path.exists(ruta_archivo):
+            df_existente = pd.read_csv(ruta_archivo, dtype=str)
             df_existente = df_existente[df_existente["fecha"] != fecha_actual]
-
-            # Agregar nueva fila
-            df_existente = pd.concat([df_existente, df_final], ignore_index=True)
-
-            df_existente.to_csv(ruta, index=False, columns=columnas)
+            df_final = pd.concat([df_existente, df_nueva], ignore_index=True)
         else:
-            df_final.to_csv(ruta, index=False, columns=columnas)
+            df_final = df_nueva
 
-        print(f"Actualizado: {ruta}")
+        df_final.to_csv(ruta_archivo, index=False)
+        print(f"Actualizado: {nombre}.csv en {RUTA_DESTINO}")

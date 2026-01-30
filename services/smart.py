@@ -4,7 +4,9 @@ from flask import jsonify
 
 def obtener_movimientos_multi_radar():
     # Lista de acciones a monitorear
-    monedas = ["BPV", "BVCC", "MPA", "BDV", "EFE", "ENV", "TDA", "FNC", "BNC", "ABC.A","DOM","MVZ.A","RST","TDV.D","RST.B","PTN",
+    monedas = ["ABC.A","ARC.B","BPV","BNC","BVCC","BVL","CCP.B","CCR","CGQ","CRM.A","GZL","ICP.B",
+               "TPG", "MPA", "BDV","BVCC", "EFE", 
+               "ENV", "TDA", "FNC",  "ABC.A","DOM","MVZ.A","RST","TDV.D","RST.B","PTN",
                "MTC.B","IVC.A","IVC.B"]
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     

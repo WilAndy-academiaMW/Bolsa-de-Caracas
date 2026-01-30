@@ -49,3 +49,6 @@ def convertir_acciones():
         df_out.to_csv(salida, index=False, float_format="%.3f")
 
     return "Conversión realizada"
+if __name__ == "__main__":
+    resultado = convertir_acciones()
+    print(resultado)

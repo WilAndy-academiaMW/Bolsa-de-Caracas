@@ -211,3 +211,33 @@ thead{
         .buy-row { color: #2ecc71; font-weight: bold; } /* Verde para Compras */
         .sell-row { color: #e74c3c; font-weight: bold; } /* Rojo para Ventas */
         .order-table tr:hover { background-color: #f0f0f0; }
+
+
+
+
+
+
+
+    /*rsi*/
+
+    /* Estilo para el badge de alerta */
+.rsi-alert-badge {
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    display: none; /* Se activa con JS */
+    margin-top: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    animation: parpadeo 1s infinite;
+}
+
+.alert-bullish { background-color: #00ffcc; color: #000; display: block; }
+.alert-bearish { background-color: #ff4444; color: #fff; display: block; }
+
+@keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
