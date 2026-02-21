@@ -1,24 +1,75 @@
 /**
- * BRUTAL APP - Indicadores Dinámicos
- * Reacciona a cada cambio de botón y rango
+ * INDICADORES.JS - Motor de Análisis Técnico Pro
+ * Incluye: RSI, Medias Móviles, Momentum y Velocímetro de Votos
  */
 
-function procesarRSI(precios, labels) {
-    // Si el usuario pone "15d" y no hay suficientes datos para el RSI de 14, avisamos
-    if (!precios || precios.length < 15) {
-        actualizarInterfazRSI(null, "⚠️ Insuficientes datos para este rango.");
+console.log("✅ Motor de indicadores activo.");
+
+// --- FUNCIÓN PRINCIPAL QUE LLAMA app3.js ---
+window.procesarRSI = function(precios, labels) {
+    if (!precios || precios.length < 20) {
+        console.warn("Datos insuficientes para análisis técnico.");
         return;
     }
 
+    // 1. Ejecutar el motor de votos (Estilo TradingView)
+    window.analizarMercadoCompleto(precios);
+
+    // 2. Calcular RSI para otros posibles usos (como gráficas)
     const rsiValores = calcularRSI(precios, 14);
     const ultimoRSI = rsiValores[rsiValores.length - 1];
+    
+    console.log(`📊 Análisis Individual RSI: ${ultimoRSI.toFixed(2)}`);
+};
 
-    // Buscamos divergencia comparando el hoy contra el inicio del set de datos actual
-    // Así la divergencia es relativa al tiempo que el usuario está viendo (15d, 1m, etc.)
-    const divergencia = detectarDivergenciaDinamica(precios, rsiValores);
+// --- MOTOR DE VOTOS (VELOCÍMETRO) ---
+window.analizarMercadoCompleto = function(precios) {
+    let votosCompra = 0;
+    let votosVenta = 0;
+    let votosNeutral = 0;
 
-    actualizarInterfazRSI(ultimoRSI, divergencia);
-}
+    const precioActual = precios[precios.length - 1];
+
+    // --- VOTO 1: RSI (Oscilador) ---
+    const rsiValores = calcularRSI(precios, 14);
+    const rsiHoy = rsiValores[rsiValores.length - 1];
+    
+    if (rsiHoy > 70) {
+        votosVenta++; // Sobrecompra = Peligro/Venta
+    } else if (rsiHoy < 30) {
+        votosCompra++; // Sobreventa = Oportunidad/Compra
+    } else {
+        votosNeutral++;
+    }
+
+    // --- VOTO 2: MEDIA MÓVIL (SMA 10) ---
+    const sma10 = precios.slice(-10).reduce((a, b) => a + b, 0) / 10;
+    if (precioActual > sma10) {
+        votosCompra++;
+    } else {
+        votosVenta++;
+    }
+
+    // --- VOTO 3: MOMENTUM (Tendencia 10 días) ---
+    const precioHace10 = precios[precios.length - 10];
+    if (precioActual > precioHace10) {
+        votosCompra++;
+    } else {
+        votosVenta++;
+    }
+
+    // --- CÁLCULO DE PUNTAJE FINAL (Escala 0-100) ---
+    // Base 50 (Neutral) + balance de votos
+    let puntajeFinal = 50 + ((votosCompra - votosVenta) * 15);
+    puntajeFinal = Math.min(Math.max(puntajeFinal, 0), 100);
+
+    console.log(`--- ANALISIS: Compra:${votosCompra} Venta:${votosVenta} Neu:${votosNeutral} | Score: ${puntajeFinal} ---`);
+
+    // ACTUALIZAR EL VELOCÍMETRO EN EL HTML
+    actualizarInterfazVelocimetro(puntajeFinal);
+};
+
+// --- FUNCIONES DE CÁLCULO Y UI ---
 
 function calcularRSI(precios, n) {
     let ganancias = [], perdidas = [];
@@ -31,45 +82,43 @@ function calcularRSI(precios, n) {
     for (let i = n; i < precios.length; i++) {
         let avgG = ganancias.slice(i - n, i).reduce((a, b) => a + b, 0) / n;
         let avgP = perdidas.slice(i - n, i).reduce((a, b) => a + b, 0) / n;
-        let rs = avgP === 0 ? 100 : avgG / avgP;
+        let rs = (avgP === 0) ? 100 : avgG / avgP;
         rsi.push(100 - (100 / (1 + rs)));
     }
     return rsi;
 }
 
-function detectarDivergenciaDinamica(p, r) {
-    const i = r.length - 1;   // Hoy
-    const j = Math.max(0, r.length - 6); // Hace 5-6 registros del rango visible
+function actualizarInterfazVelocimetro(score) {
+    const needle = document.getElementById('needle-tradingview');
+    const scoreEl = document.getElementById('gauge-score');
+    const textEl = document.getElementById('gauge-text');
 
-    const pAct = p[p.length - 1], pPrev = p[p.length - 6];
-    const rAct = r[i], rPrev = r[j];
-
-    if (pAct < pPrev && rAct > rPrev && rAct < 50) {
-        return "🚀 DIVERGENCIA ALCISTA (Acumulación)";
-    }
-    if (pAct > pPrev && rAct < rPrev && rAct > 50) {
-        return "⚠️ DIVERGENCIA BAJISTA (Distribución)";
-    }
-    return "Neutral (Sin divergencia clara)";
-}
-
-function actualizarInterfazRSI(valor, estadoTexto) {
-    const elValor = document.getElementById("rsi-valor");
-    const elAlerta = document.getElementById("rsi-alerta");
-
-    if (!elValor) return;
-
-    if (valor === null) {
-        elValor.textContent = "--";
-        elAlerta.textContent = estadoTexto;
-        return;
+    // Mover aguja: 0 es -90deg, 50 es 0deg, 100 es 90deg
+    if (needle) {
+        const grados = (score * 1.8) - 90;
+        needle.style.transform = `rotate(${grados}deg)`;
     }
 
-    elValor.textContent = valor.toFixed(2);
-    elAlerta.textContent = estadoTexto;
+    // Actualizar número
+    if (scoreEl) scoreEl.innerText = Math.round(score);
 
-    // Colores dinámicos
-    if (valor >= 70) elValor.style.color = "#ff4444"; // Sobrecompra
-    else if (valor <= 30) elValor.style.color = "#00ffcc"; // Sobreventa
-    else elValor.style.color = "#bbff00"; // Neutral
+    // Actualizar texto descriptivo y colores
+    if (textEl) {
+        if (score > 70) {
+            textEl.innerText = "COMPRA FUERTE";
+            textEl.style.color = "#00ffcc";
+        } else if (score < 30) {
+            textEl.innerText = "VENTA FUERTE";
+            textEl.style.color = "#ff4444";
+        } else if (score > 55) {
+            textEl.innerText = "COMPRA";
+            textEl.style.color = "#bbff00";
+        } else if (score < 45) {
+            textEl.innerText = "VENTA";
+            textEl.style.color = "#ffbb00";
+        } else {
+            textEl.innerText = "NEUTRAL";
+            textEl.style.color = "#888";
+        }
+    }
 }

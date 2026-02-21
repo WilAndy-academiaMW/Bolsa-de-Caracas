@@ -1,0 +1,195 @@
+.panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chart-container {
+    position: relative;
+    height: 450px; /* Altura fija para las velas */
+    width: 100%;
+}
+
+.volume-container {
+    position: relative;
+    height: 150px; /* Altura más pequeña para el volumen */
+    width: 100%;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+
+
+
+/*radar de operaciones*/
+.shark {
+    background: rgba(0, 255, 0, 0.05); /* Un fondo verde muy sutil */
+    border-left: 4px solid #00ff00 !important;
+    padding-left: 10px !important;
+}
+
+.retail {
+    border-left: 4px solid #ffcc00 !important;
+    padding-left: 10px !important;
+}
+
+
+
+/*libro de ordenes*/
+:root {
+    --bg-color: #0d1117;
+    --ask-color: #ff3b3b;
+    --ask-glow: rgba(255, 59, 59, 0.2);
+    --bid-color: #00ff88;
+    --bid-glow: rgba(0, 255, 136, 0.2);
+    --text-dim: #848e9c;
+}
+
+/* Contenedor para centrarlo todo en tu página */
+.book-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.terminal-book {
+    background: var(--bg-color);
+    border: 2px solid #30363d;
+    border-radius: 12px;
+    padding: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    /* Ancho más grande */
+    width: 1000px; 
+    box-shadow: 0 0 30px rgba(0,0,0,0.7);
+}
+
+.title { 
+    font-weight: bold; 
+    color: white; 
+    font-size: 18px;
+    letter-spacing: 2px;
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.market-labels {
+    display: flex; 
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-dim);
+    margin: 10px 0;
+    padding: 0 5px;
+    border-bottom: 1px solid #30363d;
+}
+
+.ob-row {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 28px; /* Un poco más alto para que respire */
+    align-items: center;
+    margin-bottom: 3px;
+    padding: 0 10px;
+}
+
+/* Barras más llamativas */
+.bar-fill {
+    position: absolute;
+    right: 0;
+    height: 90%; /* Casi toda la altura de la fila */
+    border-radius: 4px;
+    z-index: 1;
+    transition: width 0.4s ease-out; /* Animación suave */
+}
+
+.ask-fill { 
+    background: linear-gradient(to left, var(--ask-color), transparent);
+    opacity: 0.3; /* Para que no tape los números */
+}
+
+.bid-fill { 
+    background: linear-gradient(to left, var(--bid-color), transparent);
+    opacity: 0.3;
+}
+
+.price-val { 
+    font-weight: bold; 
+    z-index: 2; 
+    font-size: 15px; 
+}
+
+.qty-val { 
+    color: #ffffff; 
+    z-index: 2; 
+    font-size: 15px;
+    text-shadow: 1px 1px 2px black;
+}
+
+.price-nexus {
+    margin: 20px 0;
+    padding: 15px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid var(--bid-color);
+    border-right: 4px solid var(--ask-color);
+    border-radius: 4px;
+}
+
+.side-title { 
+    font-size: 12px; 
+    margin: 10px 0; 
+    color: var(--text-dim);
+    text-transform: uppercase;
+}
+
+.dominance-container {
+    margin: 15px 0;
+    padding: 10px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 8px;
+}
+
+.dominance-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--text-dim);
+}
+
+.dominance-bar-bg {
+    width: 100%;
+    height: 8px;
+    background: var(--ask-color); /* Fondo rojo (vendedores) */
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.dominance-fill {
+    height: 100%;
+    background: var(--bid-color); /* Relleno verde (compradores) */
+    width: 50%;
+    transition: width 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 10px var(--bid-glow);
+}
+
+.market-sentiment {
+    text-align: center;
+    font-size: 11px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}

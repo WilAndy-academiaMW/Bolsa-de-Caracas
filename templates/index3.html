@@ -13,11 +13,14 @@
 </head>
 <body>
     <header class="nav">
-        <div class="nav__brand">BRUTAL APP</div>
-        <nav class="nav__links">
-            <a href="/">Inicio</a> <a href="/index2">grafica</a> <a href="/index3">volumen</a> <a href="#contacto">Datos</a>
-        </nav>
-    </header>
+    <div class="nav__brand">Trading Venezuela</div>
+    <nav class="nav__links">
+      <a href="/">Inicio</a>
+      <a href="/index2">grafica</a>
+      <a href="/index3">volumen</a>
+      <a href="/index4">Datos</a>
+    </nav>
+  </header>
     <section id="inicio" class="hero">
         <div class="hero__content">
             <h1>Acciones</h1>
@@ -70,22 +73,55 @@
         <section class="panel">
             <canvas id="grafica_linea"></canvas>
             <canvas id="volumen_bs"></canvas>
-            <article class="card">
-    <h2>Análisis de Momentum (RSI)</h2>
-    <div id="rsi-display" style="padding: 20px; text-align: center;">
-        <span id="rsi-valor" style="font-size: 2rem; font-weight: bold; color: #bbff00;">--</span>
-        <p id="rsi-estado" style="letter-spacing: 1px; margin-top: 10px; font-weight: bold;"></p>
-        <p id="rsi-alerta" style="color: #ffcc00; font-size: 0.9rem; margin-top: 5px;"></p>
-    </div>
-</article>
+ 
+
             <div id="resumen_volumen" class="resumen"></div>
             <div class="time-controls">
                 <button id="15d">15d</button><button id="1m">1m</button><button id="2m">2m</button>
                 <button id="3m">3m</button><button id="4m">4m</button><button id="5m">5m</button><button id="6m">6m</button>
             </div>
         </section>
+        
+<!---->
+        <div id="contenedor_nexus" class="nexus-container" style="margin: auto;">
+    <div class="dashboard-header">
+        <span class="brand">NEXUS</span>
+        <span class="model">BVC v1.0</span>
+    </div>
 
-       
+    <div class="speedometer">
+        <svg class="meter-svg" viewBox="0 0 200 120">
+            <path class="meter-bg" d="M20,100 A80,80 0 0,1 180,100" />
+            <path id="meter-fill" class="meter-fill" d="M20,100 A80,80 0 0,1 180,100" />
+            
+            <g class="ticks">
+                <line x1="20" y1="100" x2="30" y2="100" />
+                <line x1="180" y1="100" x2="170" y2="100" />
+                <line x1="100" y1="20" x2="100" y2="30" />
+            </g>
+        </svg>
+
+        <div id="nexus_needle" class="race-needle"></div>
+
+        <div class="digital-display">
+            <div id="nexus_score" class="main-val">0</div>
+            <div id="nexus_estado" class="sub-val">WAITING</div>
+        </div>
+    </div>
+
+    <div class="bottom-stats">
+        <div class="stat-box">
+            <small>RSI</small>
+            <span id="nexus_rsi">--</span>
+        </div>
+        <div class="stat-box">
+            <small>MACD</small>
+            <span id="nexus_macd">--</span>
+        </div>
+    </div>
+</div>
+        
+       <!--miedo y codicia-->
 
         <div id="indicador_feargreed" class="feargreed-box">
             <h3>Índice Miedo & Codicia</h3>
@@ -95,6 +131,7 @@
             <p><strong>Volumen:</strong> <span id="volumen">-</span></p>
             <p><strong>Volatilidad:</strong> <span id="volatilidad">-</span></p>
         </div>
+         <!--libro de ordenes-->
        <section class="order-book">
     <div class="order-column">
         <h3 class="align-right">Compra</h3>
@@ -137,7 +174,7 @@
             </tfoot>
         </table>
     </div>
-</section>
+      </section>
 
 <div class="sentiment-container">
     <div class="sentiment-labels">
@@ -163,8 +200,8 @@
     </footer>
     <script src="../static/js/app3/app3.js"></script>
     <script src="../static/js/app3/miedo.js"></script>
-    <script src="../static/js/app3/libro.js"></script>
-    <script src="../static/js/app3/rsi.js"></script>
+   <script src="../static/js/app3/libro.js"></script>
+   <script src="../static/js/app3/power.js"></script>
       
 </body>
 </html>

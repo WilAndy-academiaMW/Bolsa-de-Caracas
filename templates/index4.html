@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Brutal UI</title>
+    <link rel="stylesheet" href="../static/css/app.css" />
+    <link rel="stylesheet" href="../static/css/app3/style.css" />
+    <link rel="stylesheet" href="../static/css/app4/app.css" />
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
+    <style>
+   
+    </style>
+</head>
+<body>
+     <header class="nav">
+    <div class="nav__brand">Trading Venezuela</div>
+    <nav class="nav__links">
+      <a href="/">Inicio</a>
+      <a href="/index2">grafica</a>
+      <a href="/index3">volumen</a>
+      <a href="/index4">Datos</a>
+    </nav>
+  </header>
+    <section id="inicio" class="hero">
+        <div class="hero__content">
+            <h1>Acciones</h1>
+            <div class="hero__actions">
+                <button class="botones" id="ABC.A" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/caribe.png" /><span>ABC.A</span></button>
+                <button class="botones" id="BNC" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/BNC.png" /><span>BNC</span></button>
+                <button class="botones" id="BPV" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/provincial.png" /><span>BPV</span></button>
+                <button class="botones" id="BVL" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/bdv.png" /><span>BDV</span></button>
+                <button class="botones" id="BVCC" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/bdvc.png" /><span>BVCC</span></button>
+                <button class="botones" id="CCP.B" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/perCapital.png" /><span>CCP.B</span></button>
+                <button class="botones" id="CCR" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/ceramica.png" /><span>CCR</span></button>
+                <button class="botones" id="CGQ" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/grupo quimico.png" /><span>CGQ</span></button>
+                <button class="botones" id="CRM.A" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/corimon.png" /><span>CRM.M</span></button>
+            </div>
+            <div class="hero__actions">
+                <button class="botones" id="DOM" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/DOM.png" /><span>DOM</span></button>
+                <button class="botones" id="EFE" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/efe.png" /><span>EFE</span></button>
+                <button class="botones" id="ENV" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/envases.png" /><span>ENV</span></button>
+                <button class="botones" id="FNC" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/cemento.png" /><span>FNC</span></button>
+                <button class="botones" id="GMC.B" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/mantra.png" /><span>GMC.B</span></button>
+                <button class="botones" id="GZL" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/grupo zuleano.png" /><span>GZL</span></button>
+                <button class="botones" id="ICP.B" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/crece.png" /><span>ICP.B</span></button>
+                <button class="botones" id="IVC.A" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/invanca.png" /><span>IVC.A</span></button>
+                <button class="botones" id="MPA" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/Manpa.png" /><span>MPA</span></button>
+            </div>
+            <div class="hero__actions">
+                <button class="botones" id="MTC.B" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/montesco.png" /><span>MTC.B</span></button>
+                <button class="botones" id="MVZ.A" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/mercantil.png" /><span>MVZ.A</span></button>
+                <button class="botones" id="MVZ.B" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/mercantil.png" /><span>MVZ.B</span></button>
+                <button class="botones" id="PCP.B" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/pretrolea.png" /><span>PCP.B</span></button>
+                <button class="botones" id="PGR" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/proagro.png" /><span>PGR</span></button>
+                <button class="botones" id="PIV.B" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/PIV.png" /><span>PIV.B</span></button>
+                <button class="botones" id="PTN" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/protinal.svg" /><span>PTN</span></button>
+                <button class="botones" id="RST" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/santaTeresa.png" /><span>RST</span></button>
+                <button class="botones" id="RST.B" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/santaTeresa.png" /><span>RST.B</span></button>
+            </div>
+            <div class="hero__actions">
+                <button class="botones" id="SVS" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/sinvesa.png" /><span>SVS</span></button>
+                <button class="botones" id="TDV.D" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/cantv.png" /><span>TDC.D</span></button>
+                <button class="botones" id="TPG" style="all: inherit; cursor: pointer; text-align: center;"><img src="/static/img/imgA/telares.png" /><span>TPG</span></button>
+            </div>
+        </div>
+    </section>
+    <main class="container">
+        <section id="features" class="grid">
+            <article class="card"><h2>precio</h2><p id="precio"></p></article>
+            <article class="card"><h2>CAPITALIZACIÓN</h2><p id="capitalizacion"></p></article>
+            <article class="card"><h2>%</h2><p id="rendimiento"></p></article>
+        </section>
+       
+        <section class="panel">
+    <div class="chart-container">
+        <canvas id="grafica_linea"></canvas>
+    </div>
+    
+    <div class="volume-container">
+        <canvas id="volumen_bs"></canvas>
+    </div>
+
+    <div id="resumen_volumen" class="resumen"></div>
+
+    <div id="radar-container" style="background: #080808; border: 1px solid #222; border-radius: 12px; margin-top: 20px; padding: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <h4 style="color: #fff; margin: 0; font-family: 'Segoe UI', sans-serif; letter-spacing: 1px;">🕵️ RADAR DE MANOS FUERTES</h4>
+        <span style="color: #555; font-size: 0.7rem; font-family: monospace;">DESLIZA PARA VER HISTORIAL →</span>
+    </div>
+    
+    <div id="radar-lista" style="
+        display: flex; 
+        gap: 20px; 
+        overflow-x: auto; 
+        padding: 10px 5px 20px 5px;
+        scroll-behavior: smooth;
+        scrollbar-width: thin;
+        scrollbar-color: #333 #080808;
+    ">
+        </div>
+</div>
+    <div class="time-controls">
+        <button id="15d">15d</button><button id="1m">1m</button>
+        <button id="2m">2m</button><button id="3m">3m</button>
+        <button id="4m">4m</button><button id="5m">5m</button>
+        <button id="6m">6m</button>
+    </div>
+</section>
+<!--
+        <div id="contenedor_nexus" class="nexus-container" style="margin: auto;">
+    <div class="dashboard-header">
+        <span class="brand">NEXUS</span>
+        <span class="model">BVC v1.0</span>
+    </div>
+
+    <div class="speedometer">
+        <svg class="meter-svg" viewBox="0 0 200 120">
+            <path class="meter-bg" d="M20,100 A80,80 0 0,1 180,100" />
+            <path id="meter-fill" class="meter-fill" d="M20,100 A80,80 0 0,1 180,100" />
+            
+            <g class="ticks">
+                <line x1="20" y1="100" x2="30" y2="100" />
+                <line x1="180" y1="100" x2="170" y2="100" />
+                <line x1="100" y1="20" x2="100" y2="30" />
+            </g>
+        </svg>
+
+        <div id="nexus_needle" class="race-needle"></div>
+
+        <div class="digital-display">
+            <div id="nexus_score" class="main-val">0</div>
+            <div id="nexus_estado" class="sub-val">WAITING</div>
+        </div>
+    </div>
+
+    <div class="bottom-stats">
+        <div class="stat-box">
+            <small>RSI</small>
+            <span id="nexus_rsi">--</span>
+        </div>
+        <div class="stat-box">
+            <small>MACD</small>
+            <span id="nexus_macd">--</span>
+        </div>
+    </div>
+</div>
+        
+       miedo y codicia
+
+        <div id="indicador_feargreed" class="feargreed-box">
+            <h3>Índice Miedo & Codicia</h3>
+            <p><strong>Sentimiento:</strong> <span id="sentimiento">-</span></p>
+            <p><strong>Índice:</strong> <span id="indice">-</span></p>
+            <p><strong>Momentum:</strong> <span id="momentum">-</span></p>
+            <p><strong>Volumen:</strong> <span id="volumen">-</span></p>
+            <p><strong>Volatilidad:</strong> <span id="volatilidad">-</span></p>
+        </div>
+         libro de ordenes-->
+       <section class="order-book">
+    <div class="order-column">
+        <h3 class="align-right">Compra</h3>
+        <table class="order-table">
+            <thead>
+                <tr>
+                    <th class="align-left">Fecha</th>
+                    <th class="align-left">Cant.</th>
+                    <th class="align-right">Volumen</th> <th class="align-right">Precio</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-compras"></tbody>
+            <tfoot>
+                <tr class="total-row-compra">
+                    <td></td>
+                    <td id="total-qty-compra" class="align-left">0</td>
+                    <td id="total-vol-compra" class="align-right">0</td> <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="order-column">
+        <h3 class="align-left">Venta</h3>
+        <table class="order-table">
+            <thead>
+                <tr>
+                    <th class="align-left">Precio</th>
+                    <th class="align-right">Volumen</th> <th class="align-right">Cant.</th>
+                    <th class="align-right">Fecha</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-ventas"></tbody>
+            <tfoot>
+                <tr class="total-row-venta">
+                    <td></td>
+                    <td id="total-vol-venta" class="align-right">0</td> <td id="total-qty-venta" class="align-right">0</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+      </section>
+
+<div class="sentiment-container">
+    <div class="sentiment-labels">
+        <span class="label-buy">COMPRA <span id="perc-buy">50%</span></span>
+        <span class="label-sell"><span id="perc-sell">50%</span> VENTA</span>
+    </div>
+    <div class="sentiment-bar-bg">
+        <div id="sentiment-dot" class="sentiment-dot"></div>
+    </div>
+</div>
+
+
+
+
+    </main>
+   
+
+    
+  
+  <div class="book-wrapper">
+    <div class="terminal-book">
+        
+        <div class="book-header">
+            <span class="title">ORDEN BOOK</span></span>
+        </div>
+        
+        <div class="market-labels">
+            <span class="label-price">PRECIO (Bs)</span>
+            <span class="label-qty">CANTIDAD</span>
+        </div>
+
+        <div class="side-container">
+            <div class="side-title">VENTAS (ASKS)</div>
+            <div id="live-ob-asks" class="rows-wrapper"></div>
+        </div>
+
+        <div class="dominance-container">
+    <div class="dominance-labels">
+        <span>BIDS</span>
+        <span id="dominance-percent">50%</span>
+        <span>ASKS</span>
+    </div>
+    <div class="dominance-bar-bg">
+        <div id="dominance-fill" class="dominance-fill" style="width: 50%;"></div>
+    </div>
+    <div id="market-sentiment" class="market-sentiment">EQUILIBRADO</div>
+</div>
+
+        <div class="side-container">
+            <div class="side-title">COMPRAS (BIDS)</div>
+            <div id="live-ob-bids" class="rows-wrapper"></div>
+        </div>
+
+    </div>
+</div>
+        <script src="../static/js/app4/grafico.js"></script>
+    <script src="../static/js/app3/miedo.js"></script>
+   <script src="../static/js/app3/libro.js"></script>
+   <script src="../static/js/app3/power.js"></script>
+   <script src="../static/js/app4/orden.js"></script>
+</body>
+</html>

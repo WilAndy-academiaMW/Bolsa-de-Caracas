@@ -52,6 +52,26 @@ document.addEventListener("DOMContentLoaded", () => {
         const precios = ultimos.map(r => r.precio);
         const montos = ultimos.map(r => r.monto);
 
+
+        //rendimeinto
+        // ... (debajo de donde actualizas el precio)
+
+// 1. Obtener el primer precio (el más antiguo) y el último (el actual)
+const precioInicial = precios[0]; 
+const precioFinal = precios[precios.length - 1];
+
+if (precioInicial && precioFinal) {
+    // 2. Calcular el porcentaje de rendimiento
+    const rendimientoTotal = ((precioFinal - precioInicial) / precioInicial) * 100;
+
+    // 3. Seleccionar el elemento y formatear
+    const elRendimiento = document.getElementById("rendimiento");
+    elRendimiento.textContent = `${rendimientoTotal.toFixed(2)}%`;
+
+    // 4. Bonus: Color dinámico (verde si subió, rojo si bajó)
+    elRendimiento.style.color = rendimientoTotal >= 0 ? "#00ff00" : "#ff0000";
+}
+
         // --- AQUÍ ESTÁ LA CONEXIÓN QUE FALTA ---
         console.log("🔌 Conectando con indicadores.js...");
         if (typeof procesarRSI === "function") {
@@ -81,19 +101,35 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // 🔹 Gráfica de Volumen
-        if (volumeChart) volumeChart.destroy();
-        const ctxVol = document.getElementById("volumen_bs").getContext("2d");
-        volumeChart = new Chart(ctxVol, {
-            type: "bar",
-            data: {
-                labels,
-                datasets: [{
-                    label: "Monto Efectivo",
-                    data: montos,
-                    backgroundColor: "green"
-                }]
+       // 🔹 Gráfica de Volumen con colores dinámicos
+if (volumeChart) volumeChart.destroy();
+
+// Generar array de colores: rojo si el precio bajó, verde si subió o se mantuvo
+const coloresVolumen = precios.map((p, i) => {
+    if (i === 0) return "green"; // Primer dato por defecto
+    return p < precios[i - 1] ? "red" : "green";
+});
+
+const ctxVol = document.getElementById("volumen_bs").getContext("2d");
+volumeChart = new Chart(ctxVol, {
+    type: "bar",
+    data: {
+        labels,
+        datasets: [{
+            label: "Monto Efectivo",
+            data: montos,
+            backgroundColor: coloresVolumen
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                type: 'logarithmic', // <--- Esto hace la magia
+                beginAtZero: false   // En logarítmica es mejor false o Chart.js se quejará
             }
-        });
+        }
+    }
+});
 
         // Actualizar el DOM
         document.getElementById("precio").textContent = `${precios[precios.length-1].toLocaleString("es-VE")} Bs`;

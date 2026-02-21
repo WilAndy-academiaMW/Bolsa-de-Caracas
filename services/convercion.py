@@ -21,10 +21,10 @@ def convertir_acciones():
     df_fx.sort_values("Date", inplace=True)
     df_fx["Tasa"] = df_fx["Tasa"].astype(float).replace(0, pd.NA).ffill()
 
-    ACCIONES = ["Banco del Caribe.csv", "provincial.csv","proagro.csv","bolsa.csv","Efe.csv","Siderurgica Venezolana.csv"
+    ACCIONES = ["Banco del Caribe.csv", "provincial.csv","proagro.csv","bolsa.csv","Efe.csv","Sinvesa.csv",
             "Telares de Palo Grande.csv","ron.csv","ron2.csv","bnc.csv","grupo quimico.csv","cantv.csv",
             "corimon.csv", "ceramica.csv","Manufacturas de Papel CA.csv","bdv.csv","mercantil.csv","envases.csv",
-             "protinal.csv","cemento.csv","INVACAB.csv","Telares de Palo Grande.csv","Montesco.csv" ]
+             "protinal.csv","cemento.csv","INVACAB.csv","Telares de Palo Grande.csv","Montesco.csv","Zulia.csv" ]
 
 
     for archivo in ACCIONES:

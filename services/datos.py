@@ -42,7 +42,10 @@ ACTIVOS_A_DESCARGAR = {
     "IMP-B.CR": "IMPULSA V.C.csv",
     "ICP-B.CR": "Crecepymes.csv",
     "IVC-A.CR": "INVACA.csv",
-    "IVC-B.CR": "INVACAB.csv"
+    "IVC-B.CR": "INVACAB.csv",
+    "SVS.CR":"Siderurgica Venezolana.csv",
+    "CP-B.CR":"Crecepymes.csv",
+    "GZL.CR":"Zulia.csv"
 }
 
 # --- 3. FUNCIÓN DE DESCARGA ---
