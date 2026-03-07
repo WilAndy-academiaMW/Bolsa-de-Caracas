@@ -28,9 +28,9 @@ def index3():
 def index4():
     return render_template("index4.html")
 
-@app.route("/grafica")
-def grafica():
-    return render_template("grafica.html")
+@app.route("/index5")
+def index5():
+    return render_template("index5.html")
 
 
 

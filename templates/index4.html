@@ -70,6 +70,7 @@
             </div>
         </div>
     </section>
+    
     <main class="container">
         <section id="features" class="grid">
             <article class="card"><h2>precio</h2><p id="precio"></p></article>
@@ -224,46 +225,44 @@
 
     
   
-  <div class="book-wrapper">
-    <div class="terminal-book">
-        
-        <div class="book-header">
-            <span class="title">ORDEN BOOK</span></span>
-        </div>
-        
-        <div class="market-labels">
-            <span class="label-price">PRECIO (Bs)</span>
-            <span class="label-qty">CANTIDAD</span>
-        </div>
+  <div class="book-wrapper" >
+    <div class="terminal-book" style="margin-bottom: 150px;">
+    <div class="book-title">LIBRO DE ÓRDENES EN VIVO</div>
 
-        <div class="side-container">
-            <div class="side-title">VENTAS (ASKS)</div>
-            <div id="live-ob-asks" class="rows-wrapper"></div>
+    <div class="ob-section">
+        <div class="ob-header-triple">
+            <span>VALOR BS</span>
+            <span>CANT</span>
+            <span>PRECIO</span>
         </div>
-
-        <div class="dominance-container">
-    <div class="dominance-labels">
-        <span>BIDS</span>
-        <span id="dominance-percent">50%</span>
-        <span>ASKS</span>
+        <div id="live-ob-asks" class="ob-container"></div>
     </div>
-    <div class="dominance-bar-bg">
-        <div id="dominance-fill" class="dominance-fill" style="width: 50%;"></div>
-    </div>
-    <div id="market-sentiment" class="market-sentiment">EQUILIBRADO</div>
-</div>
 
-        <div class="side-container">
-            <div class="side-title">COMPRAS (BIDS)</div>
-            <div id="live-ob-bids" class="rows-wrapper"></div>
+    <div class="dominance-wrapper">
+        <div class="dominance-labels">
+            <span id="dominance-percent">50% vs 50%</span>
         </div>
+        <div class="dominance-bar-bg">
+            <div id="dominance-fill" class="dominance-fill"></div>
+        </div>
+        <div id="market-sentiment" class="market-sentiment">ANALIZANDO...</div>
+    </div>
 
+    <div class="ob-section">
+        <div class="ob-header-triple">
+            <span>VALOR BS</span>
+            <span>CANT</span>
+            <span>PRECIO</span>
+        </div>
+        <div id="live-ob-bids" class="ob-container"></div>
+    </div>
     </div>
 </div>
         <script src="../static/js/app4/grafico.js"></script>
-    <script src="../static/js/app3/miedo.js"></script>
+  <!--  <script src="../static/js/app3/miedo.js"></script> -->
    <script src="../static/js/app3/libro.js"></script>
    <script src="../static/js/app3/power.js"></script>
    <script src="../static/js/app4/orden.js"></script>
+   <script src="../static/js/app4/capitalizacion.js"></script>
 </body>
 </html>

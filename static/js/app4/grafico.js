@@ -45,13 +45,35 @@ async function cargarGrafica(symbol) {
 
         const ultimos = registros.slice(-(rangoMeses * 30));
 
-        // 1. Actualizar Rendimiento y Precio en el HTML
+        // --- 1. Lógica de Precio Bimonetario ---
         const pFinal = ultimos[ultimos.length - 1].c;
         const pInicial = ultimos[0].c;
         const rend = ((pFinal - pInicial) / pInicial) * 100;
-        document.getElementById("rendimiento").textContent = `${rend.toFixed(2)}%`;
-        document.getElementById("rendimiento").style.color = rend >= 0 ? "#00ff00" : "#ff0000";
-        document.getElementById("precio").textContent = `${pFinal.toLocaleString("es-VE")} Bs`;
+
+        // Buscamos la tasa del dólar para el precio
+        const resDolar = await fetch(`static/csv/dolar_bolivar.csv`);
+        let pFinalUsd = 0;
+        if (resDolar.ok) {
+            const dataDolar = await resDolar.text();
+            const filasDolar = dataDolar.trim().split('\n');
+            const ultimaFila = filasDolar[filasDolar.length - 1].split(',');
+            const tasaDolar = parseFloat(ultimaFila[1]); // Formato 405.3518
+            pFinalUsd = pFinal / tasaDolar;
+        }
+
+        // Actualizar Rendimiento
+        const rendEl = document.getElementById("rendimiento");
+        rendEl.textContent = `${rend.toFixed(2)}%`;
+        rendEl.style.color = rend >= 0 ? "#00ff00" : "#ff0000";
+
+        // Actualizar Precio (Inyectamos HTML para las dos monedas)
+        const precioEl = document.getElementById("precio");
+        precioEl.innerHTML = `
+            <div>${pFinal.toLocaleString("es-VE")} Bs</div>
+            <div style="font-size: 0.8em; color: #00d1ff; margin-top: 2px;">
+                $ ${pFinalUsd.toFixed(2)}
+            </div>
+        `;
 
         // 2. Gráfica de Velas
         if (chart) chart.destroy();
@@ -88,9 +110,12 @@ async function cargarGrafica(symbol) {
             }
         });
 
-        // 4. 🔥 EJECUTAR RADAR (Llamada al motor Python)
+        // 4. Ejecutar Radar y Capitalización
         cargarRadarBonito(symbol);
         cargarLibroOrdenesVivo(symbol);
+        
+        // Llamamos a la capitalización después de actualizar el precio
+        actualizarCapitalizacion(symbol);
 
     } catch (err) {
         console.error("❌ Error en cargarGrafica:", err);
