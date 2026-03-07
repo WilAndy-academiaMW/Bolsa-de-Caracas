@@ -21,10 +21,10 @@ def convertir_acciones():
     df_fx.sort_values("Date", inplace=True)
     df_fx["Tasa"] = df_fx["Tasa"].astype(float).replace(0, pd.NA).ffill()
 
-    ACCIONES = ["Banco del Caribe.csv", "provincial.csv","proagro.csv","bolsa.csv","Efe.csv","Siderurgica Venezolana.csv",
-            "Telares de Palo Grande.csv","ron.csv","ron2.csv","bnc.csv","grupo quimico.csv","cantv.csv",
-            "corimon.csv", "ceramica.csv","Manufacturas de Papel CA.csv","bdv.csv","mercantil.csv","envases.csv",
-             "protinal.csv","cemento.csv","INVACAB.csv","Telares de Palo Grande.csv","Montesco.csv","Zulia.csv" ]
+    ACCIONES = ["ABC.A.csv", "BPV.csv","PGR.csv","BCVV.csv","BVL.csv","CCP.B.csv","CCR.csv","EFE.csv","SVS.csv",
+            "TGP","ICP.B.csv","CGQ.csv","RST.csv","RST.B.csv","BNC.csv","TDV.D.csv",
+            "CRM.A.csv","MPA.csv","bdv.csv","MVZ.A.csv","MVZ.B.csv","ENV.csv",
+             "PTN.csv","FNC.csv","IVC.A.csv","Telares de Palo Grande.csv","MTC.B.csv","Zulia.csv" ]
 
 
     for archivo in ACCIONES:
@@ -45,7 +45,7 @@ def convertir_acciones():
         columnas_salida = ["Date"] + [c + "_USD" for c in precios_cols]
         df_out = df[columnas_salida].copy()
 
-        salida = os.path.join(RUTA_SALIDA, archivo.replace(".csv", "_usd.csv"))
+        salida = os.path.join(RUTA_SALIDA, archivo.replace(".csv", ".csv"))
         df_out.to_csv(salida, index=False, float_format="%.3f")
 
     return "Conversión realizada"

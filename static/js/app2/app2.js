@@ -161,7 +161,7 @@ document.querySelectorAll('aside.panel button[data-symbol]').forEach(btn => {
 
 // -------------------- CARGA INICIAL --------------------
 // Por defecto: Banco del Caribe
-cargarCSV('/static/csv/accionesusd/Banco del Caribe_usd.csv', 'Banco del Caribe');
+cargarCSV('/static/csv/accionesusd/ABC.A.csv', 'Banco del Caribe');
 
 // -------------------- MENSAJES --------------------
 function mostrarMensaje(texto) {

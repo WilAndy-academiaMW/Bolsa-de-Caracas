@@ -13,7 +13,7 @@ let rotacion = 0; // 0, 90, 270
 
 // -------------------- OPCIÓN BASE PARA VELAS --------------------
 const baseOptionCandles = {
-  title: { text: 'Banco del Caribe/USD', left: 'center' },
+  title: { text: 'ABC.A', left: 'center' },
   tooltip: { trigger: 'axis', axisPointer: { type: 'cross' } },
   grid: { containLabel: true },
   xAxis: {
@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Carga inicial
-  cargarCSV('/static/csv/accionesusd2/banco caribe_usd.csv', 'Banco del Caribe');
+  cargarCSV('/static/csv/accionesusd2/ABC.A.csv', 'Banco del Caribe');
 
   // Mensajes y rotación
   aplicarRotacion(0);
