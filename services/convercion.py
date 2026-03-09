@@ -22,7 +22,7 @@ def convertir_acciones():
     df_fx["Tasa"] = df_fx["Tasa"].astype(float).replace(0, pd.NA).ffill()
 
     ACCIONES = ["ABC.A.csv", "BPV.csv","PGR.csv","BCVV.csv","BVL.csv","CCP.B.csv","CCR.csv","EFE.csv","SVS.csv",
-            "TGP","ICP.B.csv","CGQ.csv","RST.csv","RST.B.csv","BNC.csv","TDV.D.csv",
+            "TGP","ICP.B.csv","CGQ.csv","RST.csv","RST.B.csv","BNC.csv","DOM.csva","TDV.D.csv",
             "CRM.A.csv","MPA.csv","bdv.csv","MVZ.A.csv","MVZ.B.csv","ENV.csv",
              "PTN.csv","FNC.csv","IVC.A.csv","Telares de Palo Grande.csv","MTC.B.csv","Zulia.csv" ]
 

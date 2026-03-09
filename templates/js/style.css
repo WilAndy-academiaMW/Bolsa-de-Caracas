@@ -1,0 +1,33 @@
+
+.panel_grafica{
+    width: 100%;
+}
+.grafica{
+    width: 100%;
+    height: 90%;
+    display: flex;
+flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#grafica{
+ width: 600px;
+ height: 500px;
+}
+
+
+
+
+.btn-tech {
+    border-bottom: 2px solid #9c27b0; /* Color púrpura para indicadores */
+}
+
+.btn-tech:hover {
+    background-color: #4a148c;
+    border-color: #ea80fc;
+}
+
+.indicadores {
+    border-top: 1px solid #333;
+    padding-top: 15px;
+}

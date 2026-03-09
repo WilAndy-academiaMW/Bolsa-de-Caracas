@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Brutal Trading</title>
+  <!-- Librerías necesarias -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../static/css/app2.css">
+
+
+  <style>
+    body { background:#0f0f11; color:#eaeaea; font-family:ui-monospace, monospace; margin:0; }
+    header { background:#141416; border-bottom:4px solid #2a2a2e; padding:12px; }
+    .nav__links a { color:#eaeaea; margin-right:12px; text-decoration:none; }
+    .main-grid { display:grid; grid-template-columns:200px 1fr 200px; gap:16px; padding:16px; }
+    .panel { border:4px solid #2a2a2e; background:#121214; padding:12px; box-shadow:8px 8px 0 rgba(0,0,0,0.6); }
+    #chart-container { height:600px; border:4px solid #2a2a2e; background:#141416; }
+    button { display:block; margin:6px 0; padding:6px; background:#16161a; color:#eaeaea; border:2px solid #2a2a2e; cursor:pointer; }
+    button:hover { border-color:#6ee7ff; }
+    #mensaje { margin-top:12px; color:#6ee7ff; }
+  </style>
+</head>
+<body>
+    <header class="nav">
+    <div class="nav__brand">Trading Venezuela</div>
+    <nav class="nav__links">
+      <a href="/">Inicio</a>
+      <a href="/index2">grafica</a>
+      <a href="/index3">volumen</a>
+      <a href="/index4">Datos</a>
+    </nav>
+  </header>
+
+  <main class="main-grid">
+  
+    <section> 
+      <div class="barra">
+     
+     <div style="margin-top:12px;display: flex;"> 
+      <button id="btnRSI">RSI</button>
+    
+        <button id="btnmacd">MACD</button>
+    
+     
+        <button id="btn-regla">REGLA</button>
+   
+        <button id="btnbb">BB</button>
+   
+        <button id="btn-fibo">fibonacci</button>
+    </div>
+       <div style="margin-top:12px;display: flex;">
+        <button id="1m">1 mes</button>
+        <button id="3m">3 meses</button>
+        <button id="6m">6 meses</button>
+        <button id="1a">1 año</button>
+        <button id="2a">2 años</button>
+         <button id="3a">3 años</button>
+       </div>
+      </div>
+
+
+      <div id="chart-container" style="width: 1000pxs;  ;"></div>
+      <div id="mensaje"></div>
+     
+       
+   
+
+    <!-- Panel derecho-->
+     <aside class="panel">
+     
+      <button data-symbol="ABC.A" data-label="ABC.A">ABC.A</button>
+      <button data-symbol="BPV" data-label="BPV">BPV</button>
+      <button data-symbol="BNC" data-label="BNC">BNC</button>
+      <button data-symbol="CCP.B" data-label="CPP.B">CCP.B</button>
+        <button data-symbol="ICP.B" data-label="ICP.B">ICP.B</button>
+      <button data-symbol="TDV.D" data-label="TDV.D">TDV.D</button>
+      <button data-symbol="CCR" data-label="CCR">CCR</button>
+       <button data-symbol="CRM.A" data-label="CRM.A">CRM.A</button>
+       <button data-symbol="BVCC" data-label="IBC">IBC</button>
+       <button data-symbol="MVZ.A" data-label="MVZ.A">MVZ.A</button>
+        <button data-symbol="MVZ.B" data-label="MVZ.B">MVZ.B</button>
+       <button data-symbol="MPA" data-label="Manufactura de papel">MPA</button>
+       <button data-symbol="EFE" data-label="EFE">EFE</button>
+      <button data-symbol="ENV" data-label="ENV">ENV</button>
+      <button data-symbol="RST" data-label="Ron sanra teresa (A)">RST</button>
+      <button data-symbol="RST.B" data-label="Ron sanra teresa (B)">RST.B</button>
+      <button data-symbol="BVL" data-label="BVL">BVL</button>
+      <button data-symbol="SVS" data-label="SVS">SVS</button>
+      <button data-symbol="IVC.A" data-label="IVC.A">IVC.A</button>
+      <button data-symbol="PGR" data-label="Proagro">Proagro</button>
+      <button data-symbol="PTN" data-label="PTN">PTN</button>
+      <button data-symbol="CGQ" data-label="CGQ">GGQ</button>
+      <button data-symbol="TGP" data-label="TGP">TGP </button>
+      <button data-symbol="FNC" data-label="FNC">FNC </button>
+      <button data-symbol="MTC.B" data-label="MTC.B">MTC.B</button>
+      <button data-symbol="GZL" data-label="GZL">GZL </button>
+
+    </aside>  </section>
+  </main>
+  
+  <script src="../static/js/app2/app2.js"></script>
+  <script src="../static/js/indicadores/indicador.js"></script>
+  <script src="../static/js/app2/lineas.js"></script>
+  <script src="../static/js/regla.js"></script>
+  <script src="../static/js/fibonnaci.js"></script>
+</body>
+</html>

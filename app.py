@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, jsonify
 
 
 from services.smart import obtener_movimientos_multi_radar
-
+from services.fibonnaci import guardar_fibo_csv, cargar_fibo_csv
 from services.power import calcular_master_score_brutal
 from services.operaciones import procesar_radar_completo
 
@@ -90,6 +90,21 @@ def api_maestro(simbolo):
 def radar_motor(symbol):
     resultado = procesar_radar_completo(symbol)
     return jsonify(resultado)
+
+
+
+#---------------------------------------------fibonacci
+@app.route("/api/guardar-fibo", methods=['POST'])
+def api_guardar_fibo():
+    datos = request.json
+    moneda = datos.get('moneda')
+    p1 = datos.get('p1')
+    p2 = datos.get('p2')
+    return jsonify(guardar_fibo_csv(moneda, p1, p2))
+
+@app.route("/api/cargar-fibo/<moneda>")
+def api_cargar_fibo(moneda):
+    return jsonify(cargar_fibo_csv(moneda))
 
 
 # -------------------- MAIN --------------------

@@ -2,8 +2,8 @@ import pandas as pd
 import os
 
 # Rutas de archivos
-ruta_origen = os.path.join('static', 'empresa', 'IVC.A.csv')
-ruta_destino = os.path.join('static', 'csv', 'acciones', 'IVC.A.csv')
+ruta_origen = os.path.join('static', 'empresa', 'DOM.csv')
+ruta_destino = os.path.join('static', 'csv', 'acciones', 'DOM.csv')
 
 def actualizar_banco_caribe():
     try:
