@@ -3,7 +3,7 @@ import numpy as np
 import re
 import os
 
-def calcular_fear_greed(csv_accion, csv_dolar='static/csv/dolar_bolivar.csv', ventana=20):
+def calcular_fear_greed(csv_accion, csv_dolar='static/csv/dolar_bolivar.csv', ventana=21):
     try:
         # 1. CARGA DE DATOS
         df = pd.read_csv(csv_accion)
@@ -80,7 +80,7 @@ def calcular_fear_greed(csv_accion, csv_dolar='static/csv/dolar_bolivar.csv', ve
         else:
             volatilidad_norm = 100 - vol_base
 
-        vlt_txt = "Muy Volátil" if volatilidad_norm >= 75 else "Moderada" if volatilidad_norm >= 40 else "Calma"
+        vlt_txt = "normal" if volatilidad_norm >= 75 else "Moderada" if volatilidad_norm >= 40 else "alta"
 
         # --- ÍNDICE FINAL ---
         indice = (momentum_norm + volumen_norm + volatilidad_norm) / 3.0

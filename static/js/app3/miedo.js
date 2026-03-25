@@ -1,9 +1,4 @@
 async function cargarIndicador(symbol) {
-    const sentimientoEl = document.getElementById("sentimiento");
-    const indiceEl = document.getElementById("indice");
-    const momentumEl = document.getElementById("momentum");
-    const volumenEl = document.getElementById("volumen");
-    const volatilidadEl = document.getElementById("volatilidad");
     const box = document.getElementById("indicador_feargreed");
     const needle = document.getElementById("fg-needle");
 
@@ -13,42 +8,30 @@ async function cargarIndicador(symbol) {
         const data = await res.json();
 
         const score = parseFloat(data.indice);
-        const momVal = parseFloat(data.momentum);
-        const volVal = parseFloat(data.volumen);
-        const vltVal = parseFloat(data.volatilidad);
 
-        // 1. ACTUALIZAR TEXTOS CON EFECTO POP
+        // 1. Actualizar textos con efecto
         actualizarDatoConEfecto("sentimiento", data.sentimiento);
-        actualizarDatoConEfecto("indice", data.indice);
-        actualizarDatoConEfecto("momentum", data.momentum + "%");
-        actualizarDatoConEfecto("volumen", data.volumen + "%");
-        actualizarDatoConEfecto("volatilidad", data.volatilidad + "%");
+        actualizarDatoConEfecto("indice", Math.round(score));
+        actualizarDatoConEfecto("momentum", data.momentum);
+        actualizarDatoConEfecto("volumen", data.volumen);
+        actualizarDatoConEfecto("volatilidad", data.volatilidad);
 
-        // 2. AGUJA
+        // 2. Aguja (0% = -90deg, 50% = 0deg, 100% = 90deg)
         if (needle) {
             const grados = (score * 1.8) - 90;
             needle.style.transform = `rotate(${grados}deg)`;
         }
 
-        // 3. COLOR DEL CONTENEDOR (SEGÚN TU ESCALA)
-        box.className = "feargreed-box"; // Reset
+        // 3. Brillo de la tarjeta
+        box.classList.remove("glow-greed", "glow-neutral", "glow-fear");
         if (score >= 75) box.classList.add("glow-greed");
         else if (score >= 36) box.classList.add("glow-neutral");
         else box.classList.add("glow-fear");
 
-        // 4. LÓGICA DE TITILEO POR INDICADOR
-        
-        // Momentum (Verde) -> Titila si es > 90
-        if (momVal > 90) momentumEl.classList.add("flash-mom");
-        else momentumEl.classList.remove("flash-mom");
-
-        // Volumen (Amarillo/Naranja) -> Titila si es < 30 (Divergencia)
-        if (volVal < 30) volumenEl.classList.add("flash-vol");
-        else volumenEl.classList.remove("flash-vol");
-
-        // Volatilidad (Rojo) -> Titila si es > 80 (Peligro)
-        if (vltVal > 80) volatilidadEl.classList.add("flash-vlt");
-        else volatilidadEl.classList.remove("flash-vlt");
+        // 4. Lógica de alertas (Titileo)
+        document.getElementById("momentum").className = (parseFloat(data.momentum) > 90) ? "value flash-mom" : "value";
+        document.getElementById("volumen").className = (parseFloat(data.volumen) < 30) ? "value flash-vol" : "value";
+        document.getElementById("volatilidad").className = (parseFloat(data.volatilidad) > 80) ? "value flash-vlt" : "value";
 
     } catch (err) {
         console.error("Error cargando datos:", err);
