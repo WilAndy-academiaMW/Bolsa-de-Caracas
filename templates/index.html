@@ -1,15 +1,33 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trading Venezuela | Brutal UI</title>
+  <title>Trading Venezuela | Members Only</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/app.css" />
-  <link rel="stylesheet" href="../static/css/index/radar.css" />
 </head>
 <body>
 
+  {% if not usuario_autenticado %}
+  <section id="gatekeeper">
+    <div class="login-card">
+      <h1>INGRESO</h1>
+      <p style="color: var(--muted); margin-bottom: 20px;">Acceso exclusivo a terminal de datos BVC</p>
+      
+      <form action="/login" method="POST">
+        <input type="text" name="usuario" placeholder="USUARIO" required autofocus>
+        <input type="password" name="password" placeholder="CONTRASEÑA" required>
+        <button type="submit" class="btn-login">Desbloquear Terminal</button>
+      </form>
+
+      <p style="font-size: 0.7rem; margin-top: 30px; color: var(--accent);">TRADING VENEZUELA v2.0</p>
+    </div>
+  </section>
+
+  {% else %}
   <header class="nav">
     <div class="nav__brand">TRADING VENEZUELA</div>
     <nav class="nav__links">
@@ -17,100 +35,46 @@
       <a href="/index2">Gráfica</a>
       <a href="/index3">Volumen</a>
       <a href="/index4">Datos</a>
+      <a href="/logout" style="color: var(--accent-alt);">Salir</a>
     </nav>
   </header>
 
   <main class="container">
-      <div class="panel__controls">
-          <button class="btn-filter active" data-filter="24">24h</button>
-          <button class="btn-filter" data-filter="48">48h</button>
-          <button class="btn-filter" data-filter="7">7 Días</button>
-          <button class="btn-filter" data-filter="15">15 Días</button>
-          <button class="btn-filter" data-filter="30">30 Días</button>
-          <button class="btn-filter" data-filter="60">60 Días</button>
-          <button class="btn-filter" data-filter="all">Todo</button>
-        </div>
+    <div class="panel__controls">
+      <button class="btn-filter active">24h</button>
+      <button class="btn-filter">Todo</button>
+    </div>
+
     <section id="docs" class="panel">
-      
       <div class="panel__header">
         <h2>Tabla de Acciones</h2>
       </div>
-     
-      <div class="panel__content">
-       
-
-        <div class="table-responsive">
-          <table id="accionesTable">
-            <thead>
-              <tr>
-                <th>Acción</th>
-                <th>Precio</th>
-                <th>Var. Abs</th>
-                <th>Var. Rel</th>
-                <th>Monto Efectivo</th>
-              </tr>
-            </thead>
-            <tbody>
-              </tbody>
-            <tfoot>
-              <tr>
-                <td><strong>TOTAL</strong></td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td id="totalMonto">0</td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
+      <div class="table-responsive">
+        <table id="accionesTable">
+          <thead>
+            <tr>
+              <th>Acción</th>
+              <th>Precio</th>
+              <th>Var. Rel</th>
+              <th>Monto Efectivo</th>
+            </tr>
+          </thead>
+          <tbody>
+            </tbody>
+        </table>
       </div>
     </section>
 
-    <section class="analysis-grid">
-      <!--
-      <div class="panel">
-          <h4 class="radar-title">🔥 Mapa de Calor del Mercado</h4>
-          <div id="market-heatmap" class="heatmap-container"></div>
-      </div> -->
-      
-      <div class="radar-grid">
-          
-          <div class="radar-box">
-              <h4 class="radar-title">⚡ MOMENTUM SEMANAL</h4>
-              <div id="radar-scalping" class="radar-list">
-                  </div>
-          </div>
-
-          <div class="radar-box">
-              <h4 class="radar-title">📅 CICLO MENSUAL</h4>
-              <div id="radar-day" class="radar-list">
-                  </div>
-          </div>
-
-          <div class="radar-box">
-              <h4 class="radar-title">🌊 TENDENCIA TRIMESTRAL</h4>
-              <div id="radar-swing" class="radar-list">
-                  </div>
-          </div>
-
-          <div class="radar-box">
-              <h4 class="radar-title">🏦 CARTERA INSTITUCIONAL</h4>
-              <div id="radar-institucional" class="radar-list">
-                  </div>
-          </div>
-
-      </div>
-    </section>
-
+    <div class="radar-grid">
+      <div class="radar-box"><h4 class="radar-title">⚡ MOMENTUM</h4><div id="radar-scalping"></div></div>
+      <div class="radar-box"><h4 class="radar-title">📅 MENSUAL</h4><div id="radar-day"></div></div>
+      <div class="radar-box"><h4 class="radar-title">🌊 TENDENCIA</h4><div id="radar-swing"></div></div>
+      <div class="radar-box"><h4 class="radar-title">🏦 INSTITUCIONAL</h4><div id="radar-institucional"></div></div>
+    </div>
   </main>
-  <script>
-    // Añade esto justo después de insertar el nuevo contenido (innerHTML)
-document.querySelector('.panel__content').scrollTop = 0;
-// O para los radares:
-document.getElementById('radar-scalping').scrollTop = 0;
-  </script>
-  <script src="../static/js/smart.js"></script>
-  <script src="../static/js/data.js"></script>
+
   <script src="../static/js/app/tabla.js"></script>
+  {% endif %}
+
 </body>
 </html>

@@ -1,31 +1,96 @@
-/* --- VARIABLES BRUTALES --- */
+/* --- TUS VARIABLES ORIGINALES --- */
 :root {
   --bg: #08080a;
   --panel-bg: #121214;
   --fg: #f0f0f0;
   --muted: #88888e;
-  --border: #ffffff; /* Bordes blancos puros para contraste extremo */
-  --accent: #00ffaa; /* Verde Neón para aciertos */
-  --accent-alt: #ff0055; /* Magenta para alertas */
+  --border: #ffffff; 
+  --accent: #00ffaa; 
+  --accent-alt: #ff0055; 
   --trading-blue: #0088ff;
   --shadow-color: rgba(0, 255, 170, 0.2);
   --brutal-shadow: 6px 6px 0px 0px #1a1a1a;
 }
 
-* { 
-  box-sizing: border-box; 
-  margin: 0; 
-  padding: 0; 
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
-/* --- NAVEGACIÓN --- */
+/* --- MODAL DE ACCESO (BRUTAL GATE) --- */
+#gatekeeper {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100vh;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.login-card {
+  background: var(--panel-bg);
+  border: 4px solid var(--border);
+  padding: 40px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 15px 15px 0px var(--accent-alt);
+  text-align: center;
+}
+
+.login-card h1 {
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  background: var(--border);
+  color: var(--bg);
+  display: inline-block;
+  padding: 5px 15px;
+  transform: skewX(-5deg);
+}
+
+.login-card input {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  background: #000;
+  border: 2px solid var(--border);
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+}
+
+.login-card input:focus {
+  border-color: var(--accent);
+}
+
+.btn-login {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 6px 6px 0px var(--border);
+  transition: 0.1s;
+}
+
+.btn-login:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0px var(--border);
+}
+
+/* --- ESTILOS DE LA APP (TUS ORIGINALES) --- */
 .nav {
   position: sticky;
   top: 0;
@@ -55,134 +120,26 @@ body {
   font-weight: bold;
   text-transform: uppercase;
   padding: 5px 10px;
-  transition: all 0.2s;
 }
 
-.nav__links a:hover {
-  background: var(--accent);
-  color: var(--bg);
-  box-shadow: 4px 4px 0 var(--fg);
-}
+.container { max-width: 1300px; margin: 0 auto; padding: 30px 20px; }
 
-/* --- CONTENEDOR --- */
-.container {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 30px 20px;
-}
-
-/* --- PANELES --- */
 .panel {
   background: var(--panel-bg);
   border: 2px solid var(--border);
   padding: 20px;
   margin-bottom: 40px;
-  box-shadow: 10px 10px 0px 0px var(--border); /* El efecto brutalista */
+  box-shadow: 10px 10px 0px 0px var(--border);
 }
 
-h2, .radar-title {
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  font-size: 1.2rem;
-  border-left: 5px solid var(--accent);
-  padding-left: 10px;
-}
-
-/* --- BOTONES DE FILTRO --- */
-.panel__controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.panel__controls button {
-  background: transparent;
-  color: var(--fg);
-  border: 1px solid var(--border);
-  padding: 8px 15px;
-  cursor: pointer;
-  font-family: inherit;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.panel__controls button:hover {
-  background: var(--trading-blue);
-  transform: translate(-2px, -2px);
-  box-shadow: 4px 4px 0 var(--border);
-}
-
-/* --- TABLA PRO --- */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-th {
-  background: var(--border);
-  color: var(--bg);
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-}
-
-th, td {
-  padding: 15px;
-  border: 1px solid #2a2a2e;
-  text-align: left;
-}
-
-tbody tr:hover {
-  background: #1a1a1d;
-}
-
-/* --- HEATMAP & RADARS (NUEVO DISEÑO) --- */
-#market-heatmap {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 10px;
-  background: #000 !important; /* Total black para contraste */
-  padding: 20px;
-  border: 2px solid var(--border);
-  box-shadow: 8px 8px 0 var(--accent-alt);
-}
+table { width: 100%; border-collapse: collapse; }
+th { background: var(--border); color: var(--bg); padding: 15px; text-transform: uppercase; }
+td { padding: 15px; border: 1px solid #2a2a2e; }
 
 .radar-grid {
   display: grid; 
   grid-template-columns: repeat(4, 1fr); 
   gap: 20px;
-  margin-top: 20px;
 }
 
-.radar-box {
-  background: #161618;
-  border: 1px solid #333;
-  padding: 15px;
-  transition: border 0.3s;
-}
-
-.radar-box:hover {
-  border-color: var(--accent);
-}
-
-.radar-title {
-  font-size: 0.75rem;
-  color: var(--muted);
-  border-left-color: var(--trading-blue);
-}
-
-/* --- RESPONSIVE --- */
-@media (max-width: 900px) {
-  .radar-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 600px) {
-  .radar-grid { grid-template-columns: 1fr; }
-  .panel__content {
-    max-height: 400px;
-    overflow-y: auto;
-  }
-  .nav__brand { transform: none; }
-}
+.radar-box { background: #161618; border: 1px solid #333; padding: 15px; }
