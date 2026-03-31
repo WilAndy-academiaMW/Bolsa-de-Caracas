@@ -3,4 +3,8 @@ admin,1234,activo
 william,doge,activo
 REAMINV,Elegream2026+*,activo
 oscarguti,kefir64*,activo
+<<<<<<< HEAD
 Tomfcat,Tomax99*,activo
+=======
+Tomfcat,Tomax99*,activo
+>>>>>>> 28033ac7dd70e7aa80274a6561bb6f5e8b52737a
