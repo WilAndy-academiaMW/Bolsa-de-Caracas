@@ -53,7 +53,7 @@ def login():
                     session['logeado'] = True
                     session['user'] = user_csv
                     print(f"✅ Acceso concedido a: {user_csv}")
-                    return redirect(url_for('index2'))
+                    return redirect(url_for('index5'))
                 else:
                     return "TU MEMBRESÍA NO ESTÁ ACTIVA."
     
