@@ -53,6 +53,7 @@
             <button class="btn-stock" id="GMC.B"><img src="/static/img/imgA/mantra.png" /><span>GMC.B</span></button>
             <button class="btn-stock" id="MVZ.A"><img src="/static/img/imgA/mercantil.png" /><span>MVZ.A</span></button>
             <button class="btn-stock" id="MVZ.B"><img src="/static/img/imgA/mercantil.png" /><span>MVZ.B</span></button>
+            <button class="btn-stock" id="PGR"><img src="/static/img/imgA/proagro.jpg" /><span>PGR</span></button>
             <button class="btn-stock" id="PTN"><img src="/static/img/imgA/protinal.svg" /><span>PTN</span></button>
             <button class="btn-stock" id="RST"><img src="/static/img/imgA/santaTeresa.png" /><span>RST</span></button>
             <button class="btn-stock" id="RST.B"><img src="/static/img/imgA/santaTeresa.png" /><span>RST.B</span></button>
@@ -107,75 +108,138 @@
     </section>
 
     <section class="analysis-column">
-    <div id="contenedor_nexus" class="nexus-mini">
-    <div class="nexus-header">
-        <span class="status-blink"></span>
-        <span class="nexus-title">NEXUS ENGINE</span>
-        <span class="nexus-ver">v1.0</span>
-    </div>
-
-    <div class="nexus-body">
-        <div class="gauge-container">
-            <svg class="gauge-svg" viewBox="0 0 100 60">
-                <path class="gauge-bg" d="M10,50 A40,40 0 0,1 90,50" />
-                <path id="meter-fill" class="gauge-fill" d="M10,50 A40,40 0 0,1 90,50" />
-            </svg>
-            <div id="nexus_needle" class="needle"></div>
-            
-            <div class="gauge-data">
-                <span id="nexus_score" class="score-num">0</span>
-                <span id="nexus_estado" class="score-label">WAIT</span>
-            </div>
+    <div id="contenedor_nexus" class="nexus-pro-panel">
+    
+    <div class="nexus-actual-container">
+        <div class="nexus-header">
+            <span class="status-blink"></span>
+            <span class="nexus-title">NEXUS ENGINE // TECHNICAL ANALYSIS</span>
+            <span class="nexus-ver">v1.0.b</span>
         </div>
 
-        <div class="nexus-stats">
-            <div class="stat">
-                <small>RSI</small>
-                <b id="nexus_rsi">--</b>
+        <div class="nexus-body">
+            <div class="gauge-container">
+                <svg class="gauge-svg" viewBox="0 0 100 60">
+                    <path class="gauge-bg" d="M10,50 A40,40 0 0,1 90,50" />
+                    <path id="meter-fill" class="gauge-fill" d="M10,50 A40,40 0 0,1 90,50" />
+                </svg>
+                <div id="nexus_needle" class="needle"></div>
+                
+                <div class="gauge-data">
+                    <span id="nexus_score" class="score-num">0</span>
+                    <span id="nexus_estado" class="score-label">ESPERANDO SEÑAL</span>
+                </div>
             </div>
-            <div class="stat-sep"></div>
-            <div class="stat">
-                <small>MACD</small>
-                <b id="nexus_macd">--</b>
+
+            <div class="nexus-main-stats">
+                <div class="n-stat">
+                    <small>RSI (14)</small>
+                    <b id="nexus_rsi">--</b>
+                </div>
+                <div class="n-stat-sep"></div>
+                <div class="n-stat">
+                    <small>MACD OSC</small>
+                    <b id="nexus_macd">--</b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nexus-history-stack">
+        <div class="history-label">LOG DE CIERRES MENSUALES</div>
+        
+        <div class="nexus-history-grid">
+            <div class="nexus-month-card">
+                <small class="m-tag">HACE 1 MES</small>
+                <div class="m-score" id="nx_h1_score">--</div>
+                <div class="m-sub">
+                    <span>RSI: <b id="nx_h1_rsi">--</b></span>
+                    <span>MCD: <b id="nx_h1_macd">--</b></span>
+                </div>
+            </div>
+            <div class="nexus-month-card">
+                <small class="m-tag">HACE 2 MESES</small>
+                <div class="m-score" id="nx_h2_score">--</div>
+                <div class="m-sub">
+                    <span>RSI: <b id="nx_h2_rsi">--</b></span>
+                    <span>MCD: <b id="nx_h2_macd">--</b></span>
+                </div>
+            </div>
+            <div class="nexus-month-card">
+                <small class="m-tag">HACE 3 MESES</small>
+                <div class="m-score" id="nx_h3_score">--</div>
+                <div class="m-sub">
+                    <span>RSI: <b id="nx_h3_rsi">--</b></span>
+                    <span>MCD: <b id="nx_h3_macd">--</b></span>
+                </div>
             </div>
         </div>
     </div>
 </div>
     <div id="indicador_feargreed" class="fg-pro-panel">
-    <div class="fg-scanner-header">
-        <span class="scanner-text">MARKET SENTIMENT ANALYZER</span>
-        <div class="scanner-line"></div>
+    
+    <div class="fg-actual-container">
+        <div class="fg-scanner-header">
+            <span class="scanner-text">ESTADO ACTUAL - ÚLTIMOS 30 DÍAS</span>
+            <div class="scanner-line"></div>
+        </div>
+
+        <div class="fg-main-content">
+            <div class="fg-big-data">
+                <h2 id="indice" class="glitch-num">0</h2>
+                <div class="fg-status-wrapper">
+                    <span id="sentimiento" class="status-badge">NEUTRAL</span>
+                </div>
+            </div>
+
+            <div class="fg-thermometer">
+                <div class="th-pointer" id="fg-pointer" style="left: 50%;"></div>
+                <div class="th-bar"></div>
+                <div class="th-labels">
+                    <span>MIEDO</span>
+                    <span>CODICIA</span>
+                </div>
+            </div>
+
+            <div class="fg-grid-pro">
+                <div class="fg-item"><small>MOMENTUM</small><span id="momentum">--</span></div>
+                <div class="fg-item"><small>VOLUMEN</small><span id="volumen">--</span></div>
+                <div class="fg-item"><small>VOLATILIDAD</small><span id="volatilidad">--</span></div>
+            </div>
+        </div>
     </div>
 
-    <div class="fg-main-content">
-        <div class="fg-big-data">
-            <h2 id="indice" class="glitch-num">0</h2>
-            <div class="fg-status-wrapper">
-                <span id="sentimiento" class="status-badge">NEUTRAL</span>
+    <div class="fg-history-stack">
+        <div class="history-header"></div>
+
+        
+  <div class="history-row-item">
+            <small class="month-tag">HACE 1 MESES</small>
+            <div class="fg-grid-pro">
+                <div class="fg-item mini-main"><small>ÍNDICE</small><span id="h3_indice">--</span></div>
+                <div class="fg-item"><small>MTM</small><span id="h3_momentum">--</span></div>
+                <div class="fg-item"><small>VOL</small><span id="h3_volumen">--</span></div>
+                <div class="fg-item"><small>VLT</small><span id="h3_volatilidad">--</span></div>
+            </div>
+        </div>
+        <div class="history-row-item">
+            <small class="month-tag">HACE 2 MESES</small>
+            <div class="fg-grid-pro">
+                <div class="fg-item mini-main"><small>ÍNDICE</small><span id="h2_indice">--</span></div>
+                <div class="fg-item"><small>MTM</small><span id="h2_momentum">--</span></div>
+                <div class="fg-item"><small>VOL</small><span id="h2_volumen">--</span></div>
+                <div class="fg-item"><small>VLT</small><span id="h2_volatilidad">--</span></div>
             </div>
         </div>
 
-        <div class="fg-thermometer">
-            <div class="th-pointer" id="fg-pointer" style="left: 50%;"></div>
-            <div class="th-bar"></div>
-            <div class="th-labels">
-                <span>MIEDO</span>
-                <span>CODICIA</span>
-            </div>
-        </div>
-
-        <div class="fg-grid-pro">
-            <div class="fg-item">
-                <small>MOMENTUM</small>
-                <span id="momentum">--</span>
-            </div>
-            <div class="fg-item">
-                <small>VOLUMEN</small>
-                <span id="volumen">--</span>
-            </div>
-            <div class="fg-item">
-                <small>VOLATILIDAD</small>
-                <span id="volatilidad">--</span>
+      
+        <div class="history-row-item">
+            <small class="month-tag">HACE 3 MES</small>
+            <div class="fg-grid-pro">
+                <div class="fg-item mini-main"><small>ÍNDICE</small><span id="h1_indice">--</span></div>
+                <div class="fg-item"><small>MTM</small><span id="h1_momentum">--</span></div>
+                <div class="fg-item"><small>VOL</small><span id="h1_volumen">--</span></div>
+                <div class="fg-item"><small>VLT</small><span id="h1_volatilidad">--</span></div>
             </div>
         </div>
     </div>
