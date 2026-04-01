@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Venezuela | El Radar del Smart Money</title>
+    <link rel="stylesheet" href="../static/css/app.css">
+    <style>
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: var(--bg);
+            border-bottom: 5px solid var(--border);
+        }
+        .hero h1 {
+            font-size: 4rem;
+            text-transform: uppercase;
+            background: var(--accent);
+            color: var(--bg);
+            padding: 10px 30px;
+            transform: rotate(-2deg);
+            margin-bottom: 30px;
+        }
+        .btn-entrar {
+            font-size: 1.5rem;
+            padding: 20px 50px;
+            background: var(--accent-alt);
+            color: white;
+            text-decoration: none;
+            border: 4px solid var(--border);
+            box-shadow: 10px 10px 0px var(--border);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        .btn-entrar:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 15px 15px 0px var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <header class="nav">
+        <div class="nav__brand">TRADING VENEZUELA</div>
+    </header>
+
+    <main class="hero">
+        <h1>RADAR BVC v3.0</h1>
+        <p style="margin-bottom: 40px; font-size: 1.2rem; color: var(--muted);">
+            Análisis institucional, Smart Money y Volumen en tiempo real.
+        </p>
+        <a href="/acceso" class="btn-entrar">INICIAR SESIÓN</a>
+    </main>
+</body>
+</html>

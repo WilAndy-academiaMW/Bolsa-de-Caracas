@@ -1,97 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swing trading</title>
-     <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
-    <link rel="stylesheet" href="../static/css/app.css">
-     
-     
+    <title>Trading Pro | Swing</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="../static/css/inicio/inicio.css" />
+    <link rel="stylesheet" href="../static/css/app2.css" />
 </head>
 <body>
-  <!-- Barra de navegación -->
   <header class="nav">
-    <div class="nav__brand">Trading Venezuela</div>
+    <div class="nav__brand">TRADING VENEZUELA</div>
     <nav class="nav__links">
-      <a href="/index5">resumen</a>
-      <a href="/index2">Grafica</a>
+      <a href="/index5">Resumen</a>
+      <a href="/index2" class="active">Gráfica</a>
       <a href="/index4">Datos</a>
     </nav>
   </header>
 
-  <section class="grafica">
-      
-    <div class="panel_grafica">
-   <div class="herramientas">
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('ABC.A', 'ABC.A')">ABC.A</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('BPV', 'BPV')">BPV</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('BNC', 'BNC')">BNC</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('BVL', 'BVL')">BVL</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('BVCC', 'BVCC')">BVCC</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('CCR', 'CCR')">CCR</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('CCP.B', 'CCP.B')">CCP.B</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('CGQ', 'CGQ')">CGQ</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('CRM.A', 'CRM.A')">CRM.A</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('DOM', 'DOM')">DOM</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('EFE', 'EFE')">EFE</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('ENV', 'ENV')">ENV</button> 
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('CRM.A', 'CRM.A')">CRM.A</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('GMC.B', 'GMC.B')">GMC.B</button>   
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('GZL', 'GZL')">GZL</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('ICP.B','ICP.B')">ICP.B</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('IVC.A','IVC.A')">IVC.A</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('MTC.B','MTC.B')">MTC.B</button>
-        <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('MPA','MPA')">MPA</button>
-         <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('FNC','FNC')">FNC</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('MVZ.A','MVZ.A')">MVZ.A</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('MVZ.B','MVZ.B')">MVZ.B</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('PCP.B','PCP.B')">PCP.B</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('PGR','PGR')">PGR</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('PTN','PTN')">PTN</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('RST','RST')">RST</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('RST.B','RST.B')">RST.B</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('SVS','SVS')">SVS</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('TDV.D','TDV.D')">TDV.S</button>
-      <button class="btn-crypto btn-asset" onclick="cargarNuevoCSV('TPG','TPG')">TPG</button>
+  <main class="main-grafica">
+    <div class="carrusel-container">
+      <div class="carrusel-label">TICKER_SELECT ></div>
+      <div class="herramientas carrusel-activos">
+        <button class="btn-asset" onclick="cargarNuevoCSV('ABC.A', 'ABC.A')">ABC.A</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('BPV', 'BPV')">BPV</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('BNC', 'BNC')">BNC</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('BVL', 'BVL')">BVL</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('BVCC', 'BVCC')">BVCC</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('CCR', 'CCR')">CCR</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('CCP.B', 'CCP.B')">CCP.B</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('CGQ', 'CGQ')">CGQ</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('CRM.A', 'CRM.A')">CRM.A</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('DOM', 'DOM')">DOM</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('EFE', 'EFE')">EFE</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('ENV', 'ENV')">ENV</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('FNC', 'FNC')">FNC</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('GMC.B', 'GMC.B')">GMC.B</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('GZL', 'GZL')">GZL</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('ICP.B','ICP.B')">ICP.B</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('IVC.A','IVC.A')">IVC.A</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('MTC.B','MTC.B')">MTC.B</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('MPA','MPA')">MPA</button>
+         <button class="btn-asset" onclick="cargarNuevoCSV('MVZ','MVZ')">MVZ</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('MVZ.B','MVZ.B')">MVZ.B</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('PGR','PGR')">PGR</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('PTN','PTN')">PTN</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('RST','RST')">RST</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('RST.B','RST.B')">RST.B</button>
+        <button class="btn-asset" onclick="cargarNuevoCSV('SVS','SVS')">SVS</button>
+         <button class="btn-asset" onclick="cargarNuevoCSV('TDV.D','TDV.D')">TDV.D</button>
+         <button class="btn-asset" onclick="cargarNuevoCSV('TPG','TPG')">TPG</button>
+      </div>
+      </div>
     </div>
-     
-         <div id="grafica" style="width: 100%; height: 550px;"></div>
-       <div class="herramientas">
-  <button class="btn-crypto" onclick="filtrarTiempo(30)">1 Mes</button>
-  <button class="btn-crypto" onclick="filtrarTiempo(90)">3 Meses</button>
-  <button class="btn-crypto" onclick="filtrarTiempo(180)">6 Meses</button>
-  <button class="btn-crypto" onclick="filtrarTiempo(365)">1 Año</button>
-  <button class="btn-crypto" onclick="filtrarTiempo(0)">Todo</button>
-     </div>
-     <div class="herramientas indicadores">
-      <button id="btnRSI" class="btn-crypto btn-tech">RSI</button>
-      <button id="btnmacd" class="btn-crypto btn-tech">MACD</button>
-      <button id="btnbb" class="btn-crypto btn-tech">Bollinger</button>
-      <button id="fibo" class="btn-crypto btn-tech">fibonacci</button>
-      <button id="fibo-off" class="btn-crypto btn-tech">Ocultar fibonacci</button>
-      
-      <button id="zona-demanda" class="btn-crypto btn-tech">zona de demanda</button>
-      <button id="zona-oferta" class="btn-crypto btn-tech">zona de venta</button>
+
+    <div class="chart-wrapper">
+        <div id="grafica" style="width: 100%; height: 450px;"></div>
     </div>
+
+    <div class="controls-grid">
+        <div class="control-box">
+            <span class="box-label">TIME_FRAME</span>
+            <div class="herramientas">
+                <button class="btn-crypto" onclick="filtrarTiempo(30)">1M</button>
+                <button class="btn-crypto" onclick="filtrarTiempo(90)">3M</button>
+                <button class="btn-crypto" onclick="filtrarTiempo(180)">6M</button>
+                <button class="btn-crypto" onclick="filtrarTiempo(365)">1Y</button>
+                <button class="btn-crypto" onclick="filtrarTiempo(0)">MAX</button>
+            </div>
+        </div>
+
+        <div class="control-box">
+            <span class="box-label">TECH_INDICATORS</span>
+            <div class="herramientas indicadores">
+                <button id="btnRSI" class="btn-tech">RSI</button>
+                <button id="btnmacd" class="btn-tech">MACD</button>
+                <button id="btnbb" class="btn-tech">BOLL</button>
+                <button id="fibo" class="btn-tech">FIBO</button>
+                <button id="fibo-off" class="btn-tech">OFF</button>
+            </div>
+        </div>
+
+        <div class="control-box">
+            <span class="box-label">ZONE_ANALYSIS</span>
+            <div class="herramientas">
+                <button id="zona-demanda" class="btn-tech buy">DEMANDA</button>
+                <button id="zona-oferta" class="btn-tech sell">OFERTA</button>
+            </div>
+        </div>
     </div>
-   
-   <div id="mensaje"></div>
-  </section>
 
- 
+    <div id="mensaje"></div>
+  </main>
 
-  
-  <!-- 
-
-
-<script src="../static/js/index2/zonas/zonadecompra.js"></script>
-<script src="../static/js/index2/zonas/zonadeventa.js"></script>
--->
-<script src="../static/js/app2/grafica.js"></script>
-<script src="../static/js/app2/indicador.js"></script>
-<script src="../static/js/app2/fibonnaci.js"></script>
-
+  <script src="../static/js/app2/grafica.js"></script>
+  <script src="../static/js/app2/indicador.js"></script>
+  <script src="../static/js/app2/fibonnaci.js"></script>
 </body>
 </html>
-

@@ -1,0 +1,131 @@
+/* --- CONFIGURACIÓN DE LA PÁGINA --- */
+.main-grafica {
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+/* --- CARRUSEL DE ACTIVOS --- */
+.carrusel-container {
+    background: #000;
+    border: 3px solid #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 6px 6px 0px var(--accent);
+}
+
+.carrusel-label {
+    background: var(--accent);
+    color: #000;
+    padding: 5px 10px;
+    font-weight: 800;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    margin-right: 15px;
+}
+
+.carrusel-activos {
+    display: flex;
+    overflow-x: auto; /* ESTO ACTIVA EL CARRUSEL */
+    gap: 10px;
+    padding-bottom: 5px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) #000;
+}
+
+/* Ocultar scrollbar en Chrome/Safari para que se vea más limpio */
+.carrusel-activos::-webkit-scrollbar { height: 4px; }
+.carrusel-activos::-webkit-scrollbar-thumb { background: var(--accent); }
+
+.btn-asset {
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.btn-asset:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+/* --- CONTENEDOR DEL GRÁFICO --- */
+.chart-wrapper {
+    background: var(--panel-bg);
+    border: 3px solid #fff;
+    padding: 10px;
+    box-shadow: 10px 10px 0px #000;
+    margin-bottom: 25px;
+}
+
+/* --- GRILLA DE CONTROLES INFERIORES --- */
+.controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.control-box {
+    background: var(--panel-bg);
+    border: 2px solid #fff;
+    padding: 15px;
+    position: relative;
+    box-shadow: 5px 5px 0px #333;
+}
+
+.box-label {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: #fff;
+    color: #000;
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    font-weight: 800;
+}
+
+.herramientas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* --- BOTONES DE ACCIÓN --- */
+.btn-crypto, .btn-tech {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 8px 12px;
+    font-family: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+.btn-tech:hover {
+    background: var(--accent);
+    color: #000;
+}
+
+.btn-tech.buy { border-color: var(--accent); color: var(--accent); }
+.btn-tech.sell { border-color: var(--accent-alt); color: var(--accent-alt); }
+
+.btn-tech.buy:hover { background: var(--accent); color: #000; }
+.btn-tech.sell:hover { background: var(--accent-alt); color: #000; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .controls-grid {
+        grid-template-columns: 1fr;
+    }
+    #grafica { height: 350px !important; } /* Más pequeña en móvil */
+}

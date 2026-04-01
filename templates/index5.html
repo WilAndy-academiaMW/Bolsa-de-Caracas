@@ -2,114 +2,81 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trading Venezuela | Brutal UI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trading Venezuela | Radar Pro</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../static/css/app.css" />
-  <link rel="stylesheet" href="../static/css/index/radar.css" />
+  <link rel="stylesheet" href="../static/css/inicio/inicio.css" />
 </head>
 <body>
 
   <header class="nav">
-    <div class="nav__brand">Trading Venezuela</div>
+    <div class="nav__brand">TRADING VENEZUELA</div>
     <nav class="nav__links">
-      <a href="/index5">resumen</a>
-      <a href="/index2">Grafica</a>
+      <a href="/index5">Resumen</a>
+      <a href="/index2">Gráfica</a>
       <a href="/index4">Datos</a>
     </nav>
   </header>
 
   <main class="container">
+    <div class="filter-wrapper">
       <div class="panel__controls">
-          <button class="btn-filter active" data-filter="24">24h</button>
-          <button class="btn-filter" data-filter="48">48h</button>
-          <button class="btn-filter" data-filter="7">7 Días</button>
-          <button class="btn-filter" data-filter="15">15 Días</button>
-          <button class="btn-filter" data-filter="30">30 Días</button>
-          <button class="btn-filter" data-filter="60">60 Días</button>
-          <button class="btn-filter" data-filter="all">Todo</button>
-        </div>
-    <section id="docs" class="panel">
-      
+        <button class="btn-filter active" data-filter="24">24H</button>
+        <button class="btn-filter" data-filter="48">48H</button>
+        <button class="btn-filter" data-filter="7">7D</button>
+        <button class="btn-filter" data-filter="all">TODO</button>
+      </div>
+    </div>
+
+    <section class="panel">
       <div class="panel__header">
-        <h2>Tabla de Acciones</h2>
+        <h2>TABLA DE ACCIONES</h2>
       </div>
      
-      <div class="panel__content">
-       
+      <div class="table-responsive">
+        <table id="accionesTable">
+          <thead>
+            <tr>
+              <th>Acción</th>
+              <th>Precio</th>
+              <th>Var. Abs</th>
+              <th>Var. Rel</th>
+              <th>Monto</th>
+            </tr>
+          </thead>
+          <tbody>
+            </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4"><strong>TOTAL MERCADO</strong></td>
+              <td id="totalMonto">0</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
 
-        <div class="table-responsive">
-          <table id="accionesTable">
-            <thead>
-              <tr>
-                <th>Acción</th>
-                <th>Precio</th>
-                <th>Var. Abs</th>
-                <th>Var. Rel</th>
-                <th>Monto Efectivo</th>
-              </tr>
-            </thead>
-            <tbody>
-              </tbody>
-            <tfoot>
-              <tr>
-                <td><strong>TOTAL</strong></td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td id="totalMonto">0</td>
-              </tr>
-            </tfoot>
-          </table>
+    <section class="radar-grid">
+        <div class="radar-box">
+            <h4 class="radar-title">⚡ MOMENTUM</h4>
+            <div id="radar-scalping" class="radar-list"></div>
         </div>
-      </div>
+        <div class="radar-box">
+            <h4 class="radar-title">📅 DIARIO</h4>
+            <div id="radar-day" class="radar-list"></div>
+        </div>
+        <div class="radar-box">
+            <h4 class="radar-title">🌊 SWING</h4>
+            <div id="radar-swing" class="radar-list"></div>
+        </div>
+        <div class="radar-box">
+            <h4 class="radar-title">🏦 INSTITUCIONAL</h4>
+            <div id="radar-institucional" class="radar-list"></div>
+        </div>
     </section>
-
-    <section class="analysis-grid">
-      <!--
-      <div class="panel">
-          <h4 class="radar-title">🔥 Mapa de Calor del Mercado</h4>
-          <div id="market-heatmap" class="heatmap-container"></div>
-      </div> -->
-      
-      <div class="radar-grid">
-          
-          <div class="radar-box">
-              <h4 class="radar-title">⚡ MOMENTUM SEMANAL</h4>
-              <div id="radar-scalping" class="radar-list">
-                  </div>
-          </div>
-
-          <div class="radar-box">
-              <h4 class="radar-title">📅 CICLO MENSUAL</h4>
-              <div id="radar-day" class="radar-list">
-                  </div>
-          </div>
-
-          <div class="radar-box">
-              <h4 class="radar-title">🌊 TENDENCIA TRIMESTRAL</h4>
-              <div id="radar-swing" class="radar-list">
-                  </div>
-          </div>
-
-          <div class="radar-box">
-              <h4 class="radar-title">🏦 CARTERA INSTITUCIONAL</h4>
-              <div id="radar-institucional" class="radar-list">
-                  </div>
-          </div>
-
-      </div>
-    </section>
-
   </main>
-  <script>
-    // Añade esto justo después de insertar el nuevo contenido (innerHTML)
-document.querySelector('.panel__content').scrollTop = 0;
-// O para los radares:
-document.getElementById('radar-scalping').scrollTop = 0;
-  </script>
+
   <script src="../static/js/smart.js"></script>
-  <script src="../static/js/data.js"></script>
   <script src="../static/js/app/tabla.js"></script>
 </body>
 </html>

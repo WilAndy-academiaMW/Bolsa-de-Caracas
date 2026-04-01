@@ -1,0 +1,118 @@
+/* --- VARIABLES Y BASE --- */
+:root {
+  --bg: #08080a;
+  --panel-bg: #121214;
+  --fg: #f0f0f0;
+  --muted: #88888e;
+  --border: #ffffff; 
+  --accent: #00ffaa; 
+  --accent-alt: #ff0055; 
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'JetBrains Mono', monospace;
+  overflow-x: hidden; /* Evita el rebote lateral en móviles */
+}
+
+.container { 
+    max-width: 1300px; 
+    margin: 0 auto; 
+    padding: 15px; /* Menos espacio en móvil */
+}
+
+/* --- NAVEGACIÓN --- */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 5%;
+  background: var(--bg);
+  border-bottom: 2px solid var(--border);
+}
+
+.nav__brand {
+  font-weight: 900; text-transform: uppercase;
+  background: var(--border); color: var(--bg);
+  padding: 4px 12px; transform: skewX(-10deg);
+}
+
+.nav__links a {
+  color: var(--fg); text-decoration: none; font-size: 0.8rem;
+  font-weight: bold; text-transform: uppercase; margin-left: 10px;
+}
+
+/* --- TABLA Y CONTENEDOR --- */
+.panel {
+  background: var(--panel-bg);
+  border: 2px solid var(--border);
+  box-shadow: 8px 8px 0px var(--border);
+  margin-bottom: 30px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto; /* Permite scroll lateral solo a la tabla */
+  -webkit-overflow-scrolling: touch;
+}
+
+table { width: 100%; border-collapse: collapse; min-width: 550px; }
+th { background: var(--border); color: var(--bg); padding: 12px; text-transform: uppercase; font-size: 0.8rem; }
+td { padding: 12px; border-bottom: 1px solid #2a2a2e; font-size: 0.85rem; }
+
+/* --- RADARES (GRID DINÁMICA) --- */
+.radar-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 Columna en móvil */
+  gap: 20px;
+}
+
+.radar-box {
+  background: #161618;
+  border: 2px solid var(--border);
+  padding: 15px;
+  box-shadow: 5px 5px 0px var(--accent);
+}
+
+.radar-title {
+  color: var(--accent); border-bottom: 1px solid #333;
+  padding-bottom: 8px; margin-bottom: 10px; font-size: 0.8rem;
+}
+
+.radar-list { max-height: 300px; overflow-y: auto; }
+
+/* --- MEDIA QUERIES (EL ARREGLO RESPONSIVE) --- */
+
+/* Tablets y pantallas medianas */
+@media (min-width: 768px) {
+    .container { padding: 30px 20px; }
+    .radar-grid { grid-template-columns: repeat(2, 1fr); } /* 2 Columnas */
+}
+
+/* Monitores grandes */
+@media (min-width: 1100px) {
+    .radar-grid { grid-template-columns: repeat(4, 1fr); } /* 4 Columnas */
+}
+
+/* Ajustes específicos para Celulares */
+@media (max-width: 600px) {
+    .nav {
+        flex-direction: column; /* Apila logo y links */
+        gap: 15px;
+        text-align: center;
+    }
+    .nav__links {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .panel {
+        box-shadow: 4px 4px 0px var(--border); /* Sombras más suaves */
+    }
+    .btn-filter {
+        font-size: 0.7rem;
+        padding: 8px 12px;
+    }
+}

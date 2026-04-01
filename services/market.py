@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 import urllib3
 import os
+import time  # <--- IMPORTANTE PARA EL ESPERA
 from io import StringIO
 from datetime import date
 
@@ -11,8 +12,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 URL = "https://market.bolsadecaracas.com/es"
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
-# --- CONFIGURACIÓN DE RUTA ---
-# Subimos un nivel desde 'services' para llegar a 'IBC' y entrar en 'static/empresa'
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FOLDER_EMPRESA = os.path.abspath(os.path.join(BASE_DIR, "..", "static", "empresa"))
 
@@ -31,9 +30,6 @@ def formatear_venezuela(valor):
         return str(valor)
 
 def guardar_por_empresa(df):
-    """Guarda en la carpeta 'static/empresa' que ya existe"""
-    
-    # Verificación de que la carpeta existe
     if not os.path.exists(FOLDER_EMPRESA):
         print(f"Error: No existe la ruta {FOLDER_EMPRESA}")
         return
@@ -49,8 +45,6 @@ def guardar_por_empresa(df):
 
         if os.path.exists(nombre_archivo):
             df_existente = pd.read_csv(nombre_archivo)
-            
-            # Evitar duplicados del mismo día
             if fecha_hoy in df_existente['Fecha'].astype(str).values:
                 print(f"Empresa {simbolo}: Ya registrado hoy.")
                 continue
@@ -61,12 +55,19 @@ def guardar_por_empresa(df):
             nueva_fila.to_csv(nombre_archivo, index=False, encoding="utf-8-sig")
             print(f"Empresa {simbolo}: Archivo creado.")
 
-def main():
+def ejecutar_proceso():
+    """Función lógica principal con protecciones"""
     try:
-        resp = requests.get(URL, headers=HEADERS, verify=False)
-        tablas = pd.read_html(StringIO(resp.text), decimal=',', thousands='.')
-        df = tablas[0]
+        # TIMEOUT DE 30 SEGUNDOS: Si la web no responde, el script no se queda colgado
+        resp = requests.get(URL, headers=HEADERS, verify=False, timeout=30)
+        resp.raise_for_status() # Lanza error si la web devuelve 404 o 500
 
+        tablas = pd.read_html(StringIO(resp.text), decimal=',', thousands='.')
+        if not tablas:
+            print("No se encontraron tablas.")
+            return False
+
+        df = tablas[0]
         cols_existentes = [c for c in COLUMNAS if c in df.columns]
         df = df[cols_existentes].copy()
 
@@ -81,10 +82,28 @@ def main():
                 df[col] = df[col].apply(formatear_venezuela)
 
         guardar_por_empresa(df)
-        print(f"\n¡Listo! Archivos actualizados en: {FOLDER_EMPRESA}")
+        return True # TODO SALIÓ BIEN
 
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Fallo en el intento: {e}")
+        return False # ALGO SALIÓ MAL
 
 if __name__ == "__main__":
-    main()
+    intentos_maximos = 3
+    intentos_realizados = 0
+    exito = False
+
+    while intentos_realizados < intentos_maximos and not exito:
+        intentos_realizados += 1
+        print(f"--- Intento {intentos_realizados} de {intentos_maximos} ---")
+        
+        exito = ejecutar_proceso()
+
+        if exito:
+            print(f"¡Listo! Archivos actualizados.")
+        else:
+            if intentos_realizados < intentos_maximos:
+                print("Esperando 5 minutos para reintentar...")
+                time.sleep(300) # 300 segundos = 5 minutos
+            else:
+                print("Se agotaron los intentos por esta hora.")
