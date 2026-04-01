@@ -1,4 +1,4 @@
-/* --- TUS VARIABLES ORIGINALES --- */
+/* --- VARIABLES Y RESET --- */
 :root {
   --bg: #08080a;
   --panel-bg: #121214;
@@ -7,9 +7,7 @@
   --border: #ffffff; 
   --accent: #00ffaa; 
   --accent-alt: #ff0055; 
-  --trading-blue: #0088ff;
-  --shadow-color: rgba(0, 255, 170, 0.2);
-  --brutal-shadow: 6px 6px 0px 0px #1a1a1a;
+  --brutal-shadow: 6px 6px 0px 0px #ffffff;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -17,129 +15,153 @@
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: 'JetBrains Mono', monospace;
   line-height: 1.5;
   overflow-x: hidden;
 }
 
-/* --- MODAL DE ACCESO (BRUTAL GATE) --- */
-#gatekeeper {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100vh;
-  background: var(--bg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.login-card {
-  background: var(--panel-bg);
-  border: 4px solid var(--border);
-  padding: 40px;
-  width: 90%;
-  max-width: 450px;
-  box-shadow: 15px 15px 0px var(--accent-alt);
-  text-align: center;
-}
-
-.login-card h1 {
-  text-transform: uppercase;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  background: var(--border);
-  color: var(--bg);
-  display: inline-block;
-  padding: 5px 15px;
-  transform: skewX(-5deg);
-}
-
-.login-card input {
-  width: 100%;
-  padding: 15px;
-  margin: 10px 0;
-  background: #000;
-  border: 2px solid var(--border);
-  color: var(--accent);
-  font-family: inherit;
-  font-size: 1rem;
-  outline: none;
-}
-
-.login-card input:focus {
-  border-color: var(--accent);
-}
-
-.btn-login {
-  width: 100%;
-  padding: 15px;
-  margin-top: 20px;
-  background: var(--accent);
-  color: var(--bg);
-  border: none;
-  font-weight: 900;
-  text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 6px 6px 0px var(--border);
-  transition: 0.1s;
-}
-
-.btn-login:active {
-  transform: translate(3px, 3px);
-  box-shadow: 2px 2px 0px var(--border);
-}
-
-/* --- ESTILOS DE LA APP (TUS ORIGINALES) --- */
+/* --- NAVIGATION (RESPONSIVE) --- */
 .nav {
   position: sticky;
   top: 0;
   z-index: 100;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 5%;
+  flex-direction: column; /* Apilado en móvil */
+  gap: 15px;
+  padding: 15px;
   background: var(--bg);
-  border-bottom: 2px solid var(--border);
+  border-bottom: 3px solid var(--border);
+}
+
+@media (min-width: 768px) {
+  .nav {
+    flex-direction: row; /* Horizontal en PC */
+    justify-content: space-between;
+    padding: 15px 5%;
+  }
 }
 
 .nav__brand {
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 2px;
   background: var(--border);
   color: var(--bg);
-  padding: 4px 12px;
+  padding: 5px 15px;
   transform: skewX(-10deg);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.nav__links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
 
 .nav__links a {
   color: var(--fg);
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: bold;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  border: 1px solid var(--border);
   padding: 5px 10px;
+  transition: 0.2s;
 }
 
-.container { max-width: 1300px; margin: 0 auto; padding: 30px 20px; }
+.nav__links a:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* --- CONTROLES DE FILTRO --- */
+.panel__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.btn-filter {
+  background: transparent;
+  color: var(--fg);
+  border: 2px solid var(--border);
+  padding: 8px 15px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  transition: 0.1s;
+}
+
+.btn-filter.active, .btn-filter:hover {
+  background: var(--accent-alt);
+  box-shadow: 4px 4px 0px var(--border);
+  transform: translate(-2px, -2px);
+}
+
+/* --- PANEL Y TABLA --- */
+.container { 
+  max-width: 1300px; 
+  margin: 0 auto; 
+  padding: 20px; 
+}
 
 .panel {
   background: var(--panel-bg);
-  border: 2px solid var(--border);
-  padding: 20px;
+  border: 3px solid var(--border);
+  padding: 15px;
   margin-bottom: 40px;
-  box-shadow: 10px 10px 0px 0px var(--border);
+  box-shadow: 8px 8px 0px var(--border);
 }
 
-table { width: 100%; border-collapse: collapse; }
-th { background: var(--border); color: var(--bg); padding: 15px; text-transform: uppercase; }
-td { padding: 15px; border: 1px solid #2a2a2e; }
+.table-responsive {
+  width: 100%;
+  overflow-x: auto; /* Scroll horizontal si la tabla es muy ancha */
+  margin-top: 15px;
+}
 
+table { width: 100%; border-collapse: collapse; min-width: 600px; }
+th { background: var(--border); color: var(--bg); padding: 12px; text-transform: uppercase; font-size: 0.9rem; }
+td { padding: 12px; border: 1px solid #2a2a2e; font-size: 0.85rem; text-align: center; }
+
+/* --- RADAR GRID (MAGIA RESPONSIVE) --- */
 .radar-grid {
   display: grid; 
-  grid-template-columns: repeat(4, 1fr); 
+  /* 1 columna en móvil, 2 en tablet, 4 en PC */
+  grid-template-columns: 1fr; 
   gap: 20px;
 }
 
-.radar-box { background: #161618; border: 1px solid #333; padding: 15px; }
+@media (min-width: 600px) {
+  .radar-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .radar-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.radar-box { 
+  background: #161618; 
+  border: 2px solid var(--border); 
+  padding: 15px; 
+  box-shadow: 5px 5px 0px var(--accent);
+}
+
+.radar-title {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--muted);
+  padding-bottom: 5px;
+  color: var(--accent);
+}
+
+.radar-list {
+  max-height: 300px;
+  overflow-y: auto;
+  font-size: 0.8rem;
+}
+
+/* --- SCROLLBAR ESTILO TRADING --- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); }
