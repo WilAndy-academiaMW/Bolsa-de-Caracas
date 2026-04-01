@@ -1,1 +1,167 @@
-cd Bolsa-de-Caracas && git fetch --all && git reset --hard origin/main
+/* --- VARIABLES Y RESET --- */
+:root {
+  --bg: #08080a;
+  --panel-bg: #121214;
+  --fg: #f0f0f0;
+  --muted: #88888e;
+  --border: #ffffff; 
+  --accent: #00ffaa; 
+  --accent-alt: #ff0055; 
+  --brutal-shadow: 6px 6px 0px 0px #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* --- NAVIGATION (RESPONSIVE) --- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column; /* Apilado en móvil */
+  gap: 15px;
+  padding: 15px;
+  background: var(--bg);
+  border-bottom: 3px solid var(--border);
+}
+
+@media (min-width: 768px) {
+  .nav {
+    flex-direction: row; /* Horizontal en PC */
+    justify-content: space-between;
+    padding: 15px 5%;
+  }
+}
+
+.nav__brand {
+  font-weight: 900;
+  text-transform: uppercase;
+  background: var(--border);
+  color: var(--bg);
+  padding: 5px 15px;
+  transform: skewX(-10deg);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.nav__links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.nav__links a {
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.8rem;
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  transition: 0.2s;
+}
+
+.nav__links a:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* --- CONTROLES DE FILTRO --- */
+.panel__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.btn-filter {
+  background: transparent;
+  color: var(--fg);
+  border: 2px solid var(--border);
+  padding: 8px 15px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  transition: 0.1s;
+}
+
+.btn-filter.active, .btn-filter:hover {
+  background: var(--accent-alt);
+  box-shadow: 4px 4px 0px var(--border);
+  transform: translate(-2px, -2px);
+}
+
+/* --- PANEL Y TABLA --- */
+.container { 
+  max-width: 1300px; 
+  margin: 0 auto; 
+  padding: 20px; 
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 3px solid var(--border);
+  padding: 15px;
+  margin-bottom: 40px;
+  box-shadow: 8px 8px 0px var(--border);
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto; /* Scroll horizontal si la tabla es muy ancha */
+  margin-top: 15px;
+}
+
+table { width: 100%; border-collapse: collapse; min-width: 600px; }
+th { background: var(--border); color: var(--bg); padding: 12px; text-transform: uppercase; font-size: 0.9rem; }
+td { padding: 12px; border: 1px solid #2a2a2e; font-size: 0.85rem; text-align: center; }
+
+/* --- RADAR GRID (MAGIA RESPONSIVE) --- */
+.radar-grid {
+  display: grid; 
+  /* 1 columna en móvil, 2 en tablet, 4 en PC */
+  grid-template-columns: 1fr; 
+  gap: 20px;
+}
+
+@media (min-width: 600px) {
+  .radar-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .radar-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.radar-box { 
+  background: #161618; 
+  border: 2px solid var(--border); 
+  padding: 15px; 
+  box-shadow: 5px 5px 0px var(--accent);
+}
+
+.radar-title {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--muted);
+  padding-bottom: 5px;
+  color: var(--accent);
+}
+
+.radar-list {
+  max-height: 300px;
+  overflow-y: auto;
+  font-size: 0.8rem;
+}
+
+/* --- SCROLLBAR ESTILO TRADING --- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); }
