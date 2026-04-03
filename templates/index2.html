@@ -6,21 +6,21 @@
     <title>Trading Pro | Swing</title>
     <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
     <link rel="stylesheet" href="../static/css/inicio/inicio.css" />
-    <link rel="stylesheet" href="../static/css/app2.css" />
+    <link rel="stylesheet" href="../static/css/app2/app2.css" />
 </head>
 <body>
-  <header class="nav">
-    <div class="nav__brand">TRADING VENEZUELA</div>
+    <header class="nav">
+    <div class="nav__brand">Trading Venezuela</div>
     <nav class="nav__links">
-      <a href="/index5">Resumen</a>
-      <a href="/index2" class="active">Gráfica</a>
+      <a href="/index5">resumen</a>
+      <a href="/index2">Grafica</a>
       <a href="/index4">Datos</a>
     </nav>
   </header>
 
   <main class="main-grafica">
     <div class="carrusel-container">
-      <div class="carrusel-label">TICKER_SELECT ></div>
+      
       <div class="herramientas carrusel-activos">
         <button class="btn-asset" onclick="cargarNuevoCSV('ABC.A', 'ABC.A')">ABC.A</button>
         <button class="btn-asset" onclick="cargarNuevoCSV('BPV', 'BPV')">BPV</button>
@@ -77,17 +77,17 @@
                 <button id="btnmacd" class="btn-tech">MACD</button>
                 <button id="btnbb" class="btn-tech">BOLL</button>
                 <button id="fibo" class="btn-tech">FIBO</button>
-                <button id="fibo-off" class="btn-tech">OFF</button>
+               <!--  <button id="fibo-off" class="btn-tech">OFF</button>-->
             </div>
         </div>
 
-        <div class="control-box">
+     <!--   <div class="control-box">
             <span class="box-label">ZONE_ANALYSIS</span>
             <div class="herramientas">
                 <button id="zona-demanda" class="btn-tech buy">DEMANDA</button>
                 <button id="zona-oferta" class="btn-tech sell">OFERTA</button>
             </div>
-        </div>
+        </div>--> 
     </div>
 
     <div id="mensaje"></div>

@@ -304,7 +304,7 @@ function filtrarTiempo(dias, textoLabel) {
 // ==========================================
 
 
-
+/*
 function guardarFiboEnPython(moneda, p1, p2) {
 
     fetch('/api/guardar-fibo', {
@@ -347,7 +347,7 @@ function cargarFiboGuardado(moneda) {
 
     });
 
-}
+}*/
 
 
 
