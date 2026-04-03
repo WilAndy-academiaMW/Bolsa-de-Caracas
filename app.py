@@ -10,6 +10,10 @@ from services.power import calcular_master_score_brutal
 from services.operaciones import procesar_radar_completo
 from services.convercion import convertir_acciones 
 from services.fear_greed import calcular_fear_greed
+from services.smc_test import calcular_smc_estructura
+from services.fvg_test import calcular_fvg_data
+from services.sd_test import calcular_oferta_demanda
+from services.liquidez_test import calcular_liquidez_data
 
 app = Flask(__name__)
 
@@ -148,5 +152,48 @@ def api_cargar_fibo(moneda):
     if not session.get('logeado'): return jsonify({"error": "No autorizado"}), 401
     return jsonify(cargar_fibo_csv(moneda))
 
+#---------------------------------smc-----------------------------------------
+@app.route('/api/smc/<folder>/<symbol>')
+def api_smc(folder, symbol):
+    if not session.get('logeado'): return jsonify({"error": "No autorizado"}), 401
+    try:
+        # Construye la ruta: static/csv/accionesusd/ABC.A.csv
+        path = os.path.join("static", "csv", folder, f"{symbol.upper()}.csv")
+        resultado = calcular_smc_estructura(path)
+        return jsonify(resultado)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/api/fvg/<folder>/<symbol>')
+def api_fvg(folder, symbol):
+    if not session.get('logeado'): return jsonify({"error": "No autorizado"}), 401
+    try:
+        path = os.path.join("static", "csv", folder, f"{symbol.upper()}.csv")
+        resultado = calcular_fvg_data(path)
+        return jsonify(resultado)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route('/api/zonas-sd/<folder>/<symbol>')
+def api_zonas_sd(folder, symbol):
+    if not session.get('logeado'): return jsonify({"error": "No autorizado"}), 401
+    try:
+        path = os.path.join("static", "csv", folder, f"{symbol.upper()}.csv")
+        resultado = calcular_oferta_demanda(path)
+        return jsonify(resultado)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/liquidez/<folder>/<symbol>')
+def api_liquidez(folder, symbol):
+    if not session.get('logeado'): return jsonify({"error": "No autorizado"}), 401
+    try:
+        path = os.path.join("static", "csv", folder, f"{symbol.upper()}.csv")
+        # Puedes ajustar la tolerancia desde aquí si ves que detecta mucho o poco
+        resultado = calcular_liquidez_data(path, tolerancia=0.0005)
+        return jsonify(resultado)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

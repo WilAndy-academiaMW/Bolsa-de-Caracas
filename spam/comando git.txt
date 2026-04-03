@@ -1,0 +1,2 @@
+cd /home/tu_usuario/nombre_de_tu_proyecto
+git pull origin main
