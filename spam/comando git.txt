@@ -1,2 +1,2 @@
-cd /home/tu_usuario/nombre_de_tu_proyecto
+cd  Bolsa-de-Caracas
 git pull origin main

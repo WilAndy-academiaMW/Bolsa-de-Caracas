@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const botonesAcciones = ["BVCC","BNC" ,"BVL", "BPV","CCP.B","MPA","SVS","FNV",
-        "ABC.A","ARC.A","ARC.B","CCR","CGQ","CRM.A","DOM","EFE","ENV","FNC","GMC.B","GZL","ICP.B","IVC.A",
+        "ABC.A","ARC.A","ARC.B","CCR","CGQ","CRM.A","DOM","EFE","ENV","FNC","GMC.B","GZL","ICP.B","IVC.A","IVC.B",
         "MTC.B","MVZ.A","MVZ.B","PCP.B","PGR","PIV.B","PTN","RST","RST.B","TPG","TDV.D"]; // IDs de botones = nombres de CSV
     
     const rangos = {
