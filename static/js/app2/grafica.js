@@ -75,9 +75,9 @@ async function inicializarGrafico(archivo, nombre) {
     // Comenta estas si aún no has cargado los otros scripts .js
     // cargarFiboGuardado(tickerActual);
     // cargarZonasMemoria(tickerActual);
-  
+       
     
-    cargarFiboGuardado(tickerActual);
+   /// cargarFiboGuardado(tickerActual);
 
         
 }
@@ -87,32 +87,34 @@ async function inicializarGrafico(archivo, nombre) {
  * Cambia el activo actual, carga su CSV y restaura sus indicadores guardados.
  */
 async function cargarNuevoCSV(archivo, nombreLegible) {
-    // 1. Actualizar el ticker global para que las demás funciones sepan qué moneda es
+    // 1. Actualizar el ticker global (fundamental para los botones de SMC)
     tickerActual = archivo;
 
-    // 2. Resetear el estado del botón de Ocultar/Mostrar Fibonacci
-    const btnOcultar = document.getElementById('fibo-off');
-    if (btnOcultar) {
-        btnOcultar.innerText = "Ocultar Fibonacci";
-        fiboVisible = true; // Variable que controla el toggle
-    }
+    // 2. RESET DE ESTADOS DE INDICADORES (SMC)
+    // Esto obliga a que el próximo clic en un botón cargue datos frescos
+    smcActivo = false;
+    fvgActivo = false;
+    sdActivo = false;
+    liquidezActiva = false;
+    if (typeof ultimoSimboloFVG !== 'undefined') ultimoSimboloFVG = "";
 
-    // 3. Limpiar visualmente el Fibonacci y zonas anteriores antes de cargar lo nuevo
-    // Esto evita que el Fibo de BTC se vea un segundo sobre la gráfica de ETH
+    // 3. LIMPIEZA VISUAL INMEDIATA
+    // Borramos líneas, áreas y puntos del gráfico anterior
     myChart.setOption({
         series: [{
             name: 'Precio',
-            markLine: { data: [] }, // Limpia Fibo
-            markArea: { data: [] }  // Limpia Zonas
+            markLine: { data: [] },
+            markArea: { data: [] },
+            markPoint: { data: [] } 
         }]
-    }, false);
+    }, false); // false para que no destruya la instancia, solo limpie
 
-    // 4. Cargar los datos del nuevo CSV
+    // 4. CARGA DE DATOS
     const path = `/static/csv/accionesusd/${archivo}.csv`;
     const { dates, ohlc } = await loadCSV(path);
 
     if (dates.length > 0) {
-        // 5. Renderizar las nuevas velas y el nuevo título
+        // 5. RENDERIZAR NUEVAS VELAS
         myChart.setOption({
             title: { text: `Gráfico: ${nombreLegible}` },
             xAxis: { data: dates },
@@ -122,28 +124,19 @@ async function cargarNuevoCSV(archivo, nombreLegible) {
             }]
         });
 
-        // 6. RECARGAR INDICADORES GUARDADOS
-        // Usamos un retraso (500ms) para asegurar que ECharts terminó de 
-        // procesar las nuevas fechas, de lo contrario el Fibo no se dibujará.
+        // 6. RECARGAR INDICADORES PERSISTENTES (Fibo/Zonas manuales)
         setTimeout(() => {
-            console.log("Restaurando indicadores para: " + tickerActual);
-            
-            // Cargar Fibonacci desde Python
             if (typeof cargarFiboGuardado === 'function') {
                 cargarFiboGuardado(tickerActual);
             }
-            
-            // Cargar Zonas desde Python (si las tienes implementadas)
             if (typeof cargarZonasMemoria === 'function') {
                 cargarZonasMemoria(tickerActual);
             }
         }, 500);
 
-        // Mensaje de feedback
-        const mensajeDiv = document.getElementById('mensaje');
-        if (mensajeDiv) mensajeDiv.innerText = `Activo cambiado a ${nombreLegible}`;
+        mostrarMensaje(`Activo cambiado a ${nombreLegible}`);
     } else {
-        console.error("No se pudo cargar el archivo: " + path);
+        console.error("Error: No se pudo cargar el archivo CSV en " + path);
     }
 }
 

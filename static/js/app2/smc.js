@@ -129,80 +129,91 @@ async function mostrarSMC(folder, symbol) {
         mostrarMensaje("⚠️ Error de conexión con la API");
     }
 }
-
-
 async function mostrarFVG(folder, symbol) {
-    const myChart = obtenerGrafico(); // Usa la función que ya tenemos para ECharts
+    const myChart = obtenerGrafico();
     if (!myChart) return;
 
     const option = myChart.getOption();
 
-    // INTERRUPTOR: Si ya está activo, lo removemos (Toggle)
+    // 1. INTERRUPTOR (Toggle)
     if (fvgActivo) {
         const seriesLimpias = option.series.map(s => {
             if (s.type === 'candlestick') {
-                return { ...s, markArea: { data: [] } };
+                // Filtramos para quitar solo los FVG y mantener otras zonas (como S&D)
+                return { 
+                    ...s, 
+                    markArea: { 
+                        ...s.markArea, 
+                        data: s.markArea.data ? s.markArea.data.filter(d => d[0].name !== 'FVG_ZONE') : [] 
+                    } 
+                };
             }
             return s;
         });
         myChart.setOption({ series: seriesLimpias });
         fvgActivo = false;
-        mostrarMensaje("❌ FVG: Zonas Mitigadas Ocultas");
+        mostrarMensaje("❌ FVG: Ineficiencias Ocultas");
         return;
     }
 
     try {
-        mostrarMensaje("🔍 Filtrando Vacíos No Mitigados...");
+        mostrarMensaje("🔍 Escaneando vacíos de liquidez...");
         
-        // Llamada a tu nueva API con filtro de mitigación
         const response = await fetch(`/api/fvg/${folder}/${symbol}`);
         const result = await response.json();
 
-        if (result.status === "ok") {
-            // Creamos las áreas para ECharts
-            const areas = result.fvgs.map(gap => {
-                const esAlcista = gap.tipo === "BULLISH";
+        if (result.status === "ok" && result.fvgs.length > 0) {
+            
+            // --- AUDITORÍA EN CONSOLA ---
+            console.log(`%c ⚡ FVG REPORT - ${symbol} `, 'background: #111; color: #00e5ff; font-weight: bold;');
+
+            const serieVelas = option.series.find(s => s.type === 'candlestick');
+            const ultimoPrecio = serieVelas.data[serieVelas.data.length - 1][1]; // Cierre actual
+
+            const areas = result.fvgs.map((gap, index) => {
+                // Determinar si es Bullish o Bearish respecto al precio actual
+                const centroGap = (gap.top + gap.bottom) / 2;
+                const esBajista = centroGap > ultimoPrecio; 
                 
-                // Colores: Verde para compras (Bullish), Rojo para ventas (Bearish)
-                // Usamos opacidad baja (0.15) para el fondo y (0.5) para el borde
-                const colorFondo = esAlcista ? 'rgba(0, 255, 136, 0.15)' : 'rgba(255, 46, 99, 0.15)';
-                const colorBorde = esAlcista ? 'rgba(0, 255, 136, 0.5)' : 'rgba(255, 46, 99, 0.5)';
+                const colorFondo = esBajista ? 'rgba(255, 46, 99, 0.2)' : 'rgba(0, 255, 136, 0.2)';
+                const colorEtiqueta = esBajista ? '#ff2e63' : '#00ff88';
+
+                // Imprimir límites de velas 1 y 3 en consola
+                console.log(`Gap #${index + 1} | Vela 1 (Extremo): ${gap.top} | Vela 3 (Extremo): ${gap.bottom} | Tipo: ${gap.tipo}`);
 
                 return [
                     {
-                        name: gap.tipo,
+                        name: 'FVG_ZONE',
                         yAxis: gap.bottom,
-                        xAxis: gap.fecha, // Punto de origen en el tiempo
+                        xAxis: gap.fecha, // Punto donde nace la ineficiencia
                         itemStyle: {
                             color: colorFondo,
-                            borderWidth: 1,
-                            borderType: 'dashed',
-                            borderColor: colorBorde
+                            borderWidth: 0 // Sin bordes, estilo minimalista
                         },
                         label: {
                             show: true,
                             position: 'insideRight',
-                            formatter: esAlcista ? 'FVG Buy' : 'FVG Sell',
-                            color: colorBorde,
-                            fontSize: 10,
-                            distance: 10
+                            formatter: esBajista ? ' FVG SELL' : ' FVG BUY',
+                            color: colorEtiqueta,
+                            fontSize: 9,
+                            fontWeight: 'bold'
                         }
                     },
                     {
-                        yAxis: gap.top,
-                        // Al no definir xAxis aquí, la caja se extiende hasta el borde derecho
+                        yAxis: gap.top // Se proyecta al infinito a la derecha
                     }
                 ];
             });
 
-            // Actualizamos la serie de velas con las nuevas áreas
+            // 2. ACTUALIZACIÓN DEL GRÁFICO (Preservando otras marcas)
             const nuevasSeries = option.series.map(s => {
                 if (s.type === 'candlestick') {
+                    const dataExistente = (s.markArea && s.markArea.data) ? s.markArea.data : [];
                     return {
                         ...s,
                         markArea: {
-                            silent: true, // Evita que interfiera con el tooltip de las velas
-                            data: areas
+                            silent: true,
+                            data: [...dataExistente, ...areas]
                         }
                     };
                 }
@@ -211,13 +222,87 @@ async function mostrarFVG(folder, symbol) {
 
             myChart.setOption({ series: nuevasSeries });
             fvgActivo = true;
-            mostrarMensaje("✅ FVG: Zonas Vivas Marcadas");
+            mostrarMensaje(`✅ ${result.fvgs.length} Ineficiencias Marcadas`);
         } else {
-            mostrarMensaje("⚠️ No se encontraron FVG vivos");
+            mostrarMensaje("⚠️ No se detectaron FVG vivos");
         }
     } catch (error) {
         console.error("Error FVG JS:", error);
-        mostrarMensaje("⚠️ Error de conexión API");
+        mostrarMensaje("⚠️ Error de conexión con el motor FVG");
+    }
+}
+
+async function mostrarZonasSD(folder, symbol) {
+    const myChart = obtenerGrafico();
+    if (!myChart) return;
+    const option = myChart.getOption();
+
+    if (sdActivo) {
+        const seriesLimpias = option.series.map(s => {
+            if (s.type === 'candlestick') {
+                return { ...s, markArea: { ...s.markArea, data: s.markArea.data ? s.markArea.data.filter(d => d[0].name !== 'SD_ZONE') : [] } };
+            }
+            return s;
+        });
+        myChart.setOption({ series: seriesLimpias });
+        sdActivo = false;
+        mostrarMensaje("❌ Zonas S&D Ocultas");
+        return;
+    }
+
+    try {
+        mostrarMensaje("🔍 Dibujando Bloques de Órdenes...");
+        const response = await fetch(`/api/zonas-sd/${folder}/${symbol}`);
+        const result = await response.json();
+
+        if (result.status === "ok") {
+            const areas = result.zonas.map(zona => {
+                const esDemanda = zona.tipo === "DEMAND";
+                const colorFondo = esDemanda ? 'rgba(0, 150, 255, 0.2)' : 'rgba(255, 80, 0, 0.2)';
+                const colorBorde = esDemanda ? '#0096ff' : '#ff5000';
+
+                return [
+                    {
+                        name: 'SD_ZONE',
+                        yAxis: zona.bottom, 
+                        xAxis: zona.fecha,
+                        itemStyle: {
+                            color: colorFondo,
+                            borderWidth: 1,
+                            borderColor: colorBorde
+                        },
+                        label: {
+                            show: true,
+                            position: 'insideLeft',
+                            formatter: esDemanda ? ' OB DEMAND' : ' OB SUPPLY',
+                            color: '#fff',
+                            fontWeight: 'bold',
+                            fontSize: 9,
+                            backgroundColor: colorBorde,
+                            padding: [2, 4],
+                            borderRadius: 2
+                        }
+                    },
+                    {
+                        yAxis: zona.top 
+                    }
+                ];
+            });
+
+            const nuevasSeries = option.series.map(s => {
+                if (s.type === 'candlestick') {
+                    const dataExistente = (s.markArea && s.markArea.data) ? s.markArea.data : [];
+                    return { ...s, markArea: { silent: true, data: [...dataExistente, ...areas] } };
+                }
+                return s;
+            });
+
+            myChart.setOption({ series: nuevasSeries });
+            sdActivo = true;
+            mostrarMensaje("✅ Bloques de Órdenes (Mecha a Cuerpo) Marcados");
+        }
+    } catch (error) {
+        console.error("Error S&D:", error);
     }
 }
 
@@ -384,24 +469,28 @@ async function mostrarLiquidez(folder, symbol) {
 }
 
 
-document.getElementById("btnSMC")?.addEventListener("click", () => {
-    // Intentamos obtener el símbolo del input de búsqueda
-    const inputSymbol = document.getElementById("search-input")?.value;
-    // Si no hay nada en el input, puedes usar uno por defecto o una variable global
-    const symbol = inputSymbol || "ABC.A"; 
-    
-    // Ejecutamos pasando la carpeta y el símbolo
-    mostrarSMC("accionesusd", symbol);
-});
-document.getElementById("btnFVG")?.addEventListener("click", () => {
-    const symbol = document.getElementById("search-input")?.value || "ABC.A";
-    mostrarFVG("accionesusd", symbol);
-});
-document.getElementById("btnSD")?.addEventListener("click", () => {
-    const symbol = document.getElementById("search-input")?.value || "ABC.A";
-    mostrarZonasSD("accionesusd", symbol);
-});
-document.getElementById("btnLiquidez")?.addEventListener("click", () => {
-    const symbol = document.getElementById("search-input")?.value || "ABC.A";
-    mostrarLiquidez("accionesusd", symbol);
+// Agregamos un listener robusto que espera a que el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Botón SMC (Estructura BOS/ChoCh)
+    document.getElementById("btnSMC")?.addEventListener("click", () => {
+        // "accionesusd" es tu carpeta por defecto, tickerActual es el activo vivo
+        mostrarSMC("accionesusd", tickerActual);
+    });
+
+    // Botón FVG (Fair Value Gaps)
+    document.getElementById("btnFVG")?.addEventListener("click", () => {
+        mostrarFVG("accionesusd", tickerActual);
+    });
+
+    // Botón S&D (Oferta y Demanda)
+    document.getElementById("btnSD")?.addEventListener("click", () => {
+        mostrarZonasSD("accionesusd", tickerActual);
+    });
+
+    // Botón Liquidez (BSL / SSL)
+    document.getElementById("btnLiquidez")?.addEventListener("click", () => {
+        mostrarLiquidez("accionesusd", tickerActual);
+    });
+
 });
