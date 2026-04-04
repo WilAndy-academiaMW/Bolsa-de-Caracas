@@ -54,8 +54,11 @@
       </div>
     </div>
 
+   
     <div class="chart-wrapper">
+         
         <div id="grafica" style="width: 100%; height: 450px;"></div>
+        <div id="mensaje"></div>
     </div>
 
     <div class="controls-grid">
@@ -67,6 +70,8 @@
                 <button class="btn-crypto" onclick="filtrarTiempo(180)">6M</button>
                 <button class="btn-crypto" onclick="filtrarTiempo(365)">1Y</button>
                 <button class="btn-crypto" onclick="filtrarTiempo(0)">MAX</button>
+                <button id="btn-regla" class="btn-tech" style="border-color: #ffcc00; color: #ffcc00;">regla</button>
+          
             </div>
         </div>
 
@@ -93,21 +98,17 @@
             </div>
         </div>
 
-     <!--   <div class="control-box">
-            <span class="box-label">ZONE_ANALYSIS</span>
-            <div class="herramientas">
-                <button id="zona-demanda" class="btn-tech buy">DEMANDA</button>
-                <button id="zona-oferta" class="btn-tech sell">OFERTA</button>
-            </div>
-        </div>--> 
+    
+          
+       
     </div>
 
-    <div id="mensaje"></div>
   </main>
 
   <script src="../static/js/app2/grafica.js"></script>
   <script src="../static/js/app2/indicador.js"></script>
   <script src="../static/js/app2/fibonnaci.js"></script>
   <script src="../static/js/app2/smc.js"></script>
+  <script src="../static/js/app2/regla.js"></script>
 </body>
 </html>
