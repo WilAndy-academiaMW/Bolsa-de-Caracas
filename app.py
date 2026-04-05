@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash
-import csv
 import os
+import mysql.connector
 from datetime import timedelta
 
-# Importaciones de tus servicios originales
+# --- IMPORTACIONES DE TUS SERVICIOS ORIGINALES ---
 from services.smart import obtener_movimientos_multi_radar
 from services.fibonnaci import guardar_fibo_csv, cargar_fibo_csv
 from services.power import calcular_master_score_brutal
@@ -21,22 +21,28 @@ app = Flask(__name__)
 app.secret_key = 'tu_clave_secreta_brutal_123' 
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
 
-# Ruta al CSV
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-CSV_USUARIOS = os.path.join(BASE_DIR, 'usuarios.csv')
+# --- CONFIGURACIÓN DE LA BASE DE DATOS ---
+DB_CONFIG = {
+    'host': 'william23.mysql.pythonanywhere-services.com',
+    'user': 'william23',
+    'password': 'TU_PASSWORD_DE_DATABASE', # <--- CAMBIA ESTO POR TU CLAVE REAL
+    'database': 'william23$bvc'
+}
+
+def obtener_conexion():
+    """Crea una conexión fresca a la base de datos"""
+    return mysql.connector.connect(**DB_CONFIG)
 
 # -------------------- LÓGICA DE NAVEGACIÓN PÚBLICA --------------------
 
 @app.route("/")
 def home():
-    """Esta es ahora tu página principal"""
     if session.get('logeado'):
         return redirect(url_for('index5'))
     return render_template("inicio.html")
 
 @app.route("/acceso")
 def acceso():
-    """Aquí mostramos el formulario de login (tu antiguo index.html)"""
     if session.get('logeado'):
         return redirect(url_for('index5'))
     return render_template("login_page.html")
@@ -46,28 +52,35 @@ def login():
     usuario_input = request.form.get("usuario")
     password_input = request.form.get("password")
 
-    if not os.path.exists(CSV_USUARIOS):
-        flash("ERROR: El archivo usuarios.csv no existe.")
-        return redirect(url_for('acceso'))
+    try:
+        conexion = obtener_conexion()
+        cursor = conexion.cursor(dictionary=True)
+        
+        # Buscamos al usuario en la tabla que creamos en DBeaver
+        query = "SELECT usuario, password, estatus FROM usuarios WHERE usuario = %s"
+        cursor.execute(query, (usuario_input,))
+        usuario_db = cursor.fetchone()
 
-    with open(CSV_USUARIOS, mode='r', encoding='utf-8-sig') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            user_csv = row['usuario'].strip()
-            pass_csv = row['password'].strip()
-            status_csv = row['estatus'].strip()
+        cursor.close()
+        conexion.close()
 
-            if user_csv == usuario_input and pass_csv == password_input:
-                if status_csv == 'activo':
+        if usuario_db:
+            if usuario_db['password'] == password_input:
+                if usuario_db['estatus'] == 'activo':
                     session.permanent = True
                     session['logeado'] = True
-                    session['user'] = user_csv
+                    session['user'] = usuario_db['usuario']
                     return redirect(url_for('index5'))
                 else:
                     flash("TU MEMBRESÍA NO ESTÁ ACTIVA.")
-                    return redirect(url_for('acceso'))
+            else:
+                flash("CONTRASEÑA INCORRECTA.")
+        else:
+            flash("EL USUARIO NO EXISTE EN EL SISTEMA.")
+
+    except Exception as e:
+        flash(f"ERROR TÉCNICO: {str(e)}")
     
-    flash("USUARIO O CONTRASEÑA INCORRECTOS.")
     return redirect(url_for('acceso'))
 
 @app.route("/logout")
@@ -109,7 +122,6 @@ def convertir():
 def feargreed(symbol):
     if not session.get('logeado'): return jsonify({"error": "Login requerido"}), 401
     try:
-        # Asegúrate de que la ruta a los CSV de acciones sea la correcta
         ruta = os.path.join("static", "acciones", f"{symbol.upper()}.csv")
         if not os.path.exists(ruta):
             return jsonify({"error": "Archivo no encontrado"}), 404
@@ -152,18 +164,15 @@ def api_cargar_fibo(moneda):
     if not session.get('logeado'): return jsonify({"error": "No autorizado"}), 401
     return jsonify(cargar_fibo_csv(moneda))
 
-#---------------------------------smc-----------------------------------------
 @app.route('/api/smc/<folder>/<symbol>')
 def api_smc(folder, symbol):
     if not session.get('logeado'): return jsonify({"error": "No autorizado"}), 401
     try:
-        # Construye la ruta: static/csv/accionesusd/ABC.A.csv
         path = os.path.join("static", "csv", folder, f"{symbol.upper()}.csv")
         resultado = calcular_smc_estructura(path)
         return jsonify(resultado)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
 
 @app.route('/api/fvg/<folder>/<symbol>')
 def api_fvg(folder, symbol):
@@ -190,10 +199,10 @@ def api_liquidez(folder, symbol):
     if not session.get('logeado'): return jsonify({"error": "No autorizado"}), 401
     try:
         path = os.path.join("static", "csv", folder, f"{symbol.upper()}.csv")
-        # Puedes ajustar la tolerancia desde aquí si ves que detecta mucho o poco
         resultado = calcular_liquidez_data(path, tolerancia=0.0005)
         return jsonify(resultado)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
