@@ -25,7 +25,7 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
 DB_CONFIG = {
     'host': 'william23.mysql.pythonanywhere-services.com',
     'user': 'william23',
-    'password': 'TuNuevaClaveSinSimbolos', 
+    'password': 'b.j*Q*$A4mKM.fq', 
     'database': 'william23$bvc'
 }
 
