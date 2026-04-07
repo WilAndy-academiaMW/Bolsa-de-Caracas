@@ -1,106 +1,75 @@
 import pandas as pd
-import requests
-import urllib3
 import os
-import time
-from io import StringIO
-from datetime import datetime
 
-# Desactivar warnings SSL
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+# --- CONFIGURACIÓN DE RUTAS ---
+ARCHIVO_ENTRADA = "datos_bvc_limpios.csv" 
+CARPETA_SALIDA = "static/acciones-horas"
 
-URL = "https://market.bolsadecaracas.com/es"
-HEADERS = {"User-Agent": "Mozilla/5.0"}
+def generar_velas_horarias(input_file, output_folder):
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder, exist_ok=True)
 
-# --- CONFIGURACIÓN DE RUTA ---
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-FOLDER_ACCIONES = os.path.abspath(os.path.join(BASE_DIR, "..", "static", "csv", "acciones-hora"))
+    try:
+        # Leer el archivo
+        df = pd.read_csv(input_file)
+        
+        # Limpiar TKR
+        df['TKR'] = df['TKR'].str.replace(':', '', regex=False).str.strip()
 
-def guardar_por_empresa(df_pizarra):
-    if not os.path.exists(FOLDER_ACCIONES):
-        os.makedirs(FOLDER_ACCIONES, exist_ok=True)
+        # --- TRADUCTOR Y NORMALIZACIÓN ---
+        # Pasamos todo a minúsculas para que coincida siempre
+        df['Fecha'] = df['Fecha'].str.lower().str.strip()
 
-    fecha_hoy = datetime.now().strftime("%Y-%m-%d")
-    
-    for _, fila in df_pizarra.iterrows():
-        try:
-            simbolo = str(fila['Símbolo']).strip()
-            if not simbolo or simbolo == 'nan': continue 
+        meses_es_en = {
+            'ene': 'Jan', 'feb': 'Feb', 'mar': 'Mar', 'abr': 'Apr',
+            'may': 'May', 'jun': 'Jun', 'jul': 'Jul', 'ago': 'Aug',
+            'sep': 'Sep', 'oct': 'Oct', 'nov': 'Nov', 'dic': 'Dec'
+        }
+
+        # Aplicamos la traducción
+        for es, en in meses_es_en.items():
+            df['Fecha'] = df['Fecha'].str.replace(es, en, regex=False)
+
+        # Crear columna de tiempo real
+        anio_actual = 2026 
+        df['Full_Fecha'] = df['Fecha'] + f" {anio_actual} " + df['Hora_BVC']
+        
+        # CONVERSIÓN ROBUSTA:
+        # Usamos format='mixed' y dayfirst para que Pandas sea más flexible
+        df['Datetime'] = pd.to_datetime(df['Full_Fecha'], dayfirst=True, errors='coerce')
+
+        # Eliminar filas donde la fecha no se pudo procesar (si las hay)
+        df = df.dropna(subset=['Datetime'])
+
+        tickers_unicos = df['TKR'].unique()
+
+        for ticker in tickers_unicos:
+            print(f"📊 Procesando velas para: {ticker}...")
+            df_ticker = df[df['TKR'] == ticker].copy()
+            df_ticker.set_index('Datetime', inplace=True)
+
+            # Generar OHLC (Vela de 1 Hora)
+            ohlc_df = df_ticker['Precio'].resample('1H').ohlc()
             
-            nombre_archivo = os.path.join(FOLDER_ACCIONES, f"{simbolo}.csv")
+            # Limpiar filas vacías (horas donde no hubo trades)
+            ohlc_df = ohlc_df.dropna(subset=['open'])
             
-            # Datos de la web
-            p_inicio = fila['Apertura']
-            p_alto = fila['Máximo']
-            p_bajo = fila['Mínimo']
-            p_cierre = fila['Precio']
-            v_monto = fila.get('Monto', 0) # Capturamos volumen (monto efectivo)
+            if ohlc_df.empty:
+                continue
 
-            if os.path.exists(nombre_archivo):
-                df_historial = pd.read_csv(nombre_archivo)
-                df_historial['Date'] = df_historial['Date'].astype(str)
+            ohlc_df.columns = ['Apertura', 'Maximo', 'Minimo', 'Cierre']
+            ohlc_df.reset_index(inplace=True)
+            ohlc_df.rename(columns={'Datetime': 'Fecha_Hora'}, inplace=True)
 
-                # LÓGICA DE ARRASTRE: Si hoy no hay precio, usamos el cierre de ayer
-                if p_cierre <= 0 and not df_historial.empty:
-                    ultimo_cierre_ayer = df_historial.iloc[-1]['Precio_Cierre']
-                    p_inicio, p_alto, p_bajo, p_cierre = [ultimo_cierre_ayer] * 4
-                    v_monto = 0.0
-                    print(f"[{simbolo}] - Arrastrando precio anterior.")
+            # Guardar CSV
+            ruta_final = os.path.join(output_folder, f"{ticker}.csv")
+            ohlc_df.to_csv(ruta_final, index=False)
+            print(f"✅ Guardado: {ruta_final}")
 
-                # ACTUALIZAR O AGREGAR
-                if fecha_hoy in df_historial['Date'].values:
-                    df_historial.loc[df_historial['Date'] == fecha_hoy, 
-                                     ['Precio_Inicio', 'Alto', 'Bajo', 'Precio_Cierre', 'Volume']] = \
-                        [p_inicio, p_alto, p_bajo, p_cierre, v_monto]
-                    df_historial.to_csv(nombre_archivo, index=False, encoding="utf-8")
-                    print(f"[{simbolo}] - Vela actualizada.")
-                else:
-                    nueva_fila = pd.DataFrame([{
-                        'Date': fecha_hoy, 'Precio_Inicio': p_inicio, 
-                        'Alto': p_alto, 'Bajo': p_bajo, 'Precio_Cierre': p_cierre, 'Volume': v_monto
-                    }])
-                    nueva_fila.to_csv(nombre_archivo, mode='a', index=False, header=False, encoding="utf-8")
-                    print(f"[{simbolo}] - Nueva vela agregada.")
-            else:
-                # Si el archivo no existe, lo creamos (solo si hay precio válido)
-                if p_cierre > 0:
-                    df_nuevo = pd.DataFrame([{
-                        'Date': fecha_hoy, 'Precio_Inicio': p_inicio, 
-                        'Alto': p_alto, 'Bajo': p_bajo, 'Precio_Cierre': p_cierre, 'Volume': v_monto
-                    }])
-                    df_nuevo.to_csv(nombre_archivo, index=False, encoding="utf-8")
-                    print(f"[{simbolo}] - Archivo creado.")
-                
-        except Exception as e:
-            print(f"Error en {simbolo}: {e}")
+        print("\n🚀 ¡Velas horarias generadas con éxito!")
 
-def main():
-    intentos_max = 3
-    for i in range(intentos_max):
-        try:
-            print(f"[{datetime.now().strftime('%H:%M:%S')}] Conectando BVC (Intento {i+1}/3)...")
-            resp = requests.get(URL, headers=HEADERS, verify=False, timeout=60)
-            resp.raise_for_status()
-            
-            tablas = pd.read_html(StringIO(resp.text), decimal=',', thousands='.')
-            df = tablas[0]
-
-            cols_num = ['Apertura', 'Máximo', 'Mínimo', 'Precio', 'Monto']
-            for col in cols_num:
-                if col in df.columns:
-                    df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
-
-            guardar_por_empresa(df)
-            print("\n✅ ¡ÉXITO! Proceso completado.")
-            break 
-
-        except Exception as e:
-            print(f"❌ Falló intento {i+1}: {e}")
-            if i < intentos_max - 1:
-                print("⏳ Esperando 2 minutos para reintentar...")
-                time.sleep(120)
-            else:
-                print("🚫 No se pudo conectar con la BVC.")
+    except Exception as e:
+        print(f"❌ Error procesando el motor de velas: {e}")
 
 if __name__ == "__main__":
-    main()
+    generar_velas_horarias(ARCHIVO_ENTRADA, CARPETA_SALIDA)
