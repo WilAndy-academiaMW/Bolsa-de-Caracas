@@ -14,7 +14,24 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
     <style>
-   
+   @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+.flow-analysis-box {
+    background: rgba(20, 20, 20, 0.4);
+    padding: 10px;
+    border-radius: 0 0 8px 8px;
+    width: 1000px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.oscillator-wrapper canvas {
+    filter: drop-shadow(0px 0px 5px rgba(0, 255, 157, 0.2));
+}
     </style>
 </head>
 <body>
@@ -91,9 +108,24 @@
         <div class="chart-container">
             <canvas id="grafica_linea"></canvas>
         </div>
+        <div class="flow-analysis-box" style="margin-top: 20px; border-top: 1px solid rgba(0, 255, 157, 0.2); padding-top: 15px;">
+    <div class="flow-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <h4 style="color: #00ff9d; font-family: monospace; margin: 0; font-size: 0.8rem; letter-spacing: 1px;">
+            <span style="animation: blink 1s infinite;">●</span> BVC FLOW OSCILLATOR // DIVERGENCE DETECTOR
+        </h4>
+        <div id="flow_legend" style="font-size: 0.7rem; color: #666; font-family: monospace;">
+            RANGE: <span style="color: #ff4136;">0</span> - <span style="color: #00ff9d;">100</span>
+        </div>
+    </div>
+    
+    <div class="oscillator-wrapper" style="height: 300px; position: relative; background: linear-gradient(180deg, rgba(0, 255, 157, 0.05) 0%, rgba(0,0,0,0) 100%); border-radius: 4px;">
+        <canvas id="bvc_flow_oscillator"></canvas>
+    </div>
+</div>
         <div class="volume-container">
             <canvas id="volumen_bs"></canvas>
         </div>
+        
         <div id="resumen_volumen" class="resumen"></div>
 
         <div id="radar-container" class="radar-box">
@@ -291,7 +323,7 @@
    
 
     
-  
+  <!--libro de ordenes-->
   <div class="book-wrapper" >
     <div class="terminal-book" style="margin-bottom: 150px;">
     <div class="book-title">LIBRO DE ÓRDENES EN VIVO</div>
@@ -331,5 +363,6 @@
    <script src="../static/js/app3/power.js"></script>
    <script src="../static/js/app4/orden.js"></script>
    <script src="../static/js/app4/capitalizacion.js"></script>
+   <script src="../static/js/app4/indicador.js"></script>
 </body>
 </html>

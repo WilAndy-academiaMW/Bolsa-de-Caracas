@@ -116,6 +116,9 @@ async function cargarGrafica(symbol) {
         
         // Llamamos a la capitalización después de actualizar el precio
         actualizarCapitalizacion(symbol);
+        if (typeof actualizarOsciladorFlujo === 'function') {
+            await actualizarOsciladorFlujo(symbol);
+        }
 
     } catch (err) {
         console.error("❌ Error en cargarGrafica:", err);

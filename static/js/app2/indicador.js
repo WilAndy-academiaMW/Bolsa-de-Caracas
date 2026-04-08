@@ -461,6 +461,7 @@ function mostrarWilliamsR(periodo = 14) {
     isWPRvisible = true;
     mostrarMensaje("✅ Williams %R Activado (Timing Preciso)");
 }
+
 // Event Listeners para los botones
 document.getElementById("btnRSI")?.addEventListener("click", () => mostrarRSI());
 document.getElementById("btnmacd")?.addEventListener("click", () => mostrarMACD());

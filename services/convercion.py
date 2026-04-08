@@ -48,3 +48,6 @@ def convertir_acciones():
 if __name__ == "__main__":
     resultado = convertir_acciones()
     print(resultado)
+
+#RUTA_CARPETA_CSV = "/home/william23/Bolsa-de-Caracas/static/csv"
+#RUTA_CARPETA_ACCIONES = "/home/william23/Bolsa-de-Caracas/static/csv/acciones"
