@@ -13,6 +13,7 @@ from services.smc_test import calcular_smc_estructura
 from services.fvg_test import calcular_fvg_data
 from services.sd_test import calcular_oferta_demanda
 from services.liquidez_test import calcular_liquidez_data
+from services.soporte_resistencia import calcular_pivotes_brutales
 
 app = Flask(__name__)
 
@@ -116,6 +117,17 @@ def api_oscilador_poder(simbolo):
     # Ahora 'simbolo' es dinámico, viene de lo que el usuario clickee
     resultado = calcular_oscilador_brutal(simbolo)
     return jsonify(resultado)
+@app.route('/api/pivotes-brutales/<folder>/<symbol>')
+def api_pivotes_brutales(folder, symbol):
+    # Esta ruta sigue el patrón que ya usas para SMC y FVG
+    resultado = calcular_pivotes_brutales(symbol, folder)
+    return jsonify(resultado)
+
+
+
+
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

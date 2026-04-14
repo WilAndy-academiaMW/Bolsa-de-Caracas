@@ -96,6 +96,8 @@ async function cargarNuevoCSV(archivo, nombreLegible) {
     fvgActivo = false;
     sdActivo = false;
     liquidezActiva = false;
+   
+isZonasVisible = false;
     if (typeof ultimoSimboloFVG !== 'undefined') ultimoSimboloFVG = "";
 
     // 3. LIMPIEZA VISUAL INMEDIATA

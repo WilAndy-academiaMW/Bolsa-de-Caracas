@@ -1,0 +1,1360 @@
+[
+    {
+        "timestamp": "Apr 10 10:38:23",
+        "simbolo": "IBC",
+        "precio": 5643.57,
+        "hora_bolsa": "10:34:47",
+        "mensaje": "Apr 10 10:38:23 ✅ ACTUALIZADO IBC: 5643.57 a las 10:34:47"
+    },
+    {
+        "timestamp": "Apr 10 10:38:23",
+        "simbolo": "I.FINANCIE",
+        "precio": 10923.66,
+        "hora_bolsa": "10:34:47",
+        "mensaje": "Apr 10 10:38:23 ✅ ACTUALIZADO I.FINANCIE: 10923.66 a las 10:34:47"
+    },
+    {
+        "timestamp": "Apr 10 10:38:23",
+        "simbolo": "I.INDUSTR",
+        "precio": 2190.06,
+        "hora_bolsa": "10:34:47",
+        "mensaje": "Apr 10 10:38:23 ✅ ACTUALIZADO I.INDUSTR: 2190.06 a las 10:34:47"
+    },
+    {
+        "timestamp": "Apr 10 10:38:23",
+        "simbolo": "ABC.A",
+        "precio": 1519.0,
+        "hora_bolsa": "10:30:40",
+        "mensaje": "Apr 10 10:38:23 ✅ ACTUALIZADO ABC.A: 1519.0 a las 10:30:40"
+    },
+    {
+        "timestamp": "Apr 10 10:38:23",
+        "simbolo": "BNC",
+        "precio": 1530.0,
+        "hora_bolsa": "10:25:24",
+        "mensaje": "Apr 10 10:38:23 ✅ ACTUALIZADO BNC: 1530.0 a las 10:25:24"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "BPV",
+        "precio": 133.0,
+        "hora_bolsa": "10:34:47",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO BPV: 133.0 a las 10:34:47"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "BVCC",
+        "precio": 540.0,
+        "hora_bolsa": "10:33:23",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO BVCC: 540.0 a las 10:33:23"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "BVL",
+        "precio": 1641.0,
+        "hora_bolsa": "10:25:55",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO BVL: 1641.0 a las 10:25:55"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "CCP.B",
+        "precio": 440.0,
+        "hora_bolsa": "10:33:01",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO CCP.B: 440.0 a las 10:33:01"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "CCR",
+        "precio": 6000.0,
+        "hora_bolsa": "10:18:43",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO CCR: 6000.0 a las 10:18:43"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "CGQ",
+        "precio": 4190.0,
+        "hora_bolsa": "10:18:55",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO CGQ: 4190.0 a las 10:18:55"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "CRM.A",
+        "precio": 639.0,
+        "hora_bolsa": "10:32:56",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO CRM.A: 639.0 a las 10:32:56"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "DOM",
+        "precio": 750.0,
+        "hora_bolsa": "10:33:13",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO DOM: 750.0 a las 10:33:13"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "EFE",
+        "precio": 149.0,
+        "hora_bolsa": "10:26:49",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO EFE: 149.0 a las 10:26:49"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "ENV",
+        "precio": 750.0,
+        "hora_bolsa": "10:19:32",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO ENV: 750.0 a las 10:19:32"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "FNC",
+        "precio": 1040.0,
+        "hora_bolsa": "10:19:33",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO FNC: 1040.0 a las 10:19:33"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "FNV",
+        "precio": 240.0,
+        "hora_bolsa": "10:29:58",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO FNV: 240.0 a las 10:29:58"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "GMC.B",
+        "precio": 4250.0,
+        "hora_bolsa": "10:22:32",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO GMC.B: 4250.0 a las 10:22:32"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "GZL",
+        "precio": 650.0,
+        "hora_bolsa": "10:20:12",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO GZL: 650.0 a las 10:20:12"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "ICP.B",
+        "precio": 115.2,
+        "hora_bolsa": "10:25:41",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO ICP.B: 115.2 a las 10:25:41"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "IVC.A",
+        "precio": 997.98,
+        "hora_bolsa": "10:21:21",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO IVC.A: 997.98 a las 10:21:21"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "IVC.B",
+        "precio": 530.0,
+        "hora_bolsa": "10:28:54",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO IVC.B: 530.0 a las 10:28:54"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "MPA",
+        "precio": 100.0,
+        "hora_bolsa": "10:26:36",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO MPA: 100.0 a las 10:26:36"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "MTC.B",
+        "precio": 307.98,
+        "hora_bolsa": "10:21:25",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO MTC.B: 307.98 a las 10:21:25"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "MVZ.A",
+        "precio": 6800.0,
+        "hora_bolsa": "10:33:55",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO MVZ.A: 6800.0 a las 10:33:55"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "MVZ.B",
+        "precio": 6800.0,
+        "hora_bolsa": "10:21:25",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO MVZ.B: 6800.0 a las 10:21:25"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "PCP.B",
+        "precio": 290.0,
+        "hora_bolsa": "10:21:26",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO PCP.B: 290.0 a las 10:21:26"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "PGR",
+        "precio": 102.0,
+        "hora_bolsa": "10:30:40",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO PGR: 102.0 a las 10:30:40"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "PIV.B",
+        "precio": 37000.0,
+        "hora_bolsa": "10:21:59",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO PIV.B: 37000.0 a las 10:21:59"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "PTN",
+        "precio": 575.0,
+        "hora_bolsa": "10:22:13",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO PTN: 575.0 a las 10:22:13"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "RST",
+        "precio": 490.0,
+        "hora_bolsa": "10:32:24",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO RST: 490.0 a las 10:32:24"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "RST.B",
+        "precio": 400.0,
+        "hora_bolsa": "10:34:39",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO RST.B: 400.0 a las 10:34:39"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "SVS",
+        "precio": 1100.0,
+        "hora_bolsa": "10:22:47",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO SVS: 1100.0 a las 10:22:47"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "TDV.D",
+        "precio": 749.95,
+        "hora_bolsa": "10:22:56",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO TDV.D: 749.95 a las 10:22:56"
+    },
+    {
+        "timestamp": "Apr 10 10:38:24",
+        "simbolo": "TPG",
+        "precio": 21.95,
+        "hora_bolsa": "10:32:42",
+        "mensaje": "Apr 10 10:38:24 ✅ ACTUALIZADO TPG: 21.95 a las 10:32:42"
+    },
+    {
+        "timestamp": "Apr 10 10:44:52",
+        "simbolo": "IBC",
+        "precio": 5641.52,
+        "hora_bolsa": "10:40:02",
+        "mensaje": "Apr 10 10:44:52 ✅ ACTUALIZADO IBC: 5641.52 a las 10:40:02"
+    },
+    {
+        "timestamp": "Apr 10 10:44:52",
+        "simbolo": "I.FINANCIE",
+        "precio": 10923.66,
+        "hora_bolsa": "10:40:02",
+        "mensaje": "Apr 10 10:44:52 ✅ ACTUALIZADO I.FINANCIE: 10923.66 a las 10:40:02"
+    },
+    {
+        "timestamp": "Apr 10 10:44:52",
+        "simbolo": "I.INDUSTR",
+        "precio": 2185.9,
+        "hora_bolsa": "10:40:02",
+        "mensaje": "Apr 10 10:44:52 ✅ ACTUALIZADO I.INDUSTR: 2185.9 a las 10:40:02"
+    },
+    {
+        "timestamp": "Apr 10 10:44:52",
+        "simbolo": "BVCC",
+        "precio": 540.0,
+        "hora_bolsa": "10:35:26",
+        "mensaje": "Apr 10 10:44:52 ✅ ACTUALIZADO BVCC: 540.0 a las 10:35:26"
+    },
+    {
+        "timestamp": "Apr 10 10:44:52",
+        "simbolo": "GZL",
+        "precio": 650.0,
+        "hora_bolsa": "10:35:53",
+        "mensaje": "Apr 10 10:44:52 ✅ ACTUALIZADO GZL: 650.0 a las 10:35:53"
+    },
+    {
+        "timestamp": "Apr 10 10:44:52",
+        "simbolo": "MVZ.B",
+        "precio": 6800.0,
+        "hora_bolsa": "10:37:28",
+        "mensaje": "Apr 10 10:44:52 ✅ ACTUALIZADO MVZ.B: 6800.0 a las 10:37:28"
+    },
+    {
+        "timestamp": "Apr 10 10:44:52",
+        "simbolo": "PGR",
+        "precio": 102.0,
+        "hora_bolsa": "10:35:33",
+        "mensaje": "Apr 10 10:44:52 ✅ ACTUALIZADO PGR: 102.0 a las 10:35:33"
+    },
+    {
+        "timestamp": "Apr 10 10:44:53",
+        "simbolo": "TDV.D",
+        "precio": 735.0,
+        "hora_bolsa": "10:39:47",
+        "mensaje": "Apr 10 10:44:53 ✅ ACTUALIZADO TDV.D: 735.0 a las 10:39:47"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "IBC",
+        "precio": 5737.37,
+        "hora_bolsa": "10:57:35",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO IBC: 5737.37 a las 10:57:35"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "I.FINANCIE",
+        "precio": 10982.3,
+        "hora_bolsa": "10:57:35",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO I.FINANCIE: 10982.3 a las 10:57:35"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "I.INDUSTR",
+        "precio": 2330.38,
+        "hora_bolsa": "10:57:35",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO I.INDUSTR: 2330.38 a las 10:57:35"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "BNC",
+        "precio": 1530.0,
+        "hora_bolsa": "10:56:12",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO BNC: 1530.0 a las 10:56:12"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "BPV",
+        "precio": 134.85,
+        "hora_bolsa": "10:57:09",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO BPV: 134.85 a las 10:57:09"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "BVCC",
+        "precio": 543.5,
+        "hora_bolsa": "10:56:50",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO BVCC: 543.5 a las 10:56:50"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "BVL",
+        "precio": 1635.0,
+        "hora_bolsa": "10:56:49",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO BVL: 1635.0 a las 10:56:49"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "CCP.B",
+        "precio": 440.0,
+        "hora_bolsa": "10:45:07",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO CCP.B: 440.0 a las 10:45:07"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "CRM.A",
+        "precio": 705.0,
+        "hora_bolsa": "10:57:08",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO CRM.A: 705.0 a las 10:57:08"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "DOM",
+        "precio": 735.0,
+        "hora_bolsa": "10:50:25",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO DOM: 735.0 a las 10:50:25"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "EFE",
+        "precio": 145.0,
+        "hora_bolsa": "10:45:33",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO EFE: 145.0 a las 10:45:33"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "ENV",
+        "precio": 838.0,
+        "hora_bolsa": "10:45:08",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO ENV: 838.0 a las 10:45:08"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "FNV",
+        "precio": 240.0,
+        "hora_bolsa": "10:46:53",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO FNV: 240.0 a las 10:46:53"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "GZL",
+        "precio": 650.0,
+        "hora_bolsa": "10:52:51",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO GZL: 650.0 a las 10:52:51"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "ICP.B",
+        "precio": 95.0,
+        "hora_bolsa": "10:46:16",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO ICP.B: 95.0 a las 10:46:16"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "IVC.A",
+        "precio": 997.98,
+        "hora_bolsa": "10:50:40",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO IVC.A: 997.98 a las 10:50:40"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "MPA",
+        "precio": 100.0,
+        "hora_bolsa": "10:50:48",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO MPA: 100.0 a las 10:50:48"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "MVZ.B",
+        "precio": 6800.0,
+        "hora_bolsa": "10:55:06",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO MVZ.B: 6800.0 a las 10:55:06"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "PCP.B",
+        "precio": 290.0,
+        "hora_bolsa": "10:48:42",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO PCP.B: 290.0 a las 10:48:42"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "PGR",
+        "precio": 99.0,
+        "hora_bolsa": "10:50:16",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO PGR: 99.0 a las 10:50:16"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "PIV.B",
+        "precio": 50000.0,
+        "hora_bolsa": "10:45:33",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO PIV.B: 50000.0 a las 10:45:33"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "PTN",
+        "precio": 574.0,
+        "hora_bolsa": "10:57:28",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO PTN: 574.0 a las 10:57:28"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "RST",
+        "precio": 494.0,
+        "hora_bolsa": "10:57:35",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO RST: 494.0 a las 10:57:35"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "RST.B",
+        "precio": 400.0,
+        "hora_bolsa": "10:56:53",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO RST.B: 400.0 a las 10:56:53"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "SVS",
+        "precio": 1090.0,
+        "hora_bolsa": "10:55:16",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO SVS: 1090.0 a las 10:55:16"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "TDV.D",
+        "precio": 735.0,
+        "hora_bolsa": "10:55:42",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO TDV.D: 735.0 a las 10:55:42"
+    },
+    {
+        "timestamp": "Apr 10 11:01:12",
+        "simbolo": "TPG",
+        "precio": 21.95,
+        "hora_bolsa": "10:56:48",
+        "mensaje": "Apr 10 11:01:12 ✅ ACTUALIZADO TPG: 21.95 a las 10:56:48"
+    },
+    {
+        "timestamp": "Apr 10 11:05:49",
+        "simbolo": "IBC",
+        "precio": 5737.37,
+        "hora_bolsa": "11:02:20",
+        "mensaje": "Apr 10 11:05:49 ✅ ACTUALIZADO IBC: 5737.37 a las 11:02:20"
+    },
+    {
+        "timestamp": "Apr 10 11:05:49",
+        "simbolo": "I.FINANCIE",
+        "precio": 10982.3,
+        "hora_bolsa": "11:02:20",
+        "mensaje": "Apr 10 11:05:49 ✅ ACTUALIZADO I.FINANCIE: 10982.3 a las 11:02:20"
+    },
+    {
+        "timestamp": "Apr 10 11:05:49",
+        "simbolo": "I.INDUSTR",
+        "precio": 2330.38,
+        "hora_bolsa": "11:02:20",
+        "mensaje": "Apr 10 11:05:49 ✅ ACTUALIZADO I.INDUSTR: 2330.38 a las 11:02:20"
+    },
+    {
+        "timestamp": "Apr 10 11:05:49",
+        "simbolo": "BNC",
+        "precio": 1530.0,
+        "hora_bolsa": "11:00:44",
+        "mensaje": "Apr 10 11:05:49 ✅ ACTUALIZADO BNC: 1530.0 a las 11:00:44"
+    },
+    {
+        "timestamp": "Apr 10 11:05:49",
+        "simbolo": "BPV",
+        "precio": 134.85,
+        "hora_bolsa": "11:02:02",
+        "mensaje": "Apr 10 11:05:49 ✅ ACTUALIZADO BPV: 134.85 a las 11:02:02"
+    },
+    {
+        "timestamp": "Apr 10 11:05:49",
+        "simbolo": "BVCC",
+        "precio": 543.5,
+        "hora_bolsa": "11:00:44",
+        "mensaje": "Apr 10 11:05:49 ✅ ACTUALIZADO BVCC: 543.5 a las 11:00:44"
+    },
+    {
+        "timestamp": "Apr 10 11:05:49",
+        "simbolo": "CCP.B",
+        "precio": 440.0,
+        "hora_bolsa": "11:00:44",
+        "mensaje": "Apr 10 11:05:49 ✅ ACTUALIZADO CCP.B: 440.0 a las 11:00:44"
+    },
+    {
+        "timestamp": "Apr 10 11:05:49",
+        "simbolo": "EFE",
+        "precio": 145.0,
+        "hora_bolsa": "11:00:44",
+        "mensaje": "Apr 10 11:05:49 ✅ ACTUALIZADO EFE: 145.0 a las 11:00:44"
+    },
+    {
+        "timestamp": "Apr 10 11:05:50",
+        "simbolo": "GZL",
+        "precio": 650.0,
+        "hora_bolsa": "11:00:44",
+        "mensaje": "Apr 10 11:05:50 ✅ ACTUALIZADO GZL: 650.0 a las 11:00:44"
+    },
+    {
+        "timestamp": "Apr 10 11:05:50",
+        "simbolo": "ICP.B",
+        "precio": 138.0,
+        "hora_bolsa": "11:02:05",
+        "mensaje": "Apr 10 11:05:50 ✅ ACTUALIZADO ICP.B: 138.0 a las 11:02:05"
+    },
+    {
+        "timestamp": "Apr 10 11:05:50",
+        "simbolo": "MPA",
+        "precio": 100.0,
+        "hora_bolsa": "11:00:44",
+        "mensaje": "Apr 10 11:05:50 ✅ ACTUALIZADO MPA: 100.0 a las 11:00:44"
+    },
+    {
+        "timestamp": "Apr 10 11:05:50",
+        "simbolo": "MTC.B",
+        "precio": 307.98,
+        "hora_bolsa": "11:02:19",
+        "mensaje": "Apr 10 11:05:50 ✅ ACTUALIZADO MTC.B: 307.98 a las 11:02:19"
+    },
+    {
+        "timestamp": "Apr 10 11:05:50",
+        "simbolo": "PCP.B",
+        "precio": 290.0,
+        "hora_bolsa": "11:00:45",
+        "mensaje": "Apr 10 11:05:50 ✅ ACTUALIZADO PCP.B: 290.0 a las 11:00:45"
+    },
+    {
+        "timestamp": "Apr 10 11:05:50",
+        "simbolo": "PGR",
+        "precio": 99.0,
+        "hora_bolsa": "11:02:19",
+        "mensaje": "Apr 10 11:05:50 ✅ ACTUALIZADO PGR: 99.0 a las 11:02:19"
+    },
+    {
+        "timestamp": "Apr 10 11:05:50",
+        "simbolo": "PTN",
+        "precio": 574.0,
+        "hora_bolsa": "11:02:19",
+        "mensaje": "Apr 10 11:05:50 ✅ ACTUALIZADO PTN: 574.0 a las 11:02:19"
+    },
+    {
+        "timestamp": "Apr 10 11:05:50",
+        "simbolo": "RST.B",
+        "precio": 400.0,
+        "hora_bolsa": "11:02:20",
+        "mensaje": "Apr 10 11:05:50 ✅ ACTUALIZADO RST.B: 400.0 a las 11:02:20"
+    },
+    {
+        "timestamp": "Apr 10 11:05:50",
+        "simbolo": "TDV.D",
+        "precio": 735.0,
+        "hora_bolsa": "11:02:11",
+        "mensaje": "Apr 10 11:05:50 ✅ ACTUALIZADO TDV.D: 735.0 a las 11:02:11"
+    },
+    {
+        "timestamp": "Apr 10 11:05:50",
+        "simbolo": "TPG",
+        "precio": 21.95,
+        "hora_bolsa": "11:02:05",
+        "mensaje": "Apr 10 11:05:50 ✅ ACTUALIZADO TPG: 21.95 a las 11:02:05"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "IBC",
+        "precio": 5555.14,
+        "hora_bolsa": "13:03:12",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO IBC: 5555.14 a las 13:03:12"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "I.FINANCIE",
+        "precio": 10610.65,
+        "hora_bolsa": "13:03:12",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO I.FINANCIE: 10610.65 a las 13:03:12"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "I.INDUSTR",
+        "precio": 2275.65,
+        "hora_bolsa": "13:03:12",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO I.INDUSTR: 2275.65 a las 13:03:12"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "ABC.A",
+        "precio": 1450.0,
+        "hora_bolsa": "13:00:06",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO ABC.A: 1450.0 a las 13:00:06"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "BNC",
+        "precio": 1505.0,
+        "hora_bolsa": "13:00:06",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO BNC: 1505.0 a las 13:00:06"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "BPV",
+        "precio": 130.0,
+        "hora_bolsa": "13:00:06",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO BPV: 130.0 a las 13:00:06"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "BVCC",
+        "precio": 543.0,
+        "hora_bolsa": "13:00:06",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO BVCC: 543.0 a las 13:00:06"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "BVL",
+        "precio": 1540.0,
+        "hora_bolsa": "12:52:50",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO BVL: 1540.0 a las 12:52:50"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "CCP.B",
+        "precio": 460.0,
+        "hora_bolsa": "12:54:07",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO CCP.B: 460.0 a las 12:54:07"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "CGQ",
+        "precio": 4190.0,
+        "hora_bolsa": "12:51:45",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO CGQ: 4190.0 a las 12:51:45"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "CRM.A",
+        "precio": 650.0,
+        "hora_bolsa": "13:00:06",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO CRM.A: 650.0 a las 13:00:06"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "DOM",
+        "precio": 750.0,
+        "hora_bolsa": "13:00:06",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO DOM: 750.0 a las 13:00:06"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "EFE",
+        "precio": 150.0,
+        "hora_bolsa": "12:41:10",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO EFE: 150.0 a las 12:41:10"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "ENV",
+        "precio": 839.0,
+        "hora_bolsa": "13:00:06",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO ENV: 839.0 a las 13:00:06"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "FNC",
+        "precio": 1000.0,
+        "hora_bolsa": "12:13:18",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO FNC: 1000.0 a las 12:13:18"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "FNV",
+        "precio": 259.99,
+        "hora_bolsa": "12:40:40",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO FNV: 259.99 a las 12:40:40"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "GMC.B",
+        "precio": 4250.0,
+        "hora_bolsa": "13:00:06",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO GMC.B: 4250.0 a las 13:00:06"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "GZL",
+        "precio": 650.0,
+        "hora_bolsa": "12:18:06",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO GZL: 650.0 a las 12:18:06"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "ICP.B",
+        "precio": 115.3,
+        "hora_bolsa": "12:40:50",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO ICP.B: 115.3 a las 12:40:50"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "IMP.B",
+        "precio": 2500.03,
+        "hora_bolsa": "12:49:27",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO IMP.B: 2500.03 a las 12:49:27"
+    },
+    {
+        "timestamp": "Apr 10 14:42:14",
+        "simbolo": "IVC.A",
+        "precio": 865.01,
+        "hora_bolsa": "12:38:18",
+        "mensaje": "Apr 10 14:42:14 ✅ ACTUALIZADO IVC.A: 865.01 a las 12:38:18"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "IVC.B",
+        "precio": 530.0,
+        "hora_bolsa": "12:44:07",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO IVC.B: 530.0 a las 12:44:07"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "MPA",
+        "precio": 103.5,
+        "hora_bolsa": "13:00:06",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO MPA: 103.5 a las 13:00:06"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "MTC.B",
+        "precio": 257.0,
+        "hora_bolsa": "12:19:00",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO MTC.B: 257.0 a las 12:19:00"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "MVZ.A",
+        "precio": 6800.0,
+        "hora_bolsa": "12:46:44",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO MVZ.A: 6800.0 a las 12:46:44"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "MVZ.B",
+        "precio": 6200.0,
+        "hora_bolsa": "12:49:39",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO MVZ.B: 6200.0 a las 12:49:39"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "PCP.B",
+        "precio": 280.0,
+        "hora_bolsa": "13:00:06",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO PCP.B: 280.0 a las 13:00:06"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "PGR",
+        "precio": 99.0,
+        "hora_bolsa": "13:00:07",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO PGR: 99.0 a las 13:00:07"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "PIV.B",
+        "precio": 50000.0,
+        "hora_bolsa": "12:43:17",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO PIV.B: 50000.0 a las 12:43:17"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "PTN",
+        "precio": 650.0,
+        "hora_bolsa": "13:00:07",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO PTN: 650.0 a las 13:00:07"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "RST",
+        "precio": 485.0,
+        "hora_bolsa": "13:00:07",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO RST: 485.0 a las 13:00:07"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "RST.B",
+        "precio": 400.0,
+        "hora_bolsa": "12:40:53",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO RST.B: 400.0 a las 12:40:53"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "SVS",
+        "precio": 1060.0,
+        "hora_bolsa": "13:00:07",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO SVS: 1060.0 a las 13:00:07"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "TDV.D",
+        "precio": 734.0,
+        "hora_bolsa": "13:00:07",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO TDV.D: 734.0 a las 13:00:07"
+    },
+    {
+        "timestamp": "Apr 10 14:42:15",
+        "simbolo": "TPG",
+        "precio": 18.6,
+        "hora_bolsa": "13:00:07",
+        "mensaje": "Apr 10 14:42:15 ✅ ACTUALIZADO TPG: 18.6 a las 13:00:07"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "IBC",
+        "precio": 5429.74,
+        "hora_bolsa": "13:03:37",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO IBC: 5429.74 a las 13:03:37"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "I.FINANCIE",
+        "precio": 10531.75,
+        "hora_bolsa": "13:03:37",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO I.FINANCIE: 10531.75 a las 13:03:37"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "I.INDUSTR",
+        "precio": 2088.49,
+        "hora_bolsa": "13:03:38",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO I.INDUSTR: 2088.49 a las 13:03:38"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "ABC.A",
+        "precio": 1430.0,
+        "hora_bolsa": "13:00:01",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO ABC.A: 1430.0 a las 13:00:01"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "ARC.B",
+        "precio": 1284.45,
+        "hora_bolsa": "12:23:51",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO ARC.B: 1284.45 a las 12:23:51"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "BNC",
+        "precio": 1465.0,
+        "hora_bolsa": "13:00:01",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO BNC: 1465.0 a las 13:00:01"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "BPV",
+        "precio": 129.9,
+        "hora_bolsa": "13:00:02",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO BPV: 129.9 a las 13:00:02"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "BVCC",
+        "precio": 537.0,
+        "hora_bolsa": "13:00:02",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO BVCC: 537.0 a las 13:00:02"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "BVL",
+        "precio": 1500.0,
+        "hora_bolsa": "12:50:38",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO BVL: 1500.0 a las 12:50:38"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "CCP.B",
+        "precio": 459.0,
+        "hora_bolsa": "12:54:29",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO CCP.B: 459.0 a las 12:54:29"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "CCR",
+        "precio": 6000.0,
+        "hora_bolsa": "12:54:25",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO CCR: 6000.0 a las 12:54:25"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "CGQ",
+        "precio": 4190.0,
+        "hora_bolsa": "12:23:23",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO CGQ: 4190.0 a las 12:23:23"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "CRM.A",
+        "precio": 560.0,
+        "hora_bolsa": "12:41:58",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO CRM.A: 560.0 a las 12:41:58"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "DOM",
+        "precio": 750.0,
+        "hora_bolsa": "12:10:47",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO DOM: 750.0 a las 12:10:47"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "EFE",
+        "precio": 150.0,
+        "hora_bolsa": "13:00:02",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO EFE: 150.0 a las 13:00:02"
+    },
+    {
+        "timestamp": "Apr 13 15:12:46",
+        "simbolo": "ENV",
+        "precio": 696.0,
+        "hora_bolsa": "13:00:04",
+        "mensaje": "Apr 13 15:12:46 ✅ ACTUALIZADO ENV: 696.0 a las 13:00:04"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "FNC",
+        "precio": 979.0,
+        "hora_bolsa": "13:00:04",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO FNC: 979.0 a las 13:00:04"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "FNV",
+        "precio": 259.99,
+        "hora_bolsa": "13:00:05",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO FNV: 259.99 a las 13:00:05"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "GMC.B",
+        "precio": 4250.0,
+        "hora_bolsa": "12:29:05",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO GMC.B: 4250.0 a las 12:29:05"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "GZL",
+        "precio": 650.0,
+        "hora_bolsa": "13:00:05",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO GZL: 650.0 a las 13:00:05"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "ICP.B",
+        "precio": 115.3,
+        "hora_bolsa": "12:51:31",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO ICP.B: 115.3 a las 12:51:31"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "IMP.B",
+        "precio": 2510.0,
+        "hora_bolsa": "10:23:10",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO IMP.B: 2510.0 a las 10:23:10"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "IVC.A",
+        "precio": 865.01,
+        "hora_bolsa": "12:47:13",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO IVC.A: 865.01 a las 12:47:13"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "IVC.B",
+        "precio": 530.0,
+        "hora_bolsa": "12:54:45",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO IVC.B: 530.0 a las 12:54:45"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "MPA",
+        "precio": 100.5,
+        "hora_bolsa": "13:00:05",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO MPA: 100.5 a las 13:00:05"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "MTC.B",
+        "precio": 257.0,
+        "hora_bolsa": "13:00:06",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO MTC.B: 257.0 a las 13:00:06"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "MVZ.A",
+        "precio": 6800.0,
+        "hora_bolsa": "13:00:06",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO MVZ.A: 6800.0 a las 13:00:06"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "MVZ.B",
+        "precio": 6200.0,
+        "hora_bolsa": "12:54:17",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO MVZ.B: 6200.0 a las 12:54:17"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "PCP.B",
+        "precio": 279.8,
+        "hora_bolsa": "12:54:02",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO PCP.B: 279.8 a las 12:54:02"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "PGR",
+        "precio": 99.0,
+        "hora_bolsa": "12:53:21",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO PGR: 99.0 a las 12:53:21"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "PIV.B",
+        "precio": 48000.0,
+        "hora_bolsa": "12:41:49",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO PIV.B: 48000.0 a las 12:41:49"
+    },
+    {
+        "timestamp": "Apr 13 15:12:47",
+        "simbolo": "PTN",
+        "precio": 650.0,
+        "hora_bolsa": "12:51:31",
+        "mensaje": "Apr 13 15:12:47 ✅ ACTUALIZADO PTN: 650.0 a las 12:51:31"
+    },
+    {
+        "timestamp": "Apr 13 15:12:48",
+        "simbolo": "RST",
+        "precio": 470.0,
+        "hora_bolsa": "13:00:06",
+        "mensaje": "Apr 13 15:12:48 ✅ ACTUALIZADO RST: 470.0 a las 13:00:06"
+    },
+    {
+        "timestamp": "Apr 13 15:12:48",
+        "simbolo": "RST.B",
+        "precio": 338.0,
+        "hora_bolsa": "13:00:07",
+        "mensaje": "Apr 13 15:12:48 ✅ ACTUALIZADO RST.B: 338.0 a las 13:00:07"
+    },
+    {
+        "timestamp": "Apr 13 15:12:48",
+        "simbolo": "SVS",
+        "precio": 990.0,
+        "hora_bolsa": "13:00:08",
+        "mensaje": "Apr 13 15:12:48 ✅ ACTUALIZADO SVS: 990.0 a las 13:00:08"
+    },
+    {
+        "timestamp": "Apr 13 15:12:48",
+        "simbolo": "TDV.D",
+        "precio": 724.0,
+        "hora_bolsa": "12:53:38",
+        "mensaje": "Apr 13 15:12:48 ✅ ACTUALIZADO TDV.D: 724.0 a las 12:53:38"
+    },
+    {
+        "timestamp": "Apr 13 15:12:48",
+        "simbolo": "TPG",
+        "precio": 18.0,
+        "hora_bolsa": "13:00:08",
+        "mensaje": "Apr 13 15:12:48 ✅ ACTUALIZADO TPG: 18.0 a las 13:00:08"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "IBC",
+        "precio": 5402.04,
+        "hora_bolsa": "13:03:29",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO IBC: 5402.04 a las 13:03:29"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "I.FINANCIE",
+        "precio": 10455.71,
+        "hora_bolsa": "13:03:29",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO I.FINANCIE: 10455.71 a las 13:03:29"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "I.INDUSTR",
+        "precio": 2096.69,
+        "hora_bolsa": "13:03:29",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO I.INDUSTR: 2096.69 a las 13:03:29"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "ABC.A",
+        "precio": 1400.0,
+        "hora_bolsa": "12:48:09",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO ABC.A: 1400.0 a las 12:48:09"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "BNC",
+        "precio": 1450.0,
+        "hora_bolsa": "13:00:20",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO BNC: 1450.0 a las 13:00:20"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "BPV",
+        "precio": 126.1,
+        "hora_bolsa": "13:00:21",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO BPV: 126.1 a las 13:00:21"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "BVCC",
+        "precio": 574.0,
+        "hora_bolsa": "13:00:21",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO BVCC: 574.0 a las 13:00:21"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "BVL",
+        "precio": 1583.0,
+        "hora_bolsa": "13:00:21",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO BVL: 1583.0 a las 13:00:21"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "CCP.B",
+        "precio": 370.0,
+        "hora_bolsa": "12:03:31",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO CCP.B: 370.0 a las 12:03:31"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "CCR",
+        "precio": 6000.0,
+        "hora_bolsa": "09:39:40",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO CCR: 6000.0 a las 09:39:40"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "CGQ",
+        "precio": 4190.0,
+        "hora_bolsa": "13:00:22",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO CGQ: 4190.0 a las 13:00:22"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "CRM.A",
+        "precio": 645.0,
+        "hora_bolsa": "13:00:22",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO CRM.A: 645.0 a las 13:00:22"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "DOM",
+        "precio": 697.5,
+        "hora_bolsa": "12:52:11",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO DOM: 697.5 a las 12:52:11"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "EFE",
+        "precio": 120.0,
+        "hora_bolsa": "12:52:12",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO EFE: 120.0 a las 12:52:12"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "ENV",
+        "precio": 696.0,
+        "hora_bolsa": "12:50:49",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO ENV: 696.0 a las 12:50:49"
+    },
+    {
+        "timestamp": "Apr 14 14:38:07",
+        "simbolo": "FNC",
+        "precio": 979.0,
+        "hora_bolsa": "12:41:19",
+        "mensaje": "Apr 14 14:38:07 ✅ ACTUALIZADO FNC: 979.0 a las 12:41:19"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "FNV",
+        "precio": 210.0,
+        "hora_bolsa": "12:45:40",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO FNV: 210.0 a las 12:45:40"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "GMC.B",
+        "precio": 4650.0,
+        "hora_bolsa": "11:25:09",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO GMC.B: 4650.0 a las 11:25:09"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "GZL",
+        "precio": 620.0,
+        "hora_bolsa": "12:51:28",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO GZL: 620.0 a las 12:51:28"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "ICP.B",
+        "precio": 115.3,
+        "hora_bolsa": "12:52:12",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO ICP.B: 115.3 a las 12:52:12"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "IVC.B",
+        "precio": 530.0,
+        "hora_bolsa": "12:41:20",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO IVC.B: 530.0 a las 12:41:20"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "MPA",
+        "precio": 95.0,
+        "hora_bolsa": "12:49:05",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO MPA: 95.0 a las 12:49:05"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "MTC.B",
+        "precio": 257.0,
+        "hora_bolsa": "12:38:27",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO MTC.B: 257.0 a las 12:38:27"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "MVZ.A",
+        "precio": 6786.0,
+        "hora_bolsa": "12:49:02",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO MVZ.A: 6786.0 a las 12:49:02"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "MVZ.B",
+        "precio": 6299.0,
+        "hora_bolsa": "12:48:00",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO MVZ.B: 6299.0 a las 12:48:00"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "PCP.B",
+        "precio": 270.0,
+        "hora_bolsa": "12:17:20",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO PCP.B: 270.0 a las 12:17:20"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "PGR",
+        "precio": 97.5,
+        "hora_bolsa": "12:50:29",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO PGR: 97.5 a las 12:50:29"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "PIV.B",
+        "precio": 43000.0,
+        "hora_bolsa": "12:10:45",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO PIV.B: 43000.0 a las 12:10:45"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "PTN",
+        "precio": 575.0,
+        "hora_bolsa": "12:51:16",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO PTN: 575.0 a las 12:51:16"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "RST",
+        "precio": 459.0,
+        "hora_bolsa": "13:00:22",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO RST: 459.0 a las 13:00:22"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "RST.B",
+        "precio": 350.0,
+        "hora_bolsa": "13:00:23",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO RST.B: 350.0 a las 13:00:23"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "SVS",
+        "precio": 950.0,
+        "hora_bolsa": "13:00:23",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO SVS: 950.0 a las 13:00:23"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "TDV.D",
+        "precio": 724.0,
+        "hora_bolsa": "13:00:23",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO TDV.D: 724.0 a las 13:00:23"
+    },
+    {
+        "timestamp": "Apr 14 14:38:08",
+        "simbolo": "TPG",
+        "precio": 20.0,
+        "hora_bolsa": "13:00:24",
+        "mensaje": "Apr 14 14:38:08 ✅ ACTUALIZADO TPG: 20.0 a las 13:00:24"
+    }
+]
